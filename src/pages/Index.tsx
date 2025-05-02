@@ -9,6 +9,7 @@ import Sectors from '@/components/sections/Sectors';
 import Differentials from '@/components/sections/Differentials';
 import Testimonials from '@/components/sections/Testimonials';
 import Contact from '@/components/sections/Contact';
+import OurWork from '@/components/sections/OurWork';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
 
 const Index = () => {
@@ -25,6 +26,7 @@ const Index = () => {
         <About />
         <Services />
         <Sectors />
+        <OurWork />
         <Differentials />
         <Testimonials />
         <Contact />
