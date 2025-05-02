@@ -1,9 +1,6 @@
-
 import React from 'react';
-
 const About = () => {
-  return (
-    <section id="about" className="py-20 bg-white">
+  return <section id="about" className="py-20 bg-white">
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Sobre a Air Flow</h2>
@@ -12,11 +9,7 @@ const About = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div className="reveal">
-            <img 
-              src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-              alt="Equipe Air Flow" 
-              className="rounded-lg shadow-lg w-full h-auto"
-            />
+            <img alt="Equipe Air Flow" className="rounded-lg shadow-lg w-full h-auto" src="/lovable-uploads/8d865c4c-d79c-4827-8862-e5916efb1db7.jpg" />
           </div>
           
           <div className="reveal-right">
@@ -81,8 +74,6 @@ const About = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;
