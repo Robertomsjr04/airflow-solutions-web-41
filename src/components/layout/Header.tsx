@@ -48,7 +48,7 @@ const Header = () => {
                 onClick={() => scrollToSection('home')} 
                 className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors"
               >
-                Home
+                Início
               </button>
             </li>
             <li>
@@ -56,7 +56,7 @@ const Header = () => {
                 onClick={() => scrollToSection('about')} 
                 className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors"
               >
-                About
+                Sobre
               </button>
             </li>
             <li>
@@ -64,7 +64,7 @@ const Header = () => {
                 onClick={() => scrollToSection('services')} 
                 className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors"
               >
-                Services
+                Serviços
               </button>
             </li>
             <li>
@@ -72,7 +72,7 @@ const Header = () => {
                 onClick={() => scrollToSection('sectors')} 
                 className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors"
               >
-                Sectors
+                Setores
               </button>
             </li>
             <li>
@@ -80,7 +80,7 @@ const Header = () => {
                 onClick={() => scrollToSection('differentials')} 
                 className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors"
               >
-                Differentials
+                Diferenciais
               </button>
             </li>
             <li>
@@ -88,7 +88,7 @@ const Header = () => {
                 onClick={() => scrollToSection('testimonials')} 
                 className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors"
               >
-                Testimonials
+                Depoimentos
               </button>
             </li>
             <li>
@@ -96,7 +96,7 @@ const Header = () => {
                 onClick={() => scrollToSection('contact')} 
                 className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors"
               >
-                Contact
+                Contato
               </button>
             </li>
           </ul>
@@ -104,7 +104,7 @@ const Header = () => {
             onClick={() => scrollToSection('contact')}
             className="bg-airflow-blue hover:bg-airflow-lightBlue text-white"
           >
-            Request a Quote
+            Solicite um Orçamento
           </Button>
         </nav>
         
@@ -128,7 +128,7 @@ const Header = () => {
                 onClick={() => scrollToSection('home')} 
                 className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2"
               >
-                Home
+                Início
               </button>
             </li>
             <li>
@@ -136,7 +136,7 @@ const Header = () => {
                 onClick={() => scrollToSection('about')} 
                 className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2"
               >
-                About
+                Sobre
               </button>
             </li>
             <li>
@@ -144,7 +144,7 @@ const Header = () => {
                 onClick={() => scrollToSection('services')} 
                 className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2"
               >
-                Services
+                Serviços
               </button>
             </li>
             <li>
@@ -152,7 +152,7 @@ const Header = () => {
                 onClick={() => scrollToSection('sectors')} 
                 className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2"
               >
-                Sectors
+                Setores
               </button>
             </li>
             <li>
@@ -160,7 +160,7 @@ const Header = () => {
                 onClick={() => scrollToSection('differentials')} 
                 className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2"
               >
-                Differentials
+                Diferenciais
               </button>
             </li>
             <li>
@@ -168,7 +168,7 @@ const Header = () => {
                 onClick={() => scrollToSection('testimonials')} 
                 className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2"
               >
-                Testimonials
+                Depoimentos
               </button>
             </li>
             <li>
@@ -176,7 +176,7 @@ const Header = () => {
                 onClick={() => scrollToSection('contact')} 
                 className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2"
               >
-                Contact
+                Contato
               </button>
             </li>
             <li className="pt-2">
@@ -184,7 +184,7 @@ const Header = () => {
                 onClick={() => scrollToSection('contact')}
                 className="bg-airflow-blue hover:bg-airflow-lightBlue text-white w-full"
               >
-                Request a Quote
+                Solicite um Orçamento
               </Button>
             </li>
           </ul>

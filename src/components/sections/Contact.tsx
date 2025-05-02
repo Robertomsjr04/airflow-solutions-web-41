@@ -32,8 +32,8 @@ const Contact = () => {
     // Simulate form submission
     setTimeout(() => {
       toast({
-        title: "Message Sent!",
-        description: "Thank you for contacting Air Flow. We'll get back to you shortly.",
+        title: "Mensagem Enviada!",
+        description: "Obrigado por entrar em contato com a Air Flow. Retornaremos em breve.",
       });
       
       setFormData({
@@ -52,9 +52,9 @@ const Contact = () => {
     <section id="contact" className="py-20 bg-white">
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Contact Us</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Contato</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto reveal">
-            Get in touch with our team to discuss your industrial or commercial refrigeration needs.
+            Entre em contato com nossa equipe para discutir suas necessidades de refrigeração industrial ou comercial.
           </p>
           <div className="w-20 h-1 bg-airflow-blue mx-auto mt-4"></div>
         </div>
@@ -62,17 +62,17 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="reveal">
             <div className="bg-airflow-gray p-8 rounded-lg shadow-md">
-              <h3 className="text-2xl font-bold mb-6 text-airflow-blue">Request a Quote</h3>
+              <h3 className="text-2xl font-bold mb-6 text-airflow-blue">Solicite um Orçamento</h3>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Full Name *</Label>
+                  <Label htmlFor="name">Nome Completo *</Label>
                   <Input
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Your Name"
+                    placeholder="Seu Nome"
                     required
                     className="w-full"
                   />
@@ -87,14 +87,14 @@ const Contact = () => {
                       type="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="your@email.com"
+                      placeholder="seu@email.com"
                       required
                       className="w-full"
                     />
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number</Label>
+                    <Label htmlFor="phone">Telefone</Label>
                     <Input
                       id="phone"
                       name="phone"
@@ -107,26 +107,26 @@ const Contact = () => {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="company">Company *</Label>
+                  <Label htmlFor="company">Empresa *</Label>
                   <Input
                     id="company"
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    placeholder="Your Company"
+                    placeholder="Sua Empresa"
                     required
                     className="w-full"
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Message *</Label>
+                  <Label htmlFor="message">Mensagem *</Label>
                   <Textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Tell us about your project or needs..."
+                    placeholder="Conte-nos sobre seu projeto ou necessidades..."
                     required
                     className="w-full min-h-[150px]"
                   />
@@ -137,7 +137,7 @@ const Contact = () => {
                   className="w-full bg-airflow-blue hover:bg-airflow-lightBlue text-white"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {isSubmitting ? 'Enviando...' : 'Enviar Mensagem'}
                 </Button>
               </form>
             </div>
@@ -146,9 +146,9 @@ const Contact = () => {
           <div className="reveal-right">
             <div className="h-full flex flex-col">
               <div className="mb-8">
-                <h3 className="text-2xl font-bold mb-4 text-airflow-blue">Our Office</h3>
+                <h3 className="text-2xl font-bold mb-4 text-airflow-blue">Nosso Escritório</h3>
                 <p className="text-gray-700 mb-4">
-                  Visit our headquarters to discuss your project in person with our team of specialists.
+                  Visite nossa sede para discutir seu projeto pessoalmente com nossa equipe de especialistas.
                 </p>
                 
                 <div className="aspect-w-16 aspect-h-9 mb-6">
@@ -167,20 +167,20 @@ const Contact = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-auto">
                 <div className="bg-airflow-gray p-6 rounded-lg shadow-md">
-                  <h4 className="font-bold text-airflow-blue mb-2">Address</h4>
+                  <h4 className="font-bold text-airflow-blue mb-2">Endereço</h4>
                   <p className="text-gray-700">
-                    123 Industrial Boulevard<br />
+                    Av. Industrial, 123<br />
                     São Paulo, SP 04538-133<br />
-                    Brazil
+                    Brasil
                   </p>
                 </div>
                 
                 <div className="bg-airflow-gray p-6 rounded-lg shadow-md">
-                  <h4 className="font-bold text-airflow-blue mb-2">Contact Info</h4>
+                  <h4 className="font-bold text-airflow-blue mb-2">Informações de Contato</h4>
                   <p className="text-gray-700">
-                    Phone: +55 (11) 5555-1234<br />
-                    Email: contact@airflow.com<br />
-                    Hours: Mon-Fri, 8am - 6pm
+                    Telefone: +55 (11) 5555-1234<br />
+                    Email: contato@airflow.com<br />
+                    Horário: Seg-Sex, 8h - 18h
                   </p>
                 </div>
               </div>

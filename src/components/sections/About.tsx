@@ -6,7 +6,7 @@ const About = () => {
     <section id="about" className="py-20 bg-white">
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">About Air Flow</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Sobre a Air Flow</h2>
           <div className="w-20 h-1 bg-airflow-blue mx-auto"></div>
         </div>
         
@@ -14,15 +14,15 @@ const About = () => {
           <div className="reveal">
             <img 
               src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-              alt="Air Flow Team" 
+              alt="Equipe Air Flow" 
               className="rounded-lg shadow-lg w-full h-auto"
             />
           </div>
           
           <div className="reveal-right">
-            <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
+            <h3 className="text-2xl font-bold mb-4">Nossa Missão</h3>
             <p className="text-gray-700 mb-6">
-              Founded in 1990, Air Flow has been dedicated to providing high-quality industrial and commercial refrigeration solutions for over 30 years. Our mission is to ensure that your facilities operate with maximum efficiency, safety, and compliance with all technical regulations.
+              Fundada em 1990, a Air Flow tem se dedicado a fornecer soluções de refrigeração industrial e comercial de alta qualidade por mais de 30 anos. Nossa missão é garantir que suas instalações operem com máxima eficiência, segurança e conformidade com todas as regulamentações técnicas.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
@@ -33,8 +33,8 @@ const About = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-bold">30+ Years Experience</h4>
-                  <p className="text-sm text-gray-600">Decades of industry expertise</p>
+                  <h4 className="font-bold">30+ Anos de Experiência</h4>
+                  <p className="text-sm text-gray-600">Décadas de expertise no setor</p>
                 </div>
               </div>
               
@@ -45,8 +45,8 @@ const About = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-bold">Certified Team</h4>
-                  <p className="text-sm text-gray-600">Highly qualified professionals</p>
+                  <h4 className="font-bold">Equipe Certificada</h4>
+                  <p className="text-sm text-gray-600">Profissionais altamente qualificados</p>
                 </div>
               </div>
               
@@ -57,8 +57,8 @@ const About = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-bold">National Reach</h4>
-                  <p className="text-sm text-gray-600">Services across Brazil</p>
+                  <h4 className="font-bold">Alcance Nacional</h4>
+                  <p className="text-sm text-gray-600">Serviços em todo o Brasil</p>
                 </div>
               </div>
               
@@ -69,14 +69,14 @@ const About = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-bold">Fast Response</h4>
-                  <p className="text-sm text-gray-600">24/7 emergency support</p>
+                  <h4 className="font-bold">Resposta Rápida</h4>
+                  <p className="text-sm text-gray-600">Suporte emergencial 24/7</p>
                 </div>
               </div>
             </div>
             
             <p className="text-gray-700">
-              With a team of specialized engineers and technicians, Air Flow is committed to delivering top-tier refrigeration solutions tailored to the unique needs of each facility we service, ensuring comfort, safety, and energy efficiency.
+              Com uma equipe de engenheiros e técnicos especializados, a Air Flow está comprometida em oferecer soluções de refrigeração de primeira linha, adaptadas às necessidades específicas de cada instalação que atendemos, garantindo conforto, segurança e eficiência energética.
             </p>
           </div>
         </div>

@@ -13,7 +13,7 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4 text-white">Air Flow</h3>
             <p className="mb-4">
-              Specialized in the installation and maintenance of industrial and commercial refrigeration systems since 1990.
+              Especializada na instalação e manutenção de sistemas de refrigeração industrial e comercial desde 1990.
             </p>
             <div className="flex items-center space-x-4">
               <a href="#" className="hover:text-gray-300 transition-colors">
@@ -41,64 +41,64 @@ const Footer = () => {
           
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-white">Quick Links</h3>
+            <h3 className="text-xl font-bold mb-4 text-white">Links Rápidos</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#home" className="hover:text-gray-300 transition-colors">Home</a>
+                <a href="#home" className="hover:text-gray-300 transition-colors">Início</a>
               </li>
               <li>
-                <a href="#about" className="hover:text-gray-300 transition-colors">About Us</a>
+                <a href="#about" className="hover:text-gray-300 transition-colors">Sobre Nós</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gray-300 transition-colors">Services</a>
+                <a href="#services" className="hover:text-gray-300 transition-colors">Serviços</a>
               </li>
               <li>
-                <a href="#sectors" className="hover:text-gray-300 transition-colors">Sectors</a>
+                <a href="#sectors" className="hover:text-gray-300 transition-colors">Setores</a>
               </li>
               <li>
-                <a href="#differentials" className="hover:text-gray-300 transition-colors">Differentials</a>
+                <a href="#differentials" className="hover:text-gray-300 transition-colors">Diferenciais</a>
               </li>
               <li>
-                <a href="#testimonials" className="hover:text-gray-300 transition-colors">Testimonials</a>
+                <a href="#testimonials" className="hover:text-gray-300 transition-colors">Depoimentos</a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-gray-300 transition-colors">Contact</a>
+                <a href="#contact" className="hover:text-gray-300 transition-colors">Contato</a>
               </li>
             </ul>
           </div>
           
           {/* Services */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-white">Services</h3>
+            <h3 className="text-xl font-bold mb-4 text-white">Serviços</h3>
             <ul className="space-y-2">
               <li>
                 <a href="#services" className="hover:text-gray-300 transition-colors">PMOC</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gray-300 transition-colors">HVAC Project Design</a>
+                <a href="#services" className="hover:text-gray-300 transition-colors">Projeto de AVAC</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gray-300 transition-colors">System Retrofit</a>
+                <a href="#services" className="hover:text-gray-300 transition-colors">Retrofit de Sistema</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gray-300 transition-colors">Duct Cleaning</a>
+                <a href="#services" className="hover:text-gray-300 transition-colors">Limpeza de Dutos</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gray-300 transition-colors">Technical Consulting</a>
+                <a href="#services" className="hover:text-gray-300 transition-colors">Consultoria Técnica</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gray-300 transition-colors">Mechanical Maintenance</a>
+                <a href="#services" className="hover:text-gray-300 transition-colors">Manutenção Mecânica</a>
               </li>
             </ul>
           </div>
           
           {/* Contact */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-white">Contact Us</h3>
+            <h3 className="text-xl font-bold mb-4 text-white">Contate-nos</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 mr-3 mt-1 flex-shrink-0" />
-                <span>123 Industrial Boulevard<br />São Paulo, SP 04538-133<br />Brazil</span>
+                <span>Av. Industrial, 123<br />São Paulo, SP 04538-133<br />Brasil</span>
               </li>
               <li className="flex items-center">
                 <Phone className="w-5 h-5 mr-3 flex-shrink-0" />
@@ -106,17 +106,17 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Mail className="w-5 h-5 mr-3 flex-shrink-0" />
-                <span>contact@airflow.com</span>
+                <span>contato@airflow.com</span>
               </li>
             </ul>
           </div>
         </div>
         
         <div className="border-t border-white/20 mt-10 pt-6 text-sm text-center md:text-left md:flex md:justify-between md:items-center">
-          <p>&copy; {currentYear} Air Flow. All rights reserved.</p>
+          <p>&copy; {currentYear} Air Flow. Todos os direitos reservados.</p>
           <div className="mt-4 md:mt-0 space-x-4">
-            <a href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-gray-300 transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-gray-300 transition-colors">Política de Privacidade</a>
+            <a href="#" className="hover:text-gray-300 transition-colors">Termos de Serviço</a>
           </div>
         </div>
       </div>

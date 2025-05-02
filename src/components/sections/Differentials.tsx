@@ -5,23 +5,23 @@ import { Shield, Clock, Users, BarChart3 } from 'lucide-react';
 
 const differentials = [
   {
-    title: "Up-to-date Technical Certifications",
-    description: "Our team holds all necessary certifications and stays current with industry innovations and regulations.",
+    title: "Certificações Técnicas Atualizadas",
+    description: "Nossa equipe possui todas as certificações necessárias e se mantém atualizada com inovações e regulamentações do setor.",
     icon: Shield,
   },
   {
-    title: "24/7 Emergency Service",
-    description: "We're available around the clock to respond to your emergency refrigeration and HVAC needs.",
+    title: "Serviço de Emergência 24/7",
+    description: "Estamos disponíveis 24 horas por dia para atender às suas necessidades emergenciais de refrigeração e AVAC.",
     icon: Clock,
   },
   {
-    title: "In-house Team of Engineers",
-    description: "Our specialized engineers develop customized solutions for each client's specific requirements.",
+    title: "Equipe Interna de Engenheiros",
+    description: "Nossos engenheiros especializados desenvolvem soluções personalizadas para os requisitos específicos de cada cliente.",
     icon: Users,
   },
   {
-    title: "Energy Efficiency Focus",
-    description: "We prioritize sustainability and cost-saving solutions that reduce energy consumption and environmental impact.",
+    title: "Foco em Eficiência Energética",
+    description: "Priorizamos soluções sustentáveis e econômicas que reduzem o consumo de energia e o impacto ambiental.",
     icon: BarChart3,
   }
 ];
@@ -31,9 +31,9 @@ const Differentials = () => {
     <section id="differentials" className="py-20 bg-gradient-to-b from-airflow-blue to-blue-800 text-white">
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white reveal">Our Differentials</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white reveal">Nossos Diferenciais</h2>
           <p className="text-lg max-w-3xl mx-auto reveal">
-            What makes Air Flow the preferred choice for industrial and commercial refrigeration solutions.
+            O que faz da Air Flow a escolha preferida para soluções de refrigeração industrial e comercial.
           </p>
           <div className="w-20 h-1 bg-white mx-auto mt-4"></div>
         </div>

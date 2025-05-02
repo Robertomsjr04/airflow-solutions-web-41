@@ -5,23 +5,23 @@ import { Card, CardContent, CardHeader, CardFooter } from '@/components/ui/card'
 const testimonials = [
   {
     name: "Carlos Mendes",
-    position: "Operations Director",
-    company: "São Paulo Shopping Center",
-    text: "We've been working with Air Flow for over 5 years. Their PMOC implementation has ensured our shopping center meets all regulatory requirements while maintaining optimal comfort for our customers.",
+    position: "Diretor de Operações",
+    company: "Shopping Center São Paulo",
+    text: "Trabalhamos com a Air Flow há mais de 5 anos. A implementação do PMOC garantiu que nosso shopping center atenda a todos os requisitos regulatórios, mantendo o conforto ideal para nossos clientes.",
     rating: 5,
   },
   {
-    name: "Dr. Ana Santos",
-    position: "Facility Manager",
-    company: "Santa Casa Hospital",
-    text: "Air Flow's understanding of hospital refrigeration needs is exceptional. Their maintenance team keeps our critical systems running flawlessly, which is vital for our patients' well-being.",
+    name: "Dra. Ana Santos",
+    position: "Gerente de Instalações",
+    company: "Hospital Santa Casa",
+    text: "A compreensão da Air Flow sobre as necessidades de refrigeração hospitalar é excepcional. Sua equipe de manutenção mantém nossos sistemas críticos funcionando perfeitamente, o que é vital para o bem-estar dos nossos pacientes.",
     rating: 5,
   },
   {
     name: "Roberto Alves",
-    position: "Industrial Manager",
-    company: "BrasTech Manufacturing",
-    text: "After upgrading our factory's cooling systems with Air Flow, we've seen a 30% reduction in energy consumption while improving temperature control in our production areas.",
+    position: "Gerente Industrial",
+    company: "BrasTech Manufatura",
+    text: "Após atualizar os sistemas de refrigeração de nossa fábrica com a Air Flow, vimos uma redução de 30% no consumo de energia, além de melhorar o controle de temperatura em nossas áreas de produção.",
     rating: 4,
   }
 ];
@@ -31,9 +31,9 @@ const Testimonials = () => {
     <section id="testimonials" className="py-20 bg-airflow-gray">
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Client Testimonials</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Depoimentos de Clientes</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto reveal">
-            Hear what our clients have to say about our refrigeration and HVAC services.
+            Veja o que nossos clientes têm a dizer sobre nossos serviços de refrigeração e AVAC.
           </p>
           <div className="w-20 h-1 bg-airflow-blue mx-auto mt-4"></div>
         </div>

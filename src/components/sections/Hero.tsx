@@ -23,10 +23,10 @@ const Hero = () => {
       <div className="container relative z-10">
         <div className="max-w-3xl">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight reveal">
-            Solutions in Industrial and Commercial Refrigeration
+            Soluções em Refrigeração Industrial e Comercial
           </h1>
           <p className="text-xl md:text-2xl text-gray-100 mb-8 reveal">
-            PMOC and HVAC for large facilities with agility, efficiency, and technical compliance.
+            PMOC e AVAC para grandes instalações com agilidade, eficiência e conformidade técnica.
           </p>
           <div className="reveal">
             <Button 
@@ -34,7 +34,7 @@ const Hero = () => {
               size="lg" 
               className="bg-airflow-blue hover:bg-airflow-lightBlue text-white text-lg px-8 py-6"
             >
-              Request your quote now
+              Solicite seu orçamento agora
             </Button>
           </div>
         </div>

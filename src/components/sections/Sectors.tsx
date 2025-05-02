@@ -4,26 +4,26 @@ import { Building, Hospital, Building2, ShoppingCart } from 'lucide-react';
 
 const sectors = [
   {
-    title: "Industries",
-    description: "Tailored refrigeration solutions for manufacturing plants, food processing facilities, and industrial complexes.",
+    title: "Indústrias",
+    description: "Soluções de refrigeração personalizadas para fábricas, instalações de processamento de alimentos e complexos industriais.",
     icon: Building,
     image: "https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
   {
-    title: "Hospitals",
-    description: "Specialized HVAC systems for healthcare facilities ensuring optimal air quality, temperature control, and regulatory compliance.",
+    title: "Hospitais",
+    description: "Sistemas AVAC especializados para instalações de saúde, garantindo qualidade do ar, controle de temperatura e conformidade regulatória.",
     icon: Hospital,
     image: "https://images.unsplash.com/photo-1551038247-3d9af20df552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
   {
-    title: "Shopping Centers",
-    description: "Comprehensive refrigeration and HVAC solutions for commercial centers, ensuring comfort for retailers and visitors.",
+    title: "Centros Comerciais",
+    description: "Soluções abrangentes de refrigeração e AVAC para centros comerciais, garantindo conforto para lojistas e visitantes.",
     icon: ShoppingCart,
     image: "https://images.unsplash.com/photo-1519567770579-c2fc5208683f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
   {
-    title: "Corporate Buildings",
-    description: "Energy-efficient air conditioning solutions for office buildings and corporate headquarters.",
+    title: "Edifícios Corporativos",
+    description: "Soluções de ar condicionado energeticamente eficientes para edifícios de escritórios e sedes corporativas.",
     icon: Building2,
     image: "https://images.unsplash.com/photo-1460574283810-2aab119d8511?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   }
@@ -34,9 +34,9 @@ const Sectors = () => {
     <section id="sectors" className="py-20 bg-white">
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Sectors We Serve</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Setores que Atendemos</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto reveal">
-            We provide specialized refrigeration and HVAC solutions for a wide range of sectors, each with unique requirements and challenges.
+            Fornecemos soluções especializadas de refrigeração e AVAC para uma ampla gama de setores, cada um com requisitos e desafios únicos.
           </p>
           <div className="w-20 h-1 bg-airflow-blue mx-auto mt-4"></div>
         </div>

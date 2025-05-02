@@ -7,37 +7,37 @@ import { AirVent, BarChart, Settings, ShieldCheck, Thermometer, Wrench } from 'l
 const services = [
   {
     title: "PMOC",
-    description: "Maintenance, Operation and Control Plan implementation and management following all regulatory requirements.",
+    description: "Implementação e gestão do Plano de Manutenção, Operação e Controle seguindo todos os requisitos regulatórios.",
     icon: ShieldCheck,
     color: "text-green-500",
   },
   {
-    title: "HVAC Project Design & Installation",
-    description: "Complete project design and professional installation of HVAC systems for all facility types.",
+    title: "Projeto e Instalação de AVAC",
+    description: "Projeto completo e instalação profissional de sistemas AVAC para todos os tipos de instalações.",
     icon: AirVent,
     color: "text-blue-500",
   },
   {
-    title: "System Retrofit",
-    description: "Modernization of outdated refrigeration systems to improve efficiency and reduce operating costs.",
+    title: "Retrofit de Sistema",
+    description: "Modernização de sistemas de refrigeração obsoletos para melhorar a eficiência e reduzir custos operacionais.",
     icon: Settings,
     color: "text-purple-500",
   },
   {
-    title: "Duct & Heat Exchanger Cleaning",
-    description: "Professional cleaning services to ensure optimal airflow and system performance.",
+    title: "Limpeza de Dutos e Trocadores de Calor",
+    description: "Serviços profissionais de limpeza para garantir fluxo de ar ideal e desempenho do sistema.",
     icon: Thermometer,
     color: "text-red-500",
   },
   {
-    title: "Technical Consulting",
-    description: "Expert consulting on system optimization, regulatory compliance, and energy efficiency.",
+    title: "Consultoria Técnica",
+    description: "Consultoria especializada em otimização de sistemas, conformidade regulatória e eficiência energética.",
     icon: BarChart,
     color: "text-amber-500",
   },
   {
-    title: "Mechanical Maintenance",
-    description: "Comprehensive maintenance services for all mechanical components of HVAC systems.",
+    title: "Manutenção Mecânica",
+    description: "Serviços abrangentes de manutenção para todos os componentes mecânicos de sistemas AVAC.",
     icon: Wrench,
     color: "text-indigo-500",
   }
@@ -55,9 +55,9 @@ const Services = () => {
     <section id="services" className="py-20 bg-airflow-gray">
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Our Services</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Nossos Serviços</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto reveal">
-            Comprehensive industrial and commercial refrigeration services to keep your facilities running at peak performance.
+            Serviços abrangentes de refrigeração industrial e comercial para manter suas instalações funcionando com desempenho máximo.
           </p>
           <div className="w-20 h-1 bg-airflow-blue mx-auto mt-4"></div>
         </div>
@@ -83,7 +83,7 @@ const Services = () => {
                     className="text-airflow-blue hover:bg-airflow-blue hover:text-white border-airflow-blue"
                     onClick={scrollToContact}
                   >
-                    Learn More
+                    Saiba Mais
                   </Button>
                 </CardFooter>
               </Card>
@@ -97,7 +97,7 @@ const Services = () => {
             size="lg" 
             className="bg-airflow-blue hover:bg-airflow-lightBlue text-white"
           >
-            Request a Service Quote
+            Solicite um Orçamento de Serviço
           </Button>
         </div>
       </div>
