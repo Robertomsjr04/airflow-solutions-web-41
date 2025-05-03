@@ -1,4 +1,7 @@
+
 import React from 'react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+
 const About = () => {
   return <section id="about" className="py-20 bg-white">
       <div className="container">
