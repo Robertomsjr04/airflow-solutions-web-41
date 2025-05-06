@@ -6,6 +6,8 @@ import ServiceDetail from '@/components/sections/ServiceDetail';
 import Contact from '@/components/sections/Contact';
 import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
+import AlarmPanel from '@/components/interactive/AlarmPanel';
+import EnergyDashboard from '@/components/interactive/EnergyDashboard';
 
 const automacaoFeatures = [
   {
@@ -60,6 +62,27 @@ const ServiceAutomacao = () => {
           features={automacaoFeatures}
           contactRef={contactRef}
         />
+        
+        <section className="py-16 bg-airflow-gray">
+          <div className="container">
+            <div className="text-center mb-10 reveal">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Monitoramento Inteligente</h2>
+              <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+                Nossas soluções proporcionam monitoramento em tempo real e alertas inteligentes para garantir a operação segura e eficiente do seu sistema.
+              </p>
+              <div className="w-20 h-1 bg-airflow-blue mx-auto mt-4"></div>
+            </div>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="reveal">
+                <AlarmPanel />
+              </div>
+              <div className="reveal-right">
+                <EnergyDashboard />
+              </div>
+            </div>
+          </div>
+        </section>
         
         <div ref={contactRef}>
           <Contact />

@@ -1,11 +1,12 @@
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ServiceDetail from '@/components/sections/ServiceDetail';
 import Contact from '@/components/sections/Contact';
 import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
+import PneumaticValve from '@/components/interactive/PneumaticValve';
 
 const climatizacaoFeatures = [
   {
@@ -36,11 +37,21 @@ const climatizacaoFeatures = [
 
 const ServiceClimatizacao = () => {
   const contactRef = useRef<HTMLDivElement>(null);
+  const [valveOpenness, setValveOpenness] = useState(0);
   
   useEffect(() => {
     const cleanup = setupScrollAnimation();
     return cleanup;
   }, []);
+
+  const handleValveChange = (openness: number) => {
+    setValveOpenness(openness);
+    // Update pressure reading element if it exists
+    const pressureElement = document.getElementById('pressure-reading');
+    if (pressureElement) {
+      pressureElement.textContent = (openness * 6).toFixed(1);
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -64,6 +75,60 @@ const ServiceClimatizacao = () => {
           features={climatizacaoFeatures}
           contactRef={contactRef}
         />
+        
+        <section className="py-16 bg-airflow-gray">
+          <div className="container">
+            <div className="text-center mb-10 reveal">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Controle de Sistemas</h2>
+              <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+                Experimente como nossa tecnologia permite o controle preciso dos componentes do seu sistema de refrigeração industrial.
+              </p>
+              <div className="w-20 h-1 bg-airflow-blue mx-auto mt-4"></div>
+            </div>
+            
+            <div className="max-w-xl mx-auto reveal">
+              <PneumaticValve onValveChange={handleValveChange} />
+              
+              <div className="mt-8 bg-white rounded-lg p-5 shadow-md">
+                <h4 className="text-lg font-bold text-airflow-blue mb-3">Eficiência do Sistema</h4>
+                <div className="flex items-center mb-2">
+                  <div className="text-sm text-gray-600 w-40">Fluxo de Ar:</div>
+                  <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-blue-500 rounded-full transition-all duration-300" 
+                      style={{ width: `${valveOpenness * 100}%` }}
+                    ></div>
+                  </div>
+                  <div className="ml-3 text-sm font-medium">{Math.round(valveOpenness * 100)}%</div>
+                </div>
+                <div className="flex items-center mb-2">
+                  <div className="text-sm text-gray-600 w-40">Capacidade de Refrigeração:</div>
+                  <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-green-500 rounded-full transition-all duration-300" 
+                      style={{ width: `${Math.min(valveOpenness * 1.4, 1) * 100}%` }}
+                    ></div>
+                  </div>
+                  <div className="ml-3 text-sm font-medium">
+                    {Math.round(Math.min(valveOpenness * 1.4, 1) * 100)}%
+                  </div>
+                </div>
+                <div className="flex items-center">
+                  <div className="text-sm text-gray-600 w-40">Consumo Energético:</div>
+                  <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-amber-500 rounded-full transition-all duration-300" 
+                      style={{ width: `${Math.min(20 + valveOpenness * 80, 100)}%` }}
+                    ></div>
+                  </div>
+                  <div className="ml-3 text-sm font-medium">
+                    {Math.round(Math.min(20 + valveOpenness * 80, 100))}%
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         
         <div ref={contactRef}>
           <Contact />

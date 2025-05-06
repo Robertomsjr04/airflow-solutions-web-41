@@ -1,8 +1,46 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
+import { gsap } from 'gsap';
 
 const Hero = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  
+  useEffect(() => {
+    if (!heroRef.current) return;
+    
+    // Create timeline for the hero animation
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    
+    // Animate the hero elements on load
+    tl.from(".hero-heading", { y: 50, opacity: 0, duration: 0.8 })
+      .from(".hero-description", { y: 30, opacity: 0, duration: 0.8 }, "-=0.5")
+      .from(".hero-button", { y: 20, opacity: 0, duration: 0.6 }, "-=0.4");
+    
+    // Create parallax effect on scroll
+    gsap.to(heroRef.current, {
+      backgroundPositionY: "30%",
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: "top top",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+    
+    // Fade out hero content as user scrolls down
+    gsap.to(".hero-content", {
+      opacity: 0.6,
+      y: 50,
+      scrollTrigger: {
+        trigger: heroRef.current,
+        start: "center center",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+  }, []);
+  
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -12,6 +50,7 @@ const Hero = () => {
 
   return (
     <section 
+      ref={heroRef}
       id="home" 
       className="relative min-h-screen flex items-center pt-16"
       style={{
@@ -21,22 +60,31 @@ const Hero = () => {
       }}
     >
       <div className="container relative z-10">
-        <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight reveal">
+        <div className="max-w-3xl hero-content">
+          <h1 className="hero-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight">
             Soluções em Refrigeração Industrial e Comercial
           </h1>
-          <p className="text-xl md:text-2xl text-gray-100 mb-8 reveal">
+          <p className="hero-description text-xl md:text-2xl text-gray-100 mb-8">
             PMOC e AVAC para grandes instalações com agilidade, eficiência e conformidade técnica.
           </p>
-          <div className="reveal">
+          <div className="hero-button">
             <Button 
               onClick={scrollToContact}
               size="lg" 
-              className="bg-airflow-blue hover:bg-airflow-lightBlue text-white text-lg px-8 py-6"
+              className="bg-airflow-blue hover:bg-airflow-lightBlue text-white text-lg px-8 py-6 relative overflow-hidden group"
             >
-              Solicite seu orçamento agora
+              <span className="relative z-10">Solicite seu orçamento agora</span>
+              <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
             </Button>
           </div>
+        </div>
+      </div>
+      
+      {/* Animated scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white">
+        <span className="text-sm mb-2 opacity-70">Saiba mais</span>
+        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center p-1">
+          <div className="w-1.5 h-3 bg-white rounded-full animate-bounce"></div>
         </div>
       </div>
     </section>
