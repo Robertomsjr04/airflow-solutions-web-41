@@ -77,7 +77,7 @@ const Footer = () => {
                 <a href="#services" className="hover:text-gray-300 transition-colors">Sistemas de Automação e Monitoramento</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gray-300 transition-colors">4. Infraestrutura Complementar</a>
+                <a href="#services" className="hover:text-gray-300 transition-colors">Infraestrutura Complementar</a>
               </li>
               <li>
                 <a href="#services" className="hover:text-gray-300 transition-colors">Consultoria Técnica</a>
