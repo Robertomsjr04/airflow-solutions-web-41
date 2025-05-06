@@ -3,7 +3,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { AirVent, BarChart, Settings, ShieldCheck, Thermometer, Wrench, Activity } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const services = [
   {
@@ -51,11 +51,17 @@ const services = [
 ];
 
 const Services = () => {
+  const navigate = useNavigate();
+  
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleNavigate = (url: string) => {
+    navigate(url);
   };
 
   return (
@@ -88,9 +94,9 @@ const Services = () => {
                   <Button 
                     variant="outline" 
                     className="text-airflow-blue hover:bg-airflow-blue hover:text-white border-airflow-blue"
-                    asChild
+                    onClick={() => handleNavigate(service.url)}
                   >
-                    <Link to={service.url}>Saiba Mais</Link>
+                    Saiba Mais
                   </Button>
                 </CardFooter>
               </Card>
