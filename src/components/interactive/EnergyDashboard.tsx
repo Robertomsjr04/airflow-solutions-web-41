@@ -44,7 +44,6 @@ const EnergyDashboard: React.FC<EnergyDashboardProps> = ({
             data: [0, 100],
             backgroundColor: ['#2ecc71', '#ecf0f1'],
             borderWidth: 0,
-            cutout: '85%',
             circumference: 180,
             rotation: 270
           }]
@@ -52,6 +51,7 @@ const EnergyDashboard: React.FC<EnergyDashboardProps> = ({
         options: {
           responsive: true,
           maintainAspectRatio: false,
+          cutout: '85%', // Moved to options instead of dataset
           plugins: {
             tooltip: {
               enabled: false

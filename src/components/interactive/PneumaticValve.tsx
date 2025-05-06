@@ -20,7 +20,7 @@ const PneumaticValve: React.FC<PneumaticValveProps> = ({ onValveChange }) => {
   useEffect(() => {
     // Initialize the valve sound
     valveSoundRef.current = new Howl({
-      src: ['/lovable-uploads/valve-hiss.mp3'], // Placeholder path, need to upload real sound
+      src: ['/lovable-uploads/valve-hiss.mp3'],
       volume: 0.7,
       preload: true,
       html5: true
