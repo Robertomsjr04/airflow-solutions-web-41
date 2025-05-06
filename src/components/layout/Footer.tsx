@@ -1,12 +1,8 @@
-
 import React from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
-  return (
-    <footer className="bg-airflow-blue text-white pt-12 pb-6">
+  return <footer className="bg-airflow-blue text-white pt-12 pb-6">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -72,22 +68,22 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-4 text-white">Serviços</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#services" className="hover:text-gray-300 transition-colors">PMOC</a>
+                <a href="#services" className="hover:text-gray-300 transition-colors">Climatização e Refrigeração Industrial (HVAC)</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gray-300 transition-colors">Projeto de AVAC</a>
+                <a href="#services" className="hover:text-gray-300 transition-colors">Projetos, Retrofit e Expansões</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gray-300 transition-colors">Retrofit de Sistema</a>
+                <a href="#services" className="hover:text-gray-300 transition-colors">Sistemas de Automação e Monitoramento</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gray-300 transition-colors">Limpeza de Dutos</a>
+                <a href="#services" className="hover:text-gray-300 transition-colors">4. Infraestrutura Complementar</a>
               </li>
               <li>
                 <a href="#services" className="hover:text-gray-300 transition-colors">Consultoria Técnica</a>
               </li>
               <li>
-                <a href="#services" className="hover:text-gray-300 transition-colors">Manutenção Mecânica</a>
+                <a href="#services" className="hover:text-gray-300 transition-colors">Dutos e Tratamento de Ar</a>
               </li>
             </ul>
           </div>
@@ -120,8 +116,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
