@@ -2,51 +2,51 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { AirVent, BarChart, Settings, ShieldCheck, Thermometer, Wrench } from 'lucide-react';
+import { AirVent, BarChart, Settings, ShieldCheck, Thermometer, Wrench, Activity, Tool } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const services = [
   {
-    title: "PMOC",
-    description: "Implementação e gestão do Plano de Manutenção, Operação e Controle seguindo todos os requisitos regulatórios.",
-    icon: ShieldCheck,
-    color: "text-green-500",
-    url: "/servicos/pmoc"
-  },
-  {
-    title: "Projeto e Instalação de AVAC",
-    description: "Projeto completo e instalação profissional de sistemas AVAC para todos os tipos de instalações.",
+    title: "Climatização e Refrigeração Industrial",
+    description: "Manutenção preventiva e corretiva em sistemas de ar condicionado e refrigeração industrial.",
     icon: AirVent,
     color: "text-blue-500",
-    url: "/servicos/avac"
+    url: "/servicos/climatizacao"
   },
   {
-    title: "Retrofit de Sistema",
-    description: "Modernização de sistemas de refrigeração obsoletos para melhorar a eficiência e reduzir custos operacionais.",
+    title: "Projetos, Retrofit e Expansões",
+    description: "Retrofit de sistemas HVAC, projetos sob medida e modernização de equipamentos obsoletos.",
     icon: Settings,
     color: "text-purple-500",
-    url: "/servicos/retrofit"
+    url: "/servicos/projetos"
   },
   {
-    title: "Limpeza de Dutos e Trocadores de Calor",
-    description: "Serviços profissionais de limpeza para garantir fluxo de ar ideal e desempenho do sistema.",
+    title: "Sistemas de Automação",
+    description: "Instalação e manutenção de sistemas de automação predial e industrial com monitoramento remoto.",
+    icon: Activity,
+    color: "text-green-500",
+    url: "/servicos/automacao"
+  },
+  {
+    title: "Infraestrutura Complementar",
+    description: "Manutenção em sistemas elétricos, geradores, ar comprimido e manejo de gases refrigerantes.",
+    icon: Tool,
+    color: "text-amber-500",
+    url: "/servicos/infraestrutura"
+  },
+  {
+    title: "Dutos e Tratamento de Ar",
+    description: "Projeto e instalação de dutos, sistemas de filtragem e monitoramento da qualidade do ar.",
     icon: Thermometer,
     color: "text-red-500",
-    url: "/servicos/limpeza"
+    url: "/servicos/dutos"
   },
   {
-    title: "Consultoria Técnica",
-    description: "Consultoria especializada em otimização de sistemas, conformidade regulatória e eficiência energética.",
-    icon: BarChart,
-    color: "text-amber-500",
-    url: "/servicos/consultoria"
-  },
-  {
-    title: "Manutenção Mecânica",
-    description: "Serviços abrangentes de manutenção para todos os componentes mecânicos de sistemas AVAC.",
-    icon: Wrench,
+    title: "PMOC",
+    description: "Implementação e gestão do Plano de Manutenção, Operação e Controle seguindo requisitos regulatórios.",
+    icon: ShieldCheck,
     color: "text-indigo-500",
-    url: "/servicos/manutencao"
+    url: "/servicos/pmoc"
   }
 ];
 
@@ -85,23 +85,13 @@ const Services = () => {
                   </CardDescription>
                 </CardContent>
                 <CardFooter>
-                  {service.url === "/servicos/pmoc" ? (
-                    <Button 
-                      variant="outline" 
-                      className="text-airflow-blue hover:bg-airflow-blue hover:text-white border-airflow-blue"
-                      asChild
-                    >
-                      <Link to={service.url}>Saiba Mais</Link>
-                    </Button>
-                  ) : (
-                    <Button 
-                      variant="outline" 
-                      className="text-airflow-blue hover:bg-airflow-blue hover:text-white border-airflow-blue"
-                      onClick={scrollToContact}
-                    >
-                      Saiba Mais
-                    </Button>
-                  )}
+                  <Button 
+                    variant="outline" 
+                    className="text-airflow-blue hover:bg-airflow-blue hover:text-white border-airflow-blue"
+                    asChild
+                  >
+                    <Link to={service.url}>Saiba Mais</Link>
+                  </Button>
                 </CardFooter>
               </Card>
             </div>

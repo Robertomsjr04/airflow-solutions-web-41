@@ -1,0 +1,74 @@
+
+import React, { useRef, useEffect } from 'react';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import ServiceDetail from '@/components/sections/ServiceDetail';
+import Contact from '@/components/sections/Contact';
+import { WhatsAppButton } from '@/components/ui/whatsapp-button';
+import { setupScrollAnimation } from '@/utils/scrollAnimation';
+
+const projetosFeatures = [
+  {
+    title: "Retrofit de Sistemas HVAC",
+    description: "Modernização completa de sistemas existentes para melhorar eficiência e reduzir custos operacionais."
+  },
+  {
+    title: "Projetos Sob Medida",
+    description: "Desenvolvimento de projetos personalizados de climatização e refrigeração para ambientes industriais e salas limpas."
+  },
+  {
+    title: "Consultoria Técnica",
+    description: "Assessoria especializada para ampliação e modernização de sistemas de ar condicionado e refrigeração."
+  },
+  {
+    title: "Substituição de Equipamentos",
+    description: "Análise e substituição de equipamentos ineficientes com foco em economia de energia e sustentabilidade."
+  },
+  {
+    title: "Expansão de Sistemas",
+    description: "Planejamento e execução de expansões de sistemas HVAC para atender novas demandas operacionais."
+  }
+];
+
+const ServiceProjetos = () => {
+  const contactRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const cleanup = setupScrollAnimation();
+    return cleanup;
+  }, []);
+
+  return (
+    <div className="min-h-screen">
+      <Header />
+      <main>
+        <div className="pt-20 bg-airflow-blue text-white">
+          <div className="container py-16">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 reveal">
+              Projetos, Retrofit e Expansões
+            </h1>
+            <p className="text-xl max-w-3xl reveal">
+              Soluções inovadoras para modernização, expansão e otimização dos seus sistemas de climatização e refrigeração.
+            </p>
+          </div>
+        </div>
+        
+        <ServiceDetail 
+          title="Modernização e Eficiência Energética"
+          description="Nossa equipe de engenheiros e projetistas desenvolve soluções personalizadas para retrofit, modernização e expansão de sistemas HVAC. Focamos na otimização do desempenho, aumento da eficiência energética e redução de custos operacionais, sempre considerando as necessidades específicas de cada cliente e as melhores práticas do setor."
+          image="/lovable-uploads/2db51423-7794-43b9-9656-8732c8a2b6e3.png"
+          features={projetosFeatures}
+          contactRef={contactRef}
+        />
+        
+        <div ref={contactRef}>
+          <Contact />
+        </div>
+      </main>
+      <Footer />
+      <WhatsAppButton phoneNumber="+5511555512345" />
+    </div>
+  );
+};
+
+export default ServiceProjetos;
