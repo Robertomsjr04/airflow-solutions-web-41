@@ -3,6 +3,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { AirVent, BarChart, Settings, ShieldCheck, Thermometer, Wrench } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const services = [
   {
@@ -10,36 +11,42 @@ const services = [
     description: "Implementação e gestão do Plano de Manutenção, Operação e Controle seguindo todos os requisitos regulatórios.",
     icon: ShieldCheck,
     color: "text-green-500",
+    url: "/servicos/pmoc"
   },
   {
     title: "Projeto e Instalação de AVAC",
     description: "Projeto completo e instalação profissional de sistemas AVAC para todos os tipos de instalações.",
     icon: AirVent,
     color: "text-blue-500",
+    url: "/servicos/avac"
   },
   {
     title: "Retrofit de Sistema",
     description: "Modernização de sistemas de refrigeração obsoletos para melhorar a eficiência e reduzir custos operacionais.",
     icon: Settings,
     color: "text-purple-500",
+    url: "/servicos/retrofit"
   },
   {
     title: "Limpeza de Dutos e Trocadores de Calor",
     description: "Serviços profissionais de limpeza para garantir fluxo de ar ideal e desempenho do sistema.",
     icon: Thermometer,
     color: "text-red-500",
+    url: "/servicos/limpeza"
   },
   {
     title: "Consultoria Técnica",
     description: "Consultoria especializada em otimização de sistemas, conformidade regulatória e eficiência energética.",
     icon: BarChart,
     color: "text-amber-500",
+    url: "/servicos/consultoria"
   },
   {
     title: "Manutenção Mecânica",
     description: "Serviços abrangentes de manutenção para todos os componentes mecânicos de sistemas AVAC.",
     icon: Wrench,
     color: "text-indigo-500",
+    url: "/servicos/manutencao"
   }
 ];
 
@@ -78,13 +85,23 @@ const Services = () => {
                   </CardDescription>
                 </CardContent>
                 <CardFooter>
-                  <Button 
-                    variant="outline" 
-                    className="text-airflow-blue hover:bg-airflow-blue hover:text-white border-airflow-blue"
-                    onClick={scrollToContact}
-                  >
-                    Saiba Mais
-                  </Button>
+                  {service.url === "/servicos/pmoc" ? (
+                    <Button 
+                      variant="outline" 
+                      className="text-airflow-blue hover:bg-airflow-blue hover:text-white border-airflow-blue"
+                      asChild
+                    >
+                      <Link to={service.url}>Saiba Mais</Link>
+                    </Button>
+                  ) : (
+                    <Button 
+                      variant="outline" 
+                      className="text-airflow-blue hover:bg-airflow-blue hover:text-white border-airflow-blue"
+                      onClick={scrollToContact}
+                    >
+                      Saiba Mais
+                    </Button>
+                  )}
                 </CardFooter>
               </Card>
             </div>

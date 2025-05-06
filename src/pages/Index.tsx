@@ -10,6 +10,8 @@ import Differentials from '@/components/sections/Differentials';
 import Testimonials from '@/components/sections/Testimonials';
 import Contact from '@/components/sections/Contact';
 import OurWork from '@/components/sections/OurWork';
+import TechnologyCloud from '@/components/sections/TechnologyCloud';
+import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
 
 const Index = () => {
@@ -27,11 +29,13 @@ const Index = () => {
         <Services />
         <Sectors />
         <OurWork />
+        <TechnologyCloud />
         <Differentials />
         <Testimonials />
         <Contact />
       </main>
       <Footer />
+      <WhatsAppButton phoneNumber="+5511555512345" />
     </div>
   );
 };
