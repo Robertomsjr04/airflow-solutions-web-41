@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { AirVent, BarChart, Settings, ShieldCheck, Thermometer, Wrench, Activity, Tool } from 'lucide-react';
+import { AirVent, BarChart, Settings, ShieldCheck, Thermometer, Wrench, Activity } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const services = [
@@ -30,7 +30,7 @@ const services = [
   {
     title: "Infraestrutura Complementar",
     description: "Manutenção em sistemas elétricos, geradores, ar comprimido e manejo de gases refrigerantes.",
-    icon: Tool,
+    icon: Wrench,
     color: "text-amber-500",
     url: "/servicos/infraestrutura"
   },
