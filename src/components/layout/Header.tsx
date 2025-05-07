@@ -2,11 +2,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isPastHero, setIsPastHero] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -33,13 +36,31 @@ const Header = () => {
   };
   
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth'
-      });
-      setMobileMenuOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Allow time for navigation before trying to scroll
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
     }
+    setMobileMenuOpen(false);
+  };
+  
+  const goToHome = () => {
+    navigate('/');
+    setMobileMenuOpen(false);
   };
   
   // Dynamic text color classes based on scroll position
@@ -58,7 +79,7 @@ const Header = () => {
         <nav className="hidden md:flex space-x-6 items-center">
           <ul className="flex space-x-6">
             <li>
-              <button onClick={() => scrollToSection('home')} className={`${menuTextClass} font-medium transition-colors`}>
+              <button onClick={goToHome} className={`${menuTextClass} font-medium transition-colors`}>
                 Início
               </button>
             </li>
@@ -114,7 +135,7 @@ const Header = () => {
         <div className="md:hidden bg-white shadow-lg absolute top-full left-0 w-full py-4">
           <ul className="flex flex-col space-y-4 px-6">
             <li>
-              <button onClick={() => scrollToSection('home')} className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2">
+              <button onClick={goToHome} className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2">
                 Início
               </button>
             </li>
