@@ -89,7 +89,7 @@ const Services = () => {
             </div>)}
         </div>
         
-        <div className="text-center mt-12 reveal">
+        <div className="text-center mt-12 reveal flex justify-center">
           <AnimatedButton onClick={scrollToContact} className="px-5 text-xs text-center py-[12px]">
             Solicite um Orçamento de Serviço
           </AnimatedButton>
