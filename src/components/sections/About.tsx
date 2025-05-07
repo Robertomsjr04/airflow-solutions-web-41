@@ -1,7 +1,5 @@
-
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-
 const About = () => {
   return <section id="about" className="py-20 bg-white">
       <div className="container">
@@ -29,7 +27,7 @@ const About = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-bold">30+ Anos de Experiência</h4>
+                  <h4 className="font-bold">+ de 30 Anos de Experiência</h4>
                   <p className="text-sm text-gray-600">Décadas de expertise no setor</p>
                 </div>
               </div>
@@ -66,7 +64,7 @@ const About = () => {
                 </div>
                 <div>
                   <h4 className="font-bold">Resposta Rápida</h4>
-                  <p className="text-sm text-gray-600">Suporte emergencial 24/7</p>
+                  <p className="text-sm text-gray-600">Suporte emergencial 24h por dia</p>
                 </div>
               </div>
             </div>
