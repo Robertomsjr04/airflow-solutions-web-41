@@ -78,8 +78,8 @@ const Hero = () => {
             PMOC e AVAC para grandes instalações com agilidade, eficiência e conformidade técnica.
           </p>
           <div className="hero-button">
-            <AnimatedButton onClick={scrollToContact} className="text-sm">
-              Atendimento emergencial
+            <AnimatedButton onClick={scrollToContact} className="relative overflow-hidden group text-xs">
+              Solicite seu orçamento agora
             </AnimatedButton>
           </div>
         </div>
