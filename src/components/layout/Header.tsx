@@ -1,22 +1,19 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AnimatedButton from '@/components/ui/animated-button';
 import { Button } from '@/components/ui/button';
-
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isPastHero, setIsPastHero] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > 10);
-      
+
       // Check if user has scrolled past hero section
       const heroSection = document.getElementById('home');
       if (heroSection) {
@@ -24,18 +21,14 @@ const Header = () => {
         setIsPastHero(scrollPosition > heroHeight - 100); // Subtracting header height offset
       }
     };
-    
     window.addEventListener('scroll', handleScroll);
     // Initial check
     handleScroll();
-    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
-  
   const scrollToSection = (id: string) => {
     if (location.pathname !== '/') {
       navigate('/');
@@ -58,19 +51,14 @@ const Header = () => {
     }
     setMobileMenuOpen(false);
   };
-  
   const goToHome = () => {
     navigate('/');
     setMobileMenuOpen(false);
   };
-  
+
   // Dynamic text color classes based on scroll position
-  const menuTextClass = isPastHero 
-    ? "text-airflow-blue hover:text-airflow-lightBlue" 
-    : "text-zinc-50 hover:text-airflow-lightBlue";
-    
-  return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
+  const menuTextClass = isPastHero ? "text-airflow-blue hover:text-airflow-lightBlue" : "text-zinc-50 hover:text-airflow-lightBlue";
+  return <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container flex justify-between items-center">
         <div className="flex items-center">
           <h1 className={`text-2xl font-bold ${isPastHero ? 'text-airflow-blue' : 'text-airflow-blue'}`}>Air Flow</h1>
@@ -115,28 +103,19 @@ const Header = () => {
               </button>
             </li>
           </ul>
-          <AnimatedButton 
-            onClick={() => scrollToSection('contact')} 
-            className="text-sm py-3 px-5"
-          >
+          <AnimatedButton onClick={() => scrollToSection('contact')} className="py-3 px-5 text-xs">
             Solicite um Orçamento
           </AnimatedButton>
         </nav>
         
         {/* Mobile Menu Button */}
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          className={`md:hidden ${isPastHero ? 'text-airflow-blue' : 'text-white'}`} 
-          onClick={toggleMobileMenu}
-        >
+        <Button variant="ghost" size="icon" className={`md:hidden ${isPastHero ? 'text-airflow-blue' : 'text-white'}`} onClick={toggleMobileMenu}>
           <Menu className="h-6 w-6" />
         </Button>
       </div>
       
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg absolute top-full left-0 w-full py-4">
+      {mobileMenuOpen && <div className="md:hidden bg-white shadow-lg absolute top-full left-0 w-full py-4">
           <ul className="flex flex-col space-y-4 px-6">
             <li>
               <button onClick={goToHome} className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2">
@@ -179,10 +158,7 @@ const Header = () => {
               </AnimatedButton>
             </li>
           </ul>
-        </div>
-      )}
-    </header>
-  );
+        </div>}
+    </header>;
 };
-
 export default Header;
