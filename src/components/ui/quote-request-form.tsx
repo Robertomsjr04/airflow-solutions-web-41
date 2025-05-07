@@ -1,9 +1,11 @@
+
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useToast } from '@/hooks/use-toast';
 import './quote-request-form.css';
+
 const formSchema = z.object({
   name: z.string().min(3, {
     message: 'Nome deve ter pelo menos 3 caracteres'
@@ -24,16 +26,20 @@ const formSchema = z.object({
     message: 'Mensagem deve ter pelo menos 10 caracteres'
   })
 });
+
 type FormValues = z.infer<typeof formSchema>;
+
 interface QuoteRequestFormProps {
   onSubmitSuccess?: () => void;
 }
+
 export function QuoteRequestForm({
   onSubmitSuccess
 }: QuoteRequestFormProps) {
   const {
     toast
   } = useToast();
+  
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -45,8 +51,10 @@ export function QuoteRequestForm({
       message: ''
     }
   });
+  
   const isSubmitting = form.formState.isSubmitting;
   const errors = form.formState.errors;
+  
   const onSubmit = async (data: FormValues) => {
     // Simulate API call
     try {
@@ -68,6 +76,7 @@ export function QuoteRequestForm({
       });
     }
   };
+
   return <div className="quote-box">
       <p>Solicite um Orçamento</p>
       <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -98,8 +107,8 @@ export function QuoteRequestForm({
         </div>
         
         <div className="user-box py-[25px]">
-          <select id="service" required className="py-[50px]">
-            <option value="" disabled selected>Selecione um serviço</option>
+          <select id="service" {...form.register('service')} required className="py-[50px]" defaultValue="">
+            <option value="" disabled>Selecione um serviço</option>
             <option value="climatizacao">Climatização Industrial</option>
             <option value="manutencao">Manutenção Preventiva</option>
             <option value="projetos">Projetos e Retrofit</option>
