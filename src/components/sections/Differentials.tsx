@@ -28,7 +28,7 @@ const differentials = [
 
 const Differentials = () => {
   return (
-    <section id="differentials" className="py-20 bg-gradient-to-b from-airflow-blue to-blue-800 text-white">
+    <section id="differentials" className="py-20 dark-blue-bg text-white">
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white reveal">Nossos Diferenciais</h2>

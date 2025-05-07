@@ -1,8 +1,11 @@
+
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import AnimatedButton from '@/components/ui/animated-button';
+
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
+
   useEffect(() => {
     if (!heroRef.current) return;
 
@@ -51,6 +54,7 @@ const Hero = () => {
       }
     });
   }, []);
+
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -59,8 +63,9 @@ const Hero = () => {
       });
     }
   };
+
   return <section ref={heroRef} id="home" className="relative min-h-screen flex items-center pt-16" style={{
-    backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://images.unsplash.com/photo-1551038247-3d9af20df552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")',
+    backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")',
     backgroundSize: 'cover',
     backgroundPosition: 'center'
   }}>
@@ -89,4 +94,5 @@ const Hero = () => {
       </div>
     </section>;
 };
+
 export default Hero;
