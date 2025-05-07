@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { EnhancedForm } from '@/components/ui/enhanced-form';
+import { QuoteRequestForm } from '@/components/ui/quote-request-form';
 
 const Contact = () => {
   return (
@@ -17,8 +17,7 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="reveal">
             <div className="bg-airflow-gray p-8 rounded-lg shadow-md">
-              <h3 className="text-2xl font-bold mb-6 text-airflow-blue">Solicite um Orçamento</h3>
-              <EnhancedForm />
+              <QuoteRequestForm />
             </div>
           </div>
           
