@@ -142,7 +142,7 @@ const AlarmPanel: React.FC<AlarmPanelProps> = ({ alarms = defaultAlarms }) => {
           </div>
         ))}
       </div>
-      <style jsx>{`
+      <style>{`
         .alarm-indicator.active {
           transform: scale(1.02);
           transition: transform 0.3s ease;
