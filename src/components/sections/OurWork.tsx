@@ -13,11 +13,10 @@ import {
   DialogTrigger 
 } from '@/components/ui/dialog';
 import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { images } from '@/utils/projectImages';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import AnimatedButton from '@/components/ui/animated-button';
 
 const OurWork = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState<number | null>(null);
@@ -35,6 +34,13 @@ const OurWork = () => {
     { src: "/lovable-uploads/2ef37423-b278-4793-a9f7-0d344695ac9b.png", alt: "Mampai" },
     { src: "/lovable-uploads/668243b6-4b97-47b0-90f4-1d76fbce5779.png", alt: "Fugini" }
   ];
+  
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   
   return (
     <section id="our-work" className="py-16 bg-white">
@@ -102,9 +108,12 @@ const OurWork = () => {
           <p className="text-gray-600 mb-6">
             Trabalhamos com as principais marcas do mercado e oferecemos soluções personalizadas para cada tipo de instalação.
           </p>
-          <Button className="bg-airflow-blue hover:bg-airflow-lightBlue text-white">
+          <AnimatedButton 
+            onClick={scrollToContact}
+            className="text-sm py-3 px-5"
+          >
             Solicite um orçamento
-          </Button>
+          </AnimatedButton>
         </div>
         
         <div className="mt-16 reveal">

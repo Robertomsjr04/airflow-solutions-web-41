@@ -1,8 +1,9 @@
 
-import React, { useState, useEffect, useRef } from 'react';
-import { Button } from '@/components/ui/button';
+import React, { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import AnimatedButton from '@/components/ui/animated-button';
+import { Button } from '@/components/ui/button';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -114,9 +115,12 @@ const Header = () => {
               </button>
             </li>
           </ul>
-          <Button onClick={() => scrollToSection('contact')} className="bg-airflow-blue hover:bg-airflow-lightBlue text-white">
+          <AnimatedButton 
+            onClick={() => scrollToSection('contact')} 
+            className="text-sm py-3 px-5"
+          >
             Solicite um Orçamento
-          </Button>
+          </AnimatedButton>
         </nav>
         
         {/* Mobile Menu Button */}
@@ -170,9 +174,9 @@ const Header = () => {
               </button>
             </li>
             <li className="pt-2">
-              <Button onClick={() => scrollToSection('contact')} className="bg-airflow-blue hover:bg-airflow-lightBlue text-white w-full">
+              <AnimatedButton onClick={() => scrollToSection('contact')} className="w-full text-sm py-3">
                 Solicite um Orçamento
-              </Button>
+              </AnimatedButton>
             </li>
           </ul>
         </div>

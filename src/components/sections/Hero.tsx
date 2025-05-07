@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
-import { Button } from '@/components/ui/button';
 import { gsap } from 'gsap';
+import AnimatedButton from '@/components/ui/animated-button';
 
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
@@ -68,14 +68,12 @@ const Hero = () => {
             PMOC e AVAC para grandes instalações com agilidade, eficiência e conformidade técnica.
           </p>
           <div className="hero-button">
-            <Button 
+            <AnimatedButton 
               onClick={scrollToContact}
-              size="lg" 
-              className="bg-airflow-blue hover:bg-airflow-lightBlue text-white text-lg px-8 py-6 relative overflow-hidden group"
+              className="relative overflow-hidden group"
             >
-              <span className="relative z-10">Solicite seu orçamento agora</span>
-              <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
-            </Button>
+              Solicite seu orçamento agora
+            </AnimatedButton>
           </div>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import { AirVent, BarChart, Settings, ShieldCheck, Thermometer, Wrench, Activity } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import AnimatedButton from '@/components/ui/animated-button';
 
 const services = [
   {
@@ -105,13 +106,12 @@ const Services = () => {
         </div>
         
         <div className="text-center mt-12 reveal">
-          <Button 
+          <AnimatedButton 
             onClick={scrollToContact}
-            size="lg" 
-            className="bg-airflow-blue hover:bg-airflow-lightBlue text-white"
+            className="text-sm py-3 px-5"
           >
             Solicite um Orçamento de Serviço
-          </Button>
+          </AnimatedButton>
         </div>
       </div>
     </section>

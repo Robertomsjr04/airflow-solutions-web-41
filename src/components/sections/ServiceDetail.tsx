@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { Button } from '@/components/ui/button';
 import { CheckCircle } from 'lucide-react';
+import AnimatedButton from '@/components/ui/animated-button';
 
 interface ServiceFeature {
   title: string;
@@ -50,13 +50,12 @@ const ServiceDetail = ({ title, description, image, features, contactRef }: Serv
               ))}
             </div>
 
-            <Button 
+            <AnimatedButton 
               onClick={scrollToContact}
-              size="lg" 
-              className="bg-airflow-blue hover:bg-airflow-lightBlue text-white"
+              className="text-sm py-3 px-5"
             >
               Solicitar Consultoria Especializada
-            </Button>
+            </AnimatedButton>
           </div>
 
           <div className="reveal lg:order-2 order-1">
