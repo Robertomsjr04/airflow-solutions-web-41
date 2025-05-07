@@ -34,9 +34,14 @@ const Sectors = () => {
     <section id="sectors" className="py-20 bg-white">
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Setores que Atendemos</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Excelência em Soluções AVAC</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto reveal">
-            Fornecemos soluções especializadas de refrigeração e AVAC para uma ampla gama de setores, cada um com requisitos e desafios únicos.
+            AVAC, sigla para Aquecimento, Ventilação e Ar Condicionado, abrange todo o universo de tecnologias 
+            voltadas à climatização de ambientes. Com mais de três décadas de experiência, a Air Flow 
+            se especializa em sistemas completos incluindo chillers, VRF/VRV, self-contained, 
+            torres de arrefecimento e sistemas de exaustão. Nosso compromisso é garantir conforto térmico, 
+            qualidade do ar e eficiência energética para os mais diversos setores, desde hospitais até 
+            complexos industriais, sempre com soluções personalizadas e inovadoras.
           </p>
           <div className="w-20 h-1 bg-airflow-blue mx-auto mt-4"></div>
         </div>
