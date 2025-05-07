@@ -98,7 +98,7 @@ export function QuoteRequestForm({
         </div>
         
         <div className="user-box">
-          <select id="service" required className="py-[30px]">
+          <select id="service" required className="py-[50px]">
             <option value="" disabled selected>Selecione um serviço</option>
             <option value="climatizacao">Climatização Industrial</option>
             <option value="manutencao">Manutenção Preventiva</option>
