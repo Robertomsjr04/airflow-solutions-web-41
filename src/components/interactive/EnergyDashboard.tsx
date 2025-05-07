@@ -51,7 +51,7 @@ const EnergyDashboard: React.FC<EnergyDashboardProps> = ({
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          cutout: '85%', // Moved to options instead of dataset
+          cutout: '85%',
           plugins: {
             tooltip: {
               enabled: false
@@ -121,6 +121,9 @@ const EnergyDashboard: React.FC<EnergyDashboardProps> = ({
     <div 
       ref={containerRef}
       className="energy-dashboard bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-6 shadow-lg text-white"
+      style={{
+        background: 'linear-gradient(135deg, #2c3e50 0%, #34495e 100%)'
+      }}
     >
       <h3 className="text-xl font-bold mb-4">Dashboard de Eficiência</h3>
       
