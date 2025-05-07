@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import { Howl } from 'howler';
@@ -16,6 +16,7 @@ const PneumaticValve: React.FC<PneumaticValveProps> = ({ onValveChange }) => {
   const handleRef = useRef<SVGCircleElement>(null);
   const airFlowRef = useRef<SVGPathElement>(null);
   const valveSoundRef = useRef<Howl | null>(null);
+  const [isHighPressure, setIsHighPressure] = useState(false);
 
   useEffect(() => {
     // Initialize the valve sound
@@ -58,6 +59,15 @@ const PneumaticValve: React.FC<PneumaticValveProps> = ({ onValveChange }) => {
           valveSoundRef.current.play();
         }
         
+        // Add high-pressure visual feedback when openness > 80%
+        if (progress > 0.8) {
+          handle.classList.add("high-pressure");
+          setIsHighPressure(true);
+        } else {
+          handle.classList.remove("high-pressure");
+          setIsHighPressure(false);
+        }
+        
         // Call the callback with the current valve position
         if (onValveChange) {
           onValveChange(progress);
@@ -98,7 +108,7 @@ const PneumaticValve: React.FC<PneumaticValveProps> = ({ onValveChange }) => {
           <path d="M20,50 L180,50" stroke="#c0c0c0" strokeWidth="10" strokeLinecap="round" />
           
           {/* Valve body */}
-          <path d="M20,50 L180,50" stroke="#333" strokeWidth="8" />
+          <path id="valve-body" d="M20,50 L180,50" stroke="#333" strokeWidth="8" />
           
           {/* Valve handle */}
           <circle 
@@ -106,9 +116,11 @@ const PneumaticValve: React.FC<PneumaticValveProps> = ({ onValveChange }) => {
             cx="80" 
             cy="50" 
             r="15" 
-            fill="#555"
+            fill={isHighPressure ? "#ff5500" : "#555"}
+            stroke={isHighPressure ? "#ff8800" : "none"}
+            strokeWidth={isHighPressure ? 2 : 0}
+            className={`valve-handle hover:fill-airflow-blue transition-colors duration-300 ${isHighPressure ? 'animate-pulse' : ''}`}
             cursor="pointer"
-            className="valve-handle hover:fill-airflow-blue transition-colors duration-300"
           />
           
           {/* Valve handle detail */}
@@ -117,6 +129,7 @@ const PneumaticValve: React.FC<PneumaticValveProps> = ({ onValveChange }) => {
           {/* Air flow path */}
           <path 
             ref={airFlowRef}
+            id="air-flow"
             d="M120,50 C140,35 160,65 180,50" 
             stroke="#00a8ff" 
             strokeWidth="3" 
@@ -135,7 +148,7 @@ const PneumaticValve: React.FC<PneumaticValveProps> = ({ onValveChange }) => {
         </svg>
         
         {/* Pressure display */}
-        <div className="absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded">
+        <div className={`absolute bottom-2 right-2 ${isHighPressure ? 'bg-red-800' : 'bg-black'} bg-opacity-70 text-white text-xs px-2 py-1 rounded transition-colors duration-300`}>
           Pressão: <span id="pressure-reading">0.0</span> bar
         </div>
       </div>
@@ -143,6 +156,11 @@ const PneumaticValve: React.FC<PneumaticValveProps> = ({ onValveChange }) => {
         <span>0%</span>
         <span>100%</span>
       </div>
+      {isHighPressure && (
+        <div className="mt-2 text-xs text-red-600 font-semibold animate-pulse">
+          ⚠️ Alerta de Alta Pressão
+        </div>
+      )}
     </div>
   );
 };
