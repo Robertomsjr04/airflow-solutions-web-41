@@ -30,12 +30,43 @@ const sectors = [
 ];
 
 const Sectors = () => {
+  // Create an array of small star elements for the background
+  const renderStars = () => {
+    const stars = [];
+    for (let i = 0; i < 30; i++) {
+      const size = Math.random() * 3 + 1;
+      const left = Math.random() * 100;
+      const top = Math.random() * 100;
+      const delay = Math.random() * 5;
+      const duration = Math.random() * 3 + 3;
+      
+      stars.push(
+        <div 
+          key={i}
+          className="absolute rounded-full bg-white opacity-50"
+          style={{
+            width: `${size}px`,
+            height: `${size}px`,
+            left: `${left}%`,
+            top: `${top}%`,
+            animation: `float ${duration}s ease-in-out infinite`,
+            animationDelay: `${delay}s`,
+          }}
+        />
+      );
+    }
+    return stars;
+  };
+
   return (
-    <section id="sectors" className="py-20 bg-white">
-      <div className="container">
+    <section id="sectors" className="py-20 dark-blue-bg relative">
+      {/* Stars in the background */}
+      {renderStars()}
+      
+      <div className="container relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Excelência em Soluções AVAC</h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto reveal">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white reveal">Excelência em Soluções AVAC</h2>
+          <p className="text-lg text-gray-200 max-w-3xl mx-auto reveal">
             AVAC, sigla para Aquecimento, Ventilação e Ar Condicionado, abrange todo o universo de tecnologias 
             voltadas à climatização de ambientes. Com mais de três décadas de experiência, a Air Flow 
             se especializa em sistemas completos incluindo chillers, VRF/VRV, self-contained, 
@@ -48,8 +79,11 @@ const Sectors = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {sectors.map((sector, index) => (
-            <div key={index} className="reveal" style={{ animationDelay: `${index * 100}ms` }}>
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
+            <div key={index} className="reveal floating-element" style={{ 
+              animationDelay: `${index * 0.2}s`,
+              animationDuration: `${6 + index * 0.5}s` 
+            }}>
+              <div className="dark-blue-card rounded-lg shadow-lg overflow-hidden h-full flex flex-col">
                 <div 
                   className="h-48 relative"
                   style={{
@@ -68,7 +102,7 @@ const Sectors = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <p className="text-gray-700">{sector.description}</p>
+                  <p className="text-gray-200">{sector.description}</p>
                 </div>
               </div>
             </div>
