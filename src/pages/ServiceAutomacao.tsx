@@ -8,6 +8,7 @@ import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
 import AlarmPanel from '@/components/interactive/AlarmPanel';
 import EnergyDashboard from '@/components/interactive/EnergyDashboard';
+import SnowEffect from '@/components/interactive/SnowEffect';
 
 const automacaoFeatures = [
   {
@@ -73,12 +74,26 @@ const ServiceAutomacao = () => {
               <div className="w-20 h-1 bg-airflow-blue mx-auto mt-4"></div>
             </div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
               <div className="reveal">
                 <AlarmPanel />
               </div>
               <div className="reveal-right">
                 <EnergyDashboard />
+              </div>
+            </div>
+            
+            <div className="reveal max-w-4xl mx-auto">
+              <div className="bg-white p-6 rounded-lg shadow-md mb-6">
+                <h3 className="text-xl font-bold text-airflow-blue mb-3">Simulação de Condições Ambientais</h3>
+                <p className="text-gray-700 mb-4">
+                  Nossa tecnologia permite simular diferentes condições climáticas para testar a resposta dos sistemas de refrigeração 
+                  em ambientes controlados, garantindo o funcionamento ideal mesmo em situações extremas.
+                </p>
+              </div>
+              
+              <div className="bg-gradient-to-b from-[#1a2b3c] to-[#0e1621] rounded-lg shadow-xl overflow-hidden">
+                <SnowEffect />
               </div>
             </div>
           </div>

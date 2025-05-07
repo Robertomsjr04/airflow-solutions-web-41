@@ -7,6 +7,7 @@ import Contact from '@/components/sections/Contact';
 import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
 import PneumaticValve from '@/components/interactive/PneumaticValve';
+import SnowEffect from '@/components/interactive/SnowEffect';
 
 const climatizacaoFeatures = [
   {
@@ -86,44 +87,52 @@ const ServiceClimatizacao = () => {
               <div className="w-20 h-1 bg-airflow-blue mx-auto mt-4"></div>
             </div>
             
-            <div className="max-w-xl mx-auto reveal">
-              <PneumaticValve onValveChange={handleValveChange} />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="reveal max-w-xl mx-auto lg:max-w-none w-full">
+                <PneumaticValve onValveChange={handleValveChange} />
+                
+                <div className="mt-8 bg-white rounded-lg p-5 shadow-md">
+                  <h4 className="text-lg font-bold text-airflow-blue mb-3">Eficiência do Sistema</h4>
+                  <div className="flex items-center mb-2">
+                    <div className="text-sm text-gray-600 w-40">Fluxo de Ar:</div>
+                    <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-blue-500 rounded-full transition-all duration-300" 
+                        style={{ width: `${valveOpenness * 100}%` }}
+                      ></div>
+                    </div>
+                    <div className="ml-3 text-sm font-medium">{Math.round(valveOpenness * 100)}%</div>
+                  </div>
+                  <div className="flex items-center mb-2">
+                    <div className="text-sm text-gray-600 w-40">Capacidade de Refrigeração:</div>
+                    <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-green-500 rounded-full transition-all duration-300" 
+                        style={{ width: `${Math.min(valveOpenness * 1.4, 1) * 100}%` }}
+                      ></div>
+                    </div>
+                    <div className="ml-3 text-sm font-medium">
+                      {Math.round(Math.min(valveOpenness * 1.4, 1) * 100)}%
+                    </div>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="text-sm text-gray-600 w-40">Consumo Energético:</div>
+                    <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-amber-500 rounded-full transition-all duration-300" 
+                        style={{ width: `${Math.min(20 + valveOpenness * 80, 100)}%` }}
+                      ></div>
+                    </div>
+                    <div className="ml-3 text-sm font-medium">
+                      {Math.round(Math.min(20 + valveOpenness * 80, 100))}%
+                    </div>
+                  </div>
+                </div>
+              </div>
               
-              <div className="mt-8 bg-white rounded-lg p-5 shadow-md">
-                <h4 className="text-lg font-bold text-airflow-blue mb-3">Eficiência do Sistema</h4>
-                <div className="flex items-center mb-2">
-                  <div className="text-sm text-gray-600 w-40">Fluxo de Ar:</div>
-                  <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-blue-500 rounded-full transition-all duration-300" 
-                      style={{ width: `${valveOpenness * 100}%` }}
-                    ></div>
-                  </div>
-                  <div className="ml-3 text-sm font-medium">{Math.round(valveOpenness * 100)}%</div>
-                </div>
-                <div className="flex items-center mb-2">
-                  <div className="text-sm text-gray-600 w-40">Capacidade de Refrigeração:</div>
-                  <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-green-500 rounded-full transition-all duration-300" 
-                      style={{ width: `${Math.min(valveOpenness * 1.4, 1) * 100}%` }}
-                    ></div>
-                  </div>
-                  <div className="ml-3 text-sm font-medium">
-                    {Math.round(Math.min(valveOpenness * 1.4, 1) * 100)}%
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <div className="text-sm text-gray-600 w-40">Consumo Energético:</div>
-                  <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-amber-500 rounded-full transition-all duration-300" 
-                      style={{ width: `${Math.min(20 + valveOpenness * 80, 100)}%` }}
-                    ></div>
-                  </div>
-                  <div className="ml-3 text-sm font-medium">
-                    {Math.round(Math.min(20 + valveOpenness * 80, 100))}%
-                  </div>
+              <div className="reveal-right">
+                <div className="bg-gradient-to-b from-[#1a2b3c] to-[#0e1621] rounded-lg shadow-xl overflow-hidden">
+                  <SnowEffect />
                 </div>
               </div>
             </div>
