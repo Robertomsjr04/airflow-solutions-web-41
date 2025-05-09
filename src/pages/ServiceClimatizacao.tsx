@@ -41,6 +41,9 @@ const ServiceClimatizacao = () => {
   const [valveOpenness, setValveOpenness] = useState(0);
   
   useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+    
     const cleanup = setupScrollAnimation();
     return cleanup;
   }, []);

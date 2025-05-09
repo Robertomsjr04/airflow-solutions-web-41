@@ -37,6 +37,9 @@ const ServiceAutomacao = () => {
   const contactRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+    
     const cleanup = setupScrollAnimation();
     return cleanup;
   }, []);

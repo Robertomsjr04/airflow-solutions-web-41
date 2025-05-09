@@ -1,12 +1,11 @@
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ServiceDetail from '@/components/sections/ServiceDetail';
 import Contact from '@/components/sections/Contact';
 import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
-import { useEffect } from 'react';
 
 const pmocFeatures = [
   {
@@ -35,6 +34,9 @@ const ServicePMOC = () => {
   const contactRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+    
     const cleanup = setupScrollAnimation();
     return cleanup;
   }, []);
