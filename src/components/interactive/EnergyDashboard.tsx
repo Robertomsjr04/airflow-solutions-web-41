@@ -22,7 +22,8 @@ const EnergyDashboard: React.FC<EnergyDashboardProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const chartCanvasRef = useRef<HTMLCanvasElement>(null);
-  const chartInstanceRef = useRef<Chart<keyof ChartTypeRegistry> | null>(null);
+  // Update the chart type to be more specific
+  const chartInstanceRef = useRef<Chart<'doughnut', number[], unknown> | null>(null);
   
   const [cop, setCop] = useState(initialCOP);
   const [compressorLoad, setCompressorLoad] = useState(0);
