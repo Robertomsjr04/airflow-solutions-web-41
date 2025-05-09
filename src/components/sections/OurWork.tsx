@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
@@ -105,9 +106,11 @@ const OurWork = () => {
           <p className="text-gray-600 mb-6">
             Trabalhamos com as principais marcas do mercado e oferecemos soluções personalizadas para cada tipo de instalação.
           </p>
-          <AnimatedButton onClick={scrollToContact} className="py-3 px-5 text-xs">
-            Solicite um orçamento
-          </AnimatedButton>
+          <div className="flex justify-center">
+            <AnimatedButton onClick={scrollToContact} className="py-3 px-5 text-xs">
+              Solicite um orçamento
+            </AnimatedButton>
+          </div>
         </div>
         
         <div className="mt-16 reveal">
