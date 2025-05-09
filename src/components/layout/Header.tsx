@@ -3,6 +3,7 @@ import { Menu } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AnimatedButton from '@/components/ui/animated-button';
 import { Button } from '@/components/ui/button';
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isPastHero, setIsPastHero] = useState(false);
@@ -26,9 +27,11 @@ const Header = () => {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
+  
   const scrollToSection = (id: string) => {
     if (location.pathname !== '/') {
       navigate('/');
@@ -51,6 +54,7 @@ const Header = () => {
     }
     setMobileMenuOpen(false);
   };
+  
   const goToHome = () => {
     navigate('/');
     setMobileMenuOpen(false);
@@ -58,6 +62,7 @@ const Header = () => {
 
   // Dynamic text color classes based on scroll position
   const menuTextClass = isPastHero ? "text-airflow-blue hover:text-airflow-lightBlue" : "text-zinc-50 hover:text-airflow-lightBlue";
+  
   return <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container flex justify-between items-center">
         <div className="flex items-center">
@@ -103,7 +108,9 @@ const Header = () => {
               </button>
             </li>
           </ul>
-          <AnimatedButton onClick={() => scrollToSection('contact')} className="py-3 px-5 text-xs">Atendimento em emergencia</AnimatedButton>
+          <button onClick={() => scrollToSection('contact')} className="emergency-btn">
+            Atendimento de emergencia 24h
+          </button>
         </nav>
         
         {/* Mobile Menu Button */}
@@ -151,12 +158,13 @@ const Header = () => {
               </button>
             </li>
             <li className="pt-2">
-              <AnimatedButton onClick={() => scrollToSection('contact')} className="w-full text-sm py-3">
-                Solicite um Orçamento
-              </AnimatedButton>
+              <button onClick={() => scrollToSection('contact')} className="emergency-btn w-full text-sm py-3">
+                Atendimento de emergencia 24h
+              </button>
             </li>
           </ul>
         </div>}
     </header>;
 };
+
 export default Header;

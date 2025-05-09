@@ -156,6 +156,41 @@
   transform-origin: left;
 }
 
+/* Emergency Button Styles */
+.emergency-btn {
+  display: inline-block;
+  padding: 0.9rem 1.8rem;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  border: 3px solid rgb(252, 70, 100);
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 1;
+  font-family: inherit;
+  border-radius: 5px;
+}
+
+.emergency-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(252, 70, 100);
+  transform: translateX(-100%);
+  transition: all .3s;
+  z-index: -1;
+}
+
+.emergency-btn:hover::before {
+  transform: translateX(0);
+}
+
 /* New dark blue background styles */
 .dark-blue-bg {
   background-color: var(--dark-blue-bg);
@@ -242,5 +277,10 @@
   .svg svg {
     width: 40px;
     height: 24px;
+  }
+  
+  .emergency-btn {
+    padding: 0.7rem 1.4rem;
+    font-size: 14px;
   }
 }
