@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -57,11 +56,11 @@ const Header = () => {
     setMobileMenuOpen(false);
   };
 
-  // Always return the same light style regardless of section
+  // Define text color based on whether header is transparent or not
   const headerStyle = {
     background: isScrolled ? 'bg-white' : 'bg-transparent',
-    text: 'text-airflow-blue',
-    hoverText: 'hover:text-airflow-lightBlue'
+    text: isScrolled ? 'text-airflow-blue' : 'text-white',
+    hoverText: isScrolled ? 'hover:text-airflow-lightBlue' : 'hover:text-gray-200'
   };
 
   const menuTextClass = `${headerStyle.text} ${headerStyle.hoverText} font-medium transition-colors`;
