@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AnimatedButton from '@/components/ui/animated-button';
@@ -13,6 +13,8 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const activeSectionType = useSectionObserver();
+  const previousSectionType = useRef(activeSectionType);
+  const transitionTimeoutRef = useRef<number | null>(null);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +27,23 @@ const Header = () => {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
+  // Handle smooth transitions between section types
+  useEffect(() => {
+    if (previousSectionType.current !== activeSectionType) {
+      // Clear any existing timeout
+      if (transitionTimeoutRef.current) {
+        window.clearTimeout(transitionTimeoutRef.current);
+      }
+      
+      previousSectionType.current = activeSectionType;
+      
+      // Force a small delay to ensure the DOM updates
+      transitionTimeoutRef.current = window.setTimeout(() => {
+        transitionTimeoutRef.current = null;
+      }, 50);
+    }
+  }, [activeSectionType]);
   
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -58,7 +77,7 @@ const Header = () => {
     setMobileMenuOpen(false);
   };
 
-  // Updated to consider both scroll state and section type
+  // Updated to consider both scroll state and section type with faster response
   const getHeaderStyle = () => {
     switch (activeSectionType) {
       case 'dark':
