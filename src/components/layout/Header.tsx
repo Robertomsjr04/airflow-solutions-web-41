@@ -1,36 +1,35 @@
+
 import React, { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AnimatedButton from '@/components/ui/animated-button';
 import { Button } from '@/components/ui/button';
 import LogoAirFlow from './LogoAirFlow';
+import { useSectionObserver } from '@/hooks/useSectionObserver';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isPastHero, setIsPastHero] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const activeSectionType = useSectionObserver();
+  
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > 10);
-
-      // Check if user has scrolled past hero section
-      const heroSection = document.getElementById('home');
-      if (heroSection) {
-        const heroHeight = heroSection.offsetHeight;
-        setIsPastHero(scrollPosition > heroHeight - 100); // Subtracting header height offset
-      }
     };
+    
     window.addEventListener('scroll', handleScroll);
     // Initial check
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
+  
   const scrollToSection = (id: string) => {
     if (location.pathname !== '/') {
       navigate('/');
@@ -53,17 +52,53 @@ const Header = () => {
     }
     setMobileMenuOpen(false);
   };
+  
   const goToHome = () => {
     navigate('/');
     setMobileMenuOpen(false);
   };
 
-  // Updated menu text class logic
-  const menuTextClass = isScrolled
-    ? "text-airflow-blue hover:text-airflow-lightBlue" // When header has white background
-    : "text-zinc-50 hover:text-airflow-lightBlue";     // When header is transparent at the top
+  // Determine header style based on section type and scroll state
+  const getHeaderStyle = () => {
+    // Always use solid background when scrolled
+    if (isScrolled) {
+      return {
+        background: 'bg-white shadow-md',
+        text: 'text-airflow-blue',
+        hoverText: 'hover:text-airflow-lightBlue'
+      };
+    }
     
-  return <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
+    // When at top, use styles based on current section
+    switch (activeSectionType) {
+      case 'dark':
+        return {
+          background: 'bg-transparent',
+          text: 'text-zinc-50',
+          hoverText: 'hover:text-airflow-lightBlue'
+        };
+      case 'blue':
+        return {
+          background: 'bg-transparent',
+          text: 'text-zinc-50',
+          hoverText: 'hover:text-white'
+        };
+      case 'light':
+      default:
+        return {
+          background: 'bg-transparent',
+          text: 'text-airflow-blue',
+          hoverText: 'hover:text-airflow-lightBlue'
+        };
+    }
+  };
+
+  const headerStyle = getHeaderStyle();
+  const menuTextClass = `${headerStyle.text} ${headerStyle.hoverText} font-medium transition-colors`;
+  const mobileMenuButtonClass = `md:hidden ${headerStyle.text}`;
+  
+  return (
+    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : `${headerStyle.background} py-4`}`}>
       <div className="container flex justify-between items-center">
         <div className="flex items-center">
           <LogoAirFlow />
@@ -73,37 +108,37 @@ const Header = () => {
         <nav className="hidden md:flex space-x-6 items-center">
           <ul className="flex space-x-6">
             <li>
-              <button onClick={goToHome} className={`${menuTextClass} font-medium transition-colors`}>
+              <button onClick={goToHome} className={menuTextClass}>
                 Início
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('about')} className={`${menuTextClass} font-medium transition-colors`}>
+              <button onClick={() => scrollToSection('about')} className={menuTextClass}>
                 Sobre
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('services')} className={`${menuTextClass} font-medium transition-colors`}>
+              <button onClick={() => scrollToSection('services')} className={menuTextClass}>
                 Serviços
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('sectors')} className={`${menuTextClass} font-medium transition-colors`}>
+              <button onClick={() => scrollToSection('sectors')} className={menuTextClass}>
                 Setores
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('differentials')} className={`${menuTextClass} font-medium transition-colors`}>
+              <button onClick={() => scrollToSection('differentials')} className={menuTextClass}>
                 Diferenciais
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('testimonials')} className={`${menuTextClass} font-medium transition-colors`}>
+              <button onClick={() => scrollToSection('testimonials')} className={menuTextClass}>
                 Depoimentos
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('contact')} className={`${menuTextClass} font-medium transition-colors`}>
+              <button onClick={() => scrollToSection('contact')} className={menuTextClass}>
                 Contato
               </button>
             </li>
@@ -114,13 +149,14 @@ const Header = () => {
         </nav>
         
         {/* Mobile Menu Button */}
-        <Button variant="ghost" size="icon" className={`md:hidden ${isScrolled ? 'text-airflow-blue' : 'text-white'}`} onClick={toggleMobileMenu}>
+        <Button variant="ghost" size="icon" className={mobileMenuButtonClass} onClick={toggleMobileMenu}>
           <Menu className="h-6 w-6" />
         </Button>
       </div>
       
       {/* Mobile Menu */}
-      {mobileMenuOpen && <div className="md:hidden bg-white shadow-lg absolute top-full left-0 w-full py-4">
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white shadow-lg absolute top-full left-0 w-full py-4">
           <ul className="flex flex-col space-y-4 px-6">
             <li>
               <button onClick={goToHome} className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2">
@@ -163,7 +199,10 @@ const Header = () => {
               </button>
             </li>
           </ul>
-        </div>}
-    </header>;
+        </div>
+      )}
+    </header>
+  );
 };
+
 export default Header;

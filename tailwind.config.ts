@@ -102,6 +102,10 @@ export default {
 				},
                 'marquee': {
                     to: { transform: 'translateX(-50%)' }
+                },
+                'color-transition': {
+                    '0%': { backgroundColor: 'var(--from-color)' },
+                    '100%': { backgroundColor: 'var(--to-color)' }
                 }
 			},
 			animation: {
@@ -109,7 +113,8 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.7s ease-out forwards',
 				'fade-in-right': 'fade-in-right 0.7s ease-out forwards',
-                'marquee': 'marquee var(--duration, 30s) linear infinite'
+                'marquee': 'marquee var(--duration, 30s) linear infinite',
+                'color-transition': 'color-transition 0.5s ease-out forwards'
 			}
 		}
 	},
