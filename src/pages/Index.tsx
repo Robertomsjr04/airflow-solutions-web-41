@@ -13,13 +13,18 @@ import OurWork from '@/components/sections/OurWork';
 import TechnologyCloud from '@/components/sections/TechnologyCloud';
 import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
+import { preloadImage } from '@/utils/imageUtils';
 
 const Index = () => {
   useEffect(() => {
     const cleanup = setupScrollAnimation();
     
-    // Preload first few project images for better user experience
+    // Preload hero image and project images for better user experience
     const preloadImages = () => {
+      // Preload hero image
+      preloadImage('/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png');
+      
+      // Preload project images
       import('@/utils/projectImages').then(({ images }) => {
         // Preload first 3 images
         images.slice(0, 3).forEach(image => {

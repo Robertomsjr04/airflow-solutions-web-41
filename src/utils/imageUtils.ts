@@ -11,3 +11,10 @@ export const preloadImage = (src: string): Promise<HTMLImageElement> => {
     img.src = src;
   });
 };
+
+/**
+ * Preloads multiple images simultaneously
+ */
+export const preloadImages = (sources: string[]): Promise<HTMLImageElement[]> => {
+  return Promise.all(sources.map(src => preloadImage(src)));
+};

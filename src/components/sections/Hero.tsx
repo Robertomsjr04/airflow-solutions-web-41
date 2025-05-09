@@ -2,12 +2,16 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import AnimatedButton from '@/components/ui/animated-button';
+import { preloadImage } from '@/utils/imageUtils';
 
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (!heroRef.current) return;
+
+    // Preload the hero image for better performance
+    preloadImage('/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png');
 
     // Create timeline for the hero animation
     const tl = gsap.timeline({
@@ -69,7 +73,7 @@ const Hero = () => {
   };
 
   return <section ref={heroRef} id="home" className="relative min-h-screen flex items-center pt-16" style={{
-    backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")',
+    backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png")',
     backgroundSize: 'cover',
     backgroundPosition: 'center'
   }}>
