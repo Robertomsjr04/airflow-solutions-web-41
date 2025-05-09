@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Shield, Clock, Users, BarChart3 } from 'lucide-react';
+import { Shield, Clock, Users, BarChart3, Building } from 'lucide-react';
 
 const differentials = [
   {
