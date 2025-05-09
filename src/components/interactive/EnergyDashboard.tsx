@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Chart, DoughnutController, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart, ChartTypeRegistry, DoughnutController, ArcElement, Tooltip, Legend } from 'chart.js';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -22,7 +22,7 @@ const EnergyDashboard: React.FC<EnergyDashboardProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const chartCanvasRef = useRef<HTMLCanvasElement>(null);
-  const chartInstanceRef = useRef<Chart | null>(null);
+  const chartInstanceRef = useRef<Chart<keyof ChartTypeRegistry> | null>(null);
   
   const [cop, setCop] = useState(initialCOP);
   const [compressorLoad, setCompressorLoad] = useState(0);
@@ -66,8 +66,10 @@ const EnergyDashboard: React.FC<EnergyDashboardProps> = ({
 
     // Update chart data based on current COP
     const normalizedValue = (cop / maxCOP) * 100;
-    chartInstanceRef.current.data.datasets[0].data = [normalizedValue, 100 - normalizedValue];
-    chartInstanceRef.current.update();
+    if (chartInstanceRef.current && chartInstanceRef.current.data.datasets[0]) {
+      chartInstanceRef.current.data.datasets[0].data = [normalizedValue, 100 - normalizedValue];
+      chartInstanceRef.current.update();
+    }
 
     return () => {
       // Cleanup chart instance on component unmount
