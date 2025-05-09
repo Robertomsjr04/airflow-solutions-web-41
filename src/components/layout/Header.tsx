@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -58,9 +59,9 @@ const Header = () => {
 
   // Define text color based on whether header is transparent or not
   const headerStyle = {
-    background: isScrolled ? 'bg-white' : 'bg-transparent',
-    text: isScrolled ? 'text-airflow-blue' : 'text-white',
-    hoverText: isScrolled ? 'hover:text-airflow-lightBlue' : 'hover:text-gray-200'
+    background: isScrolled ? 'bg-black' : 'bg-transparent',
+    text: isScrolled ? 'text-white' : 'text-white',
+    hoverText: isScrolled ? 'hover:text-gray-300' : 'hover:text-gray-200'
   };
 
   const menuTextClass = `${headerStyle.text} ${headerStyle.hoverText} font-medium transition-colors`;
@@ -125,40 +126,40 @@ const Header = () => {
       
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg absolute top-full left-0 w-full py-4">
+        <div className="md:hidden bg-black shadow-lg absolute top-full left-0 w-full py-4">
           <ul className="flex flex-col space-y-4 px-6">
             <li>
-              <button onClick={goToHome} className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2">
+              <button onClick={goToHome} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-left py-2">
                 Início
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('about')} className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2">
+              <button onClick={() => scrollToSection('about')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-left py-2">
                 Sobre
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('services')} className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2">
+              <button onClick={() => scrollToSection('services')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-left py-2">
                 Serviços
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('sectors')} className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2">
+              <button onClick={() => scrollToSection('sectors')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-left py-2">
                 Setores
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('differentials')} className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2">
+              <button onClick={() => scrollToSection('differentials')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-left py-2">
                 Diferenciais
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('testimonials')} className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2">
+              <button onClick={() => scrollToSection('testimonials')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-left py-2">
                 Depoimentos
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('contact')} className="text-airflow-blue hover:text-airflow-lightBlue font-medium transition-colors w-full text-left py-2">
+              <button onClick={() => scrollToSection('contact')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-left py-2">
                 Contato
               </button>
             </li>
