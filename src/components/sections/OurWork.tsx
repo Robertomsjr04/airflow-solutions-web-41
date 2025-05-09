@@ -7,6 +7,7 @@ import { images } from '@/utils/projectImages';
 import Autoplay from 'embla-carousel-autoplay';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import AnimatedButton from '@/components/ui/animated-button';
+import { Marquee } from '@/components/ui/marquee';
 
 const OurWork = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState<number | null>(null);
@@ -115,14 +116,16 @@ const OurWork = () => {
         
         <div className="mt-16 reveal">
           <h3 className="text-2xl font-bold mb-8 text-center">Nossos Clientes</h3>
-          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {clientLogos.map((logo, index) => <div key={index} className="flex items-center justify-center">
+          <Marquee className="py-4" speed={40} pauseOnHover={true}>
+            {clientLogos.map((logo, index) => (
+              <div key={index} className="flex items-center justify-center mx-8">
                 <Avatar className="w-20 h-20 border-2 border-gray-100 shadow-sm">
                   <AvatarImage src={logo.src} alt={logo.alt} className="object-contain" />
                   <AvatarFallback>{logo.alt.substring(0, 2)}</AvatarFallback>
                 </Avatar>
-              </div>)}
-          </div>
+              </div>
+            ))}
+          </Marquee>
         </div>
       </div>
     </section>;

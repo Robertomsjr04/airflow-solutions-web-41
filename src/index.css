@@ -41,6 +41,10 @@
     --dark-blue-lighter: #142740;
     --dark-blue-gradient-start: #0A1929;
     --dark-blue-gradient-end: #0c2347;
+    
+    /* Sky colors */
+    --sky-400: #38bdf8;
+    --sky-500: #0ea5e9;
   }
  
   .dark {
@@ -71,6 +75,10 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+    
+    /* Sky colors */
+    --sky-400: #38bdf8;
+    --sky-500: #0ea5e9;
   }
 }
  
