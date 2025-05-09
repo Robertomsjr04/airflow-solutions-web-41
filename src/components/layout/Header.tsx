@@ -58,35 +58,25 @@ const Header = () => {
     setMobileMenuOpen(false);
   };
 
-  // Determine header style based on section type and scroll state
+  // Updated to consider both scroll state and section type
   const getHeaderStyle = () => {
-    // Always use solid background when scrolled
-    if (isScrolled) {
-      return {
-        background: 'bg-white shadow-md',
-        text: 'text-airflow-blue',
-        hoverText: 'hover:text-airflow-lightBlue'
-      };
-    }
-    
-    // When at top, use styles based on current section
     switch (activeSectionType) {
       case 'dark':
         return {
-          background: 'bg-transparent',
+          background: isScrolled ? 'bg-airflow-blue bg-opacity-95' : 'bg-transparent',
           text: 'text-zinc-50',
           hoverText: 'hover:text-airflow-lightBlue'
         };
       case 'blue':
         return {
-          background: 'bg-transparent',
+          background: isScrolled ? 'bg-airflow-blue bg-opacity-95' : 'bg-transparent',
           text: 'text-zinc-50',
           hoverText: 'hover:text-white'
         };
       case 'light':
       default:
         return {
-          background: 'bg-transparent',
+          background: isScrolled ? 'bg-white' : 'bg-transparent',
           text: 'text-airflow-blue',
           hoverText: 'hover:text-airflow-lightBlue'
         };
@@ -98,7 +88,7 @@ const Header = () => {
   const mobileMenuButtonClass = `md:hidden ${headerStyle.text}`;
   
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : `${headerStyle.background} py-4`}`}>
+    <header className={`fixed w-full z-50 transition-all duration-300 ${headerStyle.background} ${isScrolled ? 'shadow-md py-2' : 'py-4'}`}>
       <div className="container flex justify-between items-center">
         <div className="flex items-center">
           <LogoAirFlow />
