@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -108,8 +109,8 @@ const Header = () => {
               </button>
             </li>
           </ul>
-          <button onClick={() => scrollToSection('contact')} className="emergency-btn">
-            Atendimento de emergencia 24h
+          <button onClick={() => scrollToSection('contact')} className="btn-12">
+            <span>atendimento em emergencia 24h</span>
           </button>
         </nav>
         
@@ -158,8 +159,8 @@ const Header = () => {
               </button>
             </li>
             <li className="pt-2">
-              <button onClick={() => scrollToSection('contact')} className="emergency-btn w-full text-sm py-3">
-                Atendimento de emergencia 24h
+              <button onClick={() => scrollToSection('contact')} className="btn-12 w-full">
+                <span>atendimento em emergencia 24h</span>
               </button>
             </li>
           </ul>
