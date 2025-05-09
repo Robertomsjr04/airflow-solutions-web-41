@@ -6,42 +6,47 @@ import { images } from '@/utils/projectImages';
 import Autoplay from 'embla-carousel-autoplay';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import AnimatedButton from '@/components/ui/animated-button';
+
 const OurWork = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState<number | null>(null);
-  const clientLogos = [{
-    src: "/lovable-uploads/459a3eeb-243a-474b-a3a8-eb23f6255ab0.png",
-    alt: "Aeroporto de Brasília"
-  }, {
-    src: "/lovable-uploads/b9434845-635f-4e87-b3b6-caef23935581.png",
-    alt: "SESC"
-  }, {
-    src: "/lovable-uploads/a1d67657-a8c6-4916-a00b-ba0f7de05a29.png",
-    alt: "Instituto Hospital de Base"
-  }, {
-    src: "/lovable-uploads/8d0fd4ff-2181-4b92-a4c9-1c87d7900645.png",
-    alt: "Instituto de Cardiologia"
-  }, {
-    src: "/lovable-uploads/c8082584-8c6b-4c51-a10a-35c72caf81fa.png",
-    alt: "Oderich"
-  }, {
-    src: "/lovable-uploads/cee82fb5-a9b8-4c35-abb1-53c8e3af2540.png",
-    alt: "Bimbo Brasil"
-  }, {
-    src: "/lovable-uploads/1abffd50-f4f3-46c3-9c62-92f0170a6e09.png",
-    alt: "EMS"
-  }, {
-    src: "/lovable-uploads/2db51423-7794-43b9-9656-8732c8a2b6e3.png",
-    alt: "Câmara dos Deputados"
-  }, {
-    src: "/lovable-uploads/6166a219-1b89-434b-a5b0-4b4944745dba.png",
-    alt: "Go Inn Taguatinga"
-  }, {
-    src: "/lovable-uploads/2ef37423-b278-4793-a9f7-0d344695ac9b.png",
-    alt: "Mampai"
-  }, {
-    src: "/lovable-uploads/668243b6-4b97-47b0-90f4-1d76fbce5779.png",
-    alt: "Fugini"
-  }];
+  
+  const clientLogos = [
+    {
+      src: "/lovable-uploads/459a3eeb-243a-474b-a3a8-eb23f6255ab0.png",
+      alt: "Aeroporto de Brasília"
+    }, {
+      src: "/lovable-uploads/b9434845-635f-4e87-b3b6-caef23935581.png",
+      alt: "SESC"
+    }, {
+      src: "/lovable-uploads/a1d67657-a8c6-4916-a00b-ba0f7de05a29.png",
+      alt: "Instituto Hospital de Base"
+    }, {
+      src: "/lovable-uploads/8d0fd4ff-2181-4b92-a4c9-1c87d7900645.png",
+      alt: "Instituto de Cardiologia"
+    }, {
+      src: "/lovable-uploads/c8082584-8c6b-4c51-a10a-35c72caf81fa.png",
+      alt: "Oderich"
+    }, {
+      src: "/lovable-uploads/cee82fb5-a9b8-4c35-abb1-53c8e3af2540.png",
+      alt: "Bimbo Brasil"
+    }, {
+      src: "/lovable-uploads/1abffd50-f4f3-46c3-9c62-92f0170a6e09.png",
+      alt: "EMS"
+    }, {
+      src: "/lovable-uploads/2db51423-7794-43b9-9656-8732c8a2b6e3.png",
+      alt: "Câmara dos Deputados"
+    }, {
+      src: "/lovable-uploads/6166a219-1b89-434b-a5b0-4b4944745dba.png",
+      alt: "Go Inn Taguatinga"
+    }, {
+      src: "/lovable-uploads/2ef37423-b278-4793-a9f7-0d344695ac9b.png",
+      alt: "Mampai"
+    }, {
+      src: "/lovable-uploads/668243b6-4b97-47b0-90f4-1d76fbce5779.png",
+      alt: "Fugini"
+    }
+  ];
+  
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -50,6 +55,7 @@ const OurWork = () => {
       });
     }
   };
+  
   return <section id="our-work" className="py-16 bg-white">
       <div className="container">
         <div className="text-center mb-12 reveal">
@@ -72,7 +78,12 @@ const OurWork = () => {
                     <DialogTrigger asChild>
                       <Card className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow duration-300">
                         <div className="relative aspect-square">
-                          <img src={image.src} alt={image.alt} className="object-cover w-full h-full" loading={index < 3 ? "eager" : "lazy"} />
+                          <img 
+                            src={image.src} 
+                            alt={image.alt} 
+                            className="object-cover w-full h-full" 
+                            loading={index < 3 ? "eager" : "lazy"} 
+                          />
                         </div>
                       </Card>
                     </DialogTrigger>
@@ -113,4 +124,5 @@ const OurWork = () => {
       </div>
     </section>;
 };
+
 export default OurWork;

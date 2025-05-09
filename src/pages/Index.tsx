@@ -17,6 +17,19 @@ import { setupScrollAnimation } from '@/utils/scrollAnimation';
 const Index = () => {
   useEffect(() => {
     const cleanup = setupScrollAnimation();
+    
+    // Preload first few project images for better user experience
+    const preloadImages = () => {
+      import('@/utils/projectImages').then(({ images }) => {
+        // Preload first 3 images
+        images.slice(0, 3).forEach(image => {
+          const img = new Image();
+          img.src = image.src;
+        });
+      });
+    };
+    
+    preloadImages();
     return cleanup;
   }, []);
 
