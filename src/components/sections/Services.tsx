@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { AirVent, BarChart, Settings, ShieldCheck, Thermometer, Wrench, Activity } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import AnimatedButton from '@/components/ui/animated-button';
+
 const services = [{
   title: "Climatização e Refrigeração Industrial",
   description: "Projetos e manutenção em sistemas de ar condicionado e refrigeração industrial com foco em eficiência energética.",
@@ -42,8 +43,10 @@ const services = [{
   color: "text-indigo-500",
   url: "/servicos/pmoc"
 }];
+
 const Services = () => {
   const navigate = useNavigate();
+  
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -52,9 +55,12 @@ const Services = () => {
       });
     }
   };
+  
   const handleNavigate = (url: string) => {
+    console.log("Navigating to:", url);
     navigate(url);
   };
+  
   return <section id="services" className="py-20 bg-airflow-gray">
       <div className="container">
         <div className="text-center mb-12">
@@ -82,7 +88,11 @@ const Services = () => {
                   </CardDescription>
                 </CardContent>
                 <CardFooter>
-                  <Button variant="outline" className="text-airflow-blue hover:bg-airflow-blue hover:text-white border-airflow-blue" onClick={() => handleNavigate(service.url)}>
+                  <Button 
+                    variant="outline" 
+                    className="text-airflow-blue hover:bg-airflow-blue hover:text-white border-airflow-blue" 
+                    onClick={() => handleNavigate(service.url)}
+                  >
                     Saiba Mais
                   </Button>
                 </CardFooter>
@@ -98,4 +108,5 @@ const Services = () => {
       </div>
     </section>;
 };
+
 export default Services;

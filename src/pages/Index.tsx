@@ -14,8 +14,11 @@ import TechnologyCloud from '@/components/sections/TechnologyCloud';
 import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
 import { preloadImage } from '@/utils/imageUtils';
+import { useLocation } from 'react-router-dom';
 
 const Index = () => {
+  const location = useLocation();
+
   useEffect(() => {
     const cleanup = setupScrollAnimation();
     
@@ -35,8 +38,12 @@ const Index = () => {
     };
     
     preloadImages();
+
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+    
     return cleanup;
-  }, []);
+  }, [location.pathname]);
 
   return (
     <div className="min-h-screen">
