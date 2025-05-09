@@ -1,10 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AnimatedButton from '@/components/ui/animated-button';
 import { Button } from '@/components/ui/button';
-
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isPastHero, setIsPastHero] = useState(false);
@@ -28,11 +26,9 @@ const Header = () => {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
-  
   const scrollToSection = (id: string) => {
     if (location.pathname !== '/') {
       navigate('/');
@@ -55,7 +51,6 @@ const Header = () => {
     }
     setMobileMenuOpen(false);
   };
-  
   const goToHome = () => {
     navigate('/');
     setMobileMenuOpen(false);
@@ -63,7 +58,6 @@ const Header = () => {
 
   // Dynamic text color classes based on scroll position
   const menuTextClass = isPastHero ? "text-airflow-blue hover:text-airflow-lightBlue" : "text-zinc-50 hover:text-airflow-lightBlue";
-  
   return <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container flex justify-between items-center">
         <div className="flex items-center">
@@ -109,8 +103,8 @@ const Header = () => {
               </button>
             </li>
           </ul>
-          <button onClick={() => scrollToSection('contact')} className="btn-12">
-            <span>atendimento em emergencia 24h</span>
+          <button onClick={() => scrollToSection('contact')} className="btn-12 px-[15px]">
+            <span className="text-sm mx-0 text-center font-extrabold py-0 px-0">atendimento em emergencia 24h</span>
           </button>
         </nav>
         
@@ -167,5 +161,4 @@ const Header = () => {
         </div>}
     </header>;
 };
-
 export default Header;
