@@ -56,8 +56,11 @@ const Header = () => {
     setMobileMenuOpen(false);
   };
 
-  // Dynamic text color classes based on scroll position
-  const menuTextClass = isPastHero ? "text-airflow-blue hover:text-airflow-lightBlue" : "text-zinc-50 hover:text-airflow-lightBlue";
+  // Updated menu text class logic
+  const menuTextClass = isScrolled
+    ? "text-airflow-blue hover:text-airflow-lightBlue" // When header has white background
+    : "text-zinc-50 hover:text-airflow-lightBlue";     // When header is transparent at the top
+    
   return <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container flex justify-between items-center">
         <div className="flex items-center">
@@ -109,7 +112,7 @@ const Header = () => {
         </nav>
         
         {/* Mobile Menu Button */}
-        <Button variant="ghost" size="icon" className={`md:hidden ${isPastHero ? 'text-airflow-blue' : 'text-white'}`} onClick={toggleMobileMenu}>
+        <Button variant="ghost" size="icon" className={`md:hidden ${isScrolled ? 'text-airflow-blue' : 'text-white'}`} onClick={toggleMobileMenu}>
           <Menu className="h-6 w-6" />
         </Button>
       </div>
