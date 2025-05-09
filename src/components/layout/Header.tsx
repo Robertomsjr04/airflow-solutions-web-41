@@ -3,6 +3,8 @@ import { Menu } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AnimatedButton from '@/components/ui/animated-button';
 import { Button } from '@/components/ui/button';
+import LogoAirFlow from './LogoAirFlow';
+
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isPastHero, setIsPastHero] = useState(false);
@@ -64,7 +66,7 @@ const Header = () => {
   return <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container flex justify-between items-center">
         <div className="flex items-center">
-          <h1 className={`text-2xl font-bold ${isPastHero ? 'text-airflow-blue' : 'text-airflow-blue'}`}>Air Flow</h1>
+          <LogoAirFlow />
         </div>
         
         {/* Desktop Navigation */}
