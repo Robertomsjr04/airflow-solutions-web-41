@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 const About = () => {
@@ -16,7 +17,7 @@ const About = () => {
           <div className="reveal-right">
             <h3 className="text-2xl font-bold mb-4">Nossa Missão</h3>
             <p className="text-gray-700 mb-6">
-              Fundada em 1990, a Air Flow tem se dedicado a fornecer soluções de refrigeração industrial e comercial de alta qualidade por mais de 30 anos. Nossa missão é garantir que suas instalações operem com máxima eficiência, segurança e conformidade com todas as regulamentações técnicas.
+              Fundada em 1990, a Air Flow tem se dedicado a fornecer soluções de refrigeração industrial e comercial de alta qualidade por mais de 30 anos. Nossa missão é garantir que suas instalações operem com <strong>alta performance, segurança operacional e conformidade técnica</strong>, combinando <strong>excelência em engenharia térmica</strong> e <strong>sustentabilidade</strong>.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
@@ -28,7 +29,7 @@ const About = () => {
                 </div>
                 <div>
                   <h4 className="font-bold">+ de 30 Anos de Experiência</h4>
-                  <p className="text-sm text-gray-600">Décadas de expertise no setor</p>
+                  <p className="text-sm text-gray-600">Soluções testadas e otimizadas</p>
                 </div>
               </div>
               
@@ -39,8 +40,8 @@ const About = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-bold">Equipe Certificada</h4>
-                  <p className="text-sm text-gray-600">Profissionais altamente qualificados</p>
+                  <h4 className="font-bold">Equipe Certificada ABRAVA</h4>
+                  <p className="text-sm text-gray-600">Treinamento internacional</p>
                 </div>
               </div>
               
@@ -51,8 +52,8 @@ const About = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-bold">Alcance Nacional</h4>
-                  <p className="text-sm text-gray-600">Serviços em todo o Brasil</p>
+                  <h4 className="font-bold">Atendimento Nacional</h4>
+                  <p className="text-sm text-gray-600">Projetos em todo o Brasil</p>
                 </div>
               </div>
               
@@ -63,15 +64,16 @@ const About = () => {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-bold">Resposta Rápida</h4>
-                  <p className="text-sm text-gray-600">Suporte emergencial 24h por dia</p>
+                  <h4 className="font-bold">Suporte 24/7</h4>
+                  <p className="text-sm text-gray-600">Resposta emergencial em até 2h*</p>
                 </div>
               </div>
             </div>
             
             <p className="text-gray-700">
-              Com uma equipe de engenheiros e técnicos especializados, a Air Flow está comprometida em oferecer soluções de refrigeração de primeira linha, adaptadas às necessidades específicas de cada instalação que atendemos, garantindo conforto, segurança e eficiência energética.
+              Com uma equipe de engenheiros e técnicos especializados, a Air Flow está comprometida em oferecer soluções que <strong>reduzem até 40% nos custos operacionais</strong> através da máxima eficiência energética, garantindo conforto, segurança e conformidade com normas técnicas (NR-15, ISO 9001, PBQP-H).
             </p>
+            <p className="text-xs text-gray-500 mt-2">(*) Consulte regiões cobertas</p>
           </div>
         </div>
       </div>

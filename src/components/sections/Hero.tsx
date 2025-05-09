@@ -29,7 +29,11 @@ const Hero = () => {
       y: 20,
       opacity: 0,
       duration: 0.6
-    }, "-=0.4");
+    }, "-=0.4").from(".hero-years", {
+      scale: 0.8,
+      opacity: 0,
+      duration: 0.5
+    }, "-=0.3");
 
     // Create parallax effect on scroll
     gsap.to(heroRef.current, {
@@ -65,21 +69,24 @@ const Hero = () => {
   };
 
   return <section ref={heroRef} id="home" className="relative min-h-screen flex items-center pt-16" style={{
-    backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")',
+    backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")',
     backgroundSize: 'cover',
     backgroundPosition: 'center'
   }}>
       <div className="container relative z-10">
         <div className="max-w-3xl hero-content">
+          <div className="hero-years inline-block bg-airflow-blue text-white px-4 py-1 rounded-full text-sm font-bold mb-4">
+            30 Anos de Liderança Técnica no Mercado
+          </div>
           <h1 className="hero-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight">
-            Soluções em Refrigeração Industrial e Comercial
+            Air Flow - Soluções em Refrigeração Industrial e Comercial
           </h1>
           <p className="hero-description text-xl md:text-2xl text-gray-100 mb-8">
-            PMOC e AVAC para grandes instalações com agilidade, eficiência e conformidade técnica.
+            Excelência em engenharia térmica com máxima eficiência energética, conformidade técnica e tecnologia de ponta.
           </p>
           <div className="hero-button">
             <AnimatedButton onClick={scrollToContact} className="relative overflow-hidden group text-xs">
-              Solicite seu orçamento agora
+              Fale com um Especialista
             </AnimatedButton>
           </div>
         </div>

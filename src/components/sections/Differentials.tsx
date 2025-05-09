@@ -5,23 +5,23 @@ import { Shield, Clock, Users, BarChart3 } from 'lucide-react';
 
 const differentials = [
   {
-    title: "Certificações Técnicas Atualizadas",
-    description: "Nossa equipe possui todas as certificações necessárias e se mantém atualizada com inovações e regulamentações do setor.",
+    title: "30+ Anos de Experiência",
+    description: "Soluções testadas e otimizadas para indústrias críticas, com expertise comprovada em projetos complexos.",
     icon: Shield,
   },
   {
-    title: "Serviço de Emergência 24/7",
-    description: "Estamos disponíveis 24 horas por dia para atender às suas necessidades emergenciais de refrigeração e AVAC.",
-    icon: Clock,
-  },
-  {
-    title: "Equipe Interna de Engenheiros",
-    description: "Nossos engenheiros especializados desenvolvem soluções personalizadas para os requisitos específicos de cada cliente.",
+    title: "Equipe Certificada ABRAVA",
+    description: "Engenheiros e técnicos com treinamentos internacionais e certificações nas principais tecnologias do mercado.",
     icon: Users,
   },
   {
-    title: "Foco em Eficiência Energética",
-    description: "Priorizamos soluções sustentáveis e econômicas que reduzem o consumo de energia e o impacto ambiental.",
+    title: "Atendimento Nacional",
+    description: "Projetos em todo o Brasil com padrão Air Flow, garantindo qualidade uniforme independente da localização.",
+    icon: Building,
+  },
+  {
+    title: "Eficiência Energética",
+    description: "Redução de até 40% nos custos operacionais através de soluções sustentáveis e sistemas de alta eficiência.",
     icon: BarChart3,
   }
 ];
@@ -31,9 +31,10 @@ const Differentials = () => {
     <section id="differentials" className="py-20 dark-blue-bg text-white">
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white reveal">Nossos Diferenciais</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white reveal">Por Que Escolher a Air Flow?</h2>
           <p className="text-lg max-w-3xl mx-auto reveal">
-            O que faz da Air Flow a escolha preferida para soluções de refrigeração industrial e comercial.
+            Nossos diferenciais são construídos com base em décadas de experiência, 
+            investimento constante em capacitação técnica e compromisso com a excelência.
           </p>
           <div className="w-20 h-1 bg-white mx-auto mt-4"></div>
         </div>

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -6,37 +7,37 @@ import { useNavigate } from 'react-router-dom';
 import AnimatedButton from '@/components/ui/animated-button';
 const services = [{
   title: "Climatização e Refrigeração Industrial",
-  description: "Manutenção preventiva e corretiva em sistemas de ar condicionado e refrigeração industrial.",
+  description: "Projetos e manutenção em sistemas de ar condicionado e refrigeração industrial com foco em eficiência energética.",
   icon: AirVent,
   color: "text-blue-500",
   url: "/servicos/climatizacao"
 }, {
   title: "Projetos, Retrofit e Expansões",
-  description: "Retrofit de sistemas HVAC, projetos sob medida e modernização de equipamentos obsoletos.",
+  description: "Modernização de sistemas HVAC, reduções de até 40% em custos operacionais e aumento da vida útil dos equipamentos.",
   icon: Settings,
   color: "text-purple-500",
   url: "/servicos/projetos"
 }, {
   title: "Sistemas de Automação",
-  description: "Instalação e manutenção de sistemas de automação predial e industrial com monitoramento remoto.",
+  description: "Implementação de BMS e sistemas de monitoramento remoto para controle preciso e economia de energia.",
   icon: Activity,
   color: "text-green-500",
   url: "/servicos/automacao"
 }, {
   title: "Infraestrutura Complementar",
-  description: "Manutenção em sistemas elétricos, geradores, ar comprimido e manejo de gases refrigerantes.",
+  description: "Manutenção integrada em sistemas elétricos, geradores e ar comprimido com manejo adequado de gases refrigerantes.",
   icon: Wrench,
   color: "text-amber-500",
   url: "/servicos/infraestrutura"
 }, {
   title: "Dutos e Tratamento de Ar",
-  description: "Projeto e instalação de dutos, sistemas de filtragem e monitoramento da qualidade do ar.",
+  description: "Projeto e instalação de dutos, sistemas de filtragem e monitoramento que atendem às normas ANVISA e ISO.",
   icon: Thermometer,
   color: "text-red-500",
   url: "/servicos/dutos"
 }, {
   title: "PMOC",
-  description: "Implementação e gestão do Plano de Manutenção, Operação e Controle seguindo requisitos regulatórios.",
+  description: "Plano de Manutenção, Operação e Controle em conformidade com a Portaria 3.523/GM do Ministério da Saúde.",
   icon: ShieldCheck,
   color: "text-indigo-500",
   url: "/servicos/pmoc"
@@ -59,7 +60,7 @@ const Services = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Nossos Serviços</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto reveal">
-            Serviços abrangentes de refrigeração industrial e comercial para manter suas instalações funcionando com desempenho máximo.
+            Soluções completas e personalizadas em refrigeração industrial e comercial para manter suas instalações funcionando com máxima eficiência e conformidade técnica.
           </p>
           <div className="w-20 h-1 bg-airflow-blue mx-auto mt-4"></div>
         </div>
@@ -91,7 +92,7 @@ const Services = () => {
         
         <div className="text-center mt-12 reveal flex justify-center">
           <AnimatedButton onClick={scrollToContact} className="px-5 text-xs text-center py-[12px]">
-            Solicite um Orçamento de Serviço
+            Solicite seu Orçamento Agora
           </AnimatedButton>
         </div>
       </div>

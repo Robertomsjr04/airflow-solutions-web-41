@@ -9,7 +9,8 @@ const Contact = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Contato</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto reveal">
-            Entre em contato com nossa equipe para discutir suas necessidades de refrigeração industrial ou comercial.
+            <strong>Precisa de um Sistema de Refrigeração Confiável?</strong><br />
+            Fale com nossos engenheiros e receba um diagnóstico gratuito para otimizar sua climatização!
           </p>
           <div className="w-20 h-1 bg-airflow-blue mx-auto mt-4"></div>
         </div>
@@ -26,7 +27,7 @@ const Contact = () => {
               <div className="mb-8">
                 <h3 className="text-2xl font-bold mb-4 text-airflow-blue">Nosso Escritório</h3>
                 <p className="text-gray-700 mb-4">
-                  Visite nossa sede para discutir seu projeto pessoalmente com nossa equipe de especialistas.
+                  Visite nossa sede para discutir seu projeto pessoalmente com nossa equipe de especialistas em refrigeração industrial.
                 </p>
                 
                 <div className="aspect-w-16 aspect-h-9 mb-6">
@@ -60,6 +61,7 @@ const Contact = () => {
                     Email: contato@airflow.com<br />
                     Horário: Seg-Sex, 8h - 18h
                   </p>
+                  <p className="text-xs text-gray-500 mt-2">Atendimento emergencial 24h</p>
                 </div>
               </div>
             </div>

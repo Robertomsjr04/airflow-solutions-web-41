@@ -1,29 +1,28 @@
-
 import React from 'react';
 import { Building, Hospital, Building2, ShoppingCart } from 'lucide-react';
 
 const sectors = [
   {
-    title: "Indústrias",
-    description: "Soluções de refrigeração personalizadas para fábricas, instalações de processamento de alimentos e complexos industriais.",
+    title: "Indústria Alimentícia",
+    description: "Soluções de refrigeração específicas para ambientes com rigoroso controle sanitário, em conformidade com as BPF e HACCP.",
     icon: Building,
     image: "https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
   {
-    title: "Hospitais",
-    description: "Sistemas AVAC especializados para instalações de saúde, garantindo qualidade do ar, controle de temperatura e conformidade regulatória.",
+    title: "Farmacêutico",
+    description: "Sistemas AVAC para laboratórios e áreas controladas, garantindo conformidade com normas ANVISA e ISO 14644.",
     icon: Hospital,
     image: "https://images.unsplash.com/photo-1551038247-3d9af20df552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
   {
-    title: "Centros Comerciais",
-    description: "Soluções abrangentes de refrigeração e AVAC para centros comerciais, garantindo conforto para lojistas e visitantes.",
+    title: "Data Centers",
+    description: "Climatização de precisão para data centers e ambientes de TI críticos, seguindo os padrões TIA-942 para máxima disponibilidade.",
     icon: ShoppingCart,
-    image: "https://images.unsplash.com/photo-1519567770579-c2fc5208683f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
   {
-    title: "Edifícios Corporativos",
-    description: "Soluções de ar condicionado energeticamente eficientes para edifícios de escritórios e sedes corporativas.",
+    title: "Varejo",
+    description: "Soluções completas para lojas, supermercados e shoppings, combinando conforto térmico e eficiência energética.",
     icon: Building2,
     image: "https://images.unsplash.com/photo-1460574283810-2aab119d8511?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   }
@@ -65,14 +64,13 @@ const Sectors = () => {
       
       <div className="container relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white reveal">Excelência em Soluções AVAC</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white reveal">Setores Atendidos</h2>
           <p className="text-lg text-gray-200 max-w-3xl mx-auto reveal">
-            AVAC, sigla para Aquecimento, Ventilação e Ar Condicionado, abrange todo o universo de tecnologias 
-            voltadas à climatização de ambientes. Com mais de três décadas de experiência, a Air Flow 
-            se especializa em sistemas completos incluindo chillers, VRF/VRV, self-contained, 
-            torres de arrefecimento e sistemas de exaustão. Nosso compromisso é garantir conforto térmico, 
-            qualidade do ar e eficiência energética para os mais diversos setores, desde hospitais até 
-            complexos industriais, sempre com soluções personalizadas e inovadoras.
+            Nossa experiência de 30 anos permite atender às necessidades específicas de diversos setores, 
+            garantindo conformidade com as normas técnicas e regulatórias mais rigorosas. 
+            Do controle minucioso de temperatura em ambientes farmacêuticos à eficiência 
+            energética em grandes instalações comerciais, desenvolvemos soluções personalizadas 
+            que otimizam sua operação.
           </p>
           <div className="w-20 h-1 bg-airflow-blue mx-auto mt-4"></div>
         </div>
