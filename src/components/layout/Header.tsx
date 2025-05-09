@@ -103,9 +103,7 @@ const Header = () => {
               </button>
             </li>
           </ul>
-          <AnimatedButton onClick={() => scrollToSection('contact')} className="py-3 px-5 text-xs">
-            Solicite um Orçamento
-          </AnimatedButton>
+          <AnimatedButton onClick={() => scrollToSection('contact')} className="py-3 px-5 text-xs">Atendimento em emergencia</AnimatedButton>
         </nav>
         
         {/* Mobile Menu Button */}
