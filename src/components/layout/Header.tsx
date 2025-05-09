@@ -12,9 +12,6 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const activeSectionType = useSectionObserver();
-  const previousSectionType = useRef(activeSectionType);
-  const transitionTimeoutRef = useRef<number | null>(null);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -27,23 +24,6 @@ const Header = () => {
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
-  // Handle smooth transitions between section types
-  useEffect(() => {
-    if (previousSectionType.current !== activeSectionType) {
-      // Clear any existing timeout
-      if (transitionTimeoutRef.current) {
-        window.clearTimeout(transitionTimeoutRef.current);
-      }
-      
-      previousSectionType.current = activeSectionType;
-      
-      // Force a small delay to ensure the DOM updates
-      transitionTimeoutRef.current = window.setTimeout(() => {
-        transitionTimeoutRef.current = null;
-      }, 50);
-    }
-  }, [activeSectionType]);
   
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -77,32 +57,13 @@ const Header = () => {
     setMobileMenuOpen(false);
   };
 
-  // Updated to consider both scroll state and section type with faster response
-  const getHeaderStyle = () => {
-    switch (activeSectionType) {
-      case 'dark':
-        return {
-          background: isScrolled ? 'bg-airflow-blue bg-opacity-95' : 'bg-transparent',
-          text: 'text-zinc-50',
-          hoverText: 'hover:text-airflow-lightBlue'
-        };
-      case 'blue':
-        return {
-          background: isScrolled ? 'bg-airflow-blue bg-opacity-95' : 'bg-transparent',
-          text: 'text-zinc-50',
-          hoverText: 'hover:text-white'
-        };
-      case 'light':
-      default:
-        return {
-          background: isScrolled ? 'bg-white' : 'bg-transparent',
-          text: 'text-airflow-blue',
-          hoverText: 'hover:text-airflow-lightBlue'
-        };
-    }
+  // Always return the same light style regardless of section
+  const headerStyle = {
+    background: isScrolled ? 'bg-white' : 'bg-transparent',
+    text: 'text-airflow-blue',
+    hoverText: 'hover:text-airflow-lightBlue'
   };
 
-  const headerStyle = getHeaderStyle();
   const menuTextClass = `${headerStyle.text} ${headerStyle.hoverText} font-medium transition-colors`;
   const mobileMenuButtonClass = `md:hidden ${headerStyle.text}`;
   
