@@ -1,16 +1,7 @@
-
 import React from 'react';
-
 const LogoAirFlow: React.FC = () => {
-  return (
-    <div className="flex items-center justify-center">
-      <img 
-        src="/lovable-uploads/6464f72a-3626-49ad-bd83-8a80f76db4cd.png" 
-        alt="Air Flow Logo" 
-        className="h-14 md:h-16"
-      />
-    </div>
-  );
+  return <div className="flex items-center justify-center">
+      <img alt="Air Flow Logo" className="h-14 md:h-16 object-scale-down" src="/lovable-uploads/667b6ba4-aae3-4c50-9dad-8d1e622350e3.png" />
+    </div>;
 };
-
 export default LogoAirFlow;
