@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -123,7 +124,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
   padding: 16px 36px;
   border: 4px solid transparent;
   font-size: 16px;
@@ -148,12 +148,11 @@
 
 .animated-button .arr-1 {
   right: 16px;
-  transform: translateX(0);
 }
 
 .animated-button .arr-2 {
-  left: -25%;
-  transform: translateX(0);
+  left: -30px;
+  opacity: 0;
 }
 
 .animated-button .circle {
@@ -175,6 +174,7 @@
   z-index: 2;
   transform: translateX(0);
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  display: block;
 }
 
 .animated-button:hover {
@@ -184,12 +184,14 @@
 }
 
 .animated-button:hover .arr-1 {
-  right: -25%;
+  right: -30px;
+  opacity: 0;
   fill: #006aff;
 }
 
 .animated-button:hover .arr-2 {
   left: 16px;
+  opacity: 1;
   fill: #006aff;
 }
 
@@ -228,20 +230,20 @@
     transform: translateX(12px);
   }
   
-  /* Ensure arrow animations work on small screens */
   .animated-button .arr-1 {
     right: 12px;
   }
   
   .animated-button:hover .arr-1 {
-    right: -25%;
+    right: -25px;
+    opacity: 0;
   }
   
   .animated-button:hover .arr-2 {
     left: 12px;
+    opacity: 1;
   }
   
-  /* Adjust circle size for smaller buttons */
   .animated-button:hover .circle {
     width: 200px;
     height: 200px;
