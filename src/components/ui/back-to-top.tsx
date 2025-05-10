@@ -24,9 +24,9 @@ const BackToTop: React.FC = () => {
   }
   return <button onClick={scrollToTop} className="back-to-top z-40" aria-label="Back to top">
       <div className="text">
-        <span>Back</span>
-        <span>to</span>
-        <span>top</span>
+        <span>Volte </span>
+        <span>ao</span>
+        <span>topo</span>
       </div>
       <div className="clone">
         <span>Volte </span>
