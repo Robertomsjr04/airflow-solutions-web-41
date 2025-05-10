@@ -18,3 +18,19 @@ export const preloadImage = (src: string): Promise<HTMLImageElement> => {
 export const preloadImages = (sources: string[]): Promise<HTMLImageElement[]> => {
   return Promise.all(sources.map(src => preloadImage(src)));
 };
+
+/**
+ * Preloads a video file
+ */
+export const preloadVideo = (src: string): Promise<HTMLVideoElement> => {
+  return new Promise((resolve, reject) => {
+    const video = document.createElement('video');
+    video.preload = 'auto';
+    
+    video.onloadeddata = () => resolve(video);
+    video.onerror = reject;
+    
+    video.src = src;
+    video.load();
+  });
+};

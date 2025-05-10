@@ -23,8 +23,8 @@ const Index = () => {
     const cleanup = setupScrollAnimation();
     
     // Preload hero image and project images for better user experience
-    const preloadImages = () => {
-      // Preload hero image
+    const preloadAssets = () => {
+      // Preload hero image for fallback
       preloadImage('/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png');
       
       // Preload project images
@@ -37,7 +37,7 @@ const Index = () => {
       });
     };
     
-    preloadImages();
+    preloadAssets();
 
     // Scroll to top when component mounts
     window.scrollTo(0, 0);

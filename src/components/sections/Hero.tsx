@@ -1,13 +1,17 @@
+
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import AnimatedButton from '@/components/ui/animated-button';
 import { preloadImage } from '@/utils/imageUtils';
+
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   useEffect(() => {
     if (!heroRef.current) return;
 
-    // Preload the hero image for better performance
+    // Preload the hero image for the video poster and fallback
     preloadImage('/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png');
 
     // Create timeline for the hero animation
@@ -36,18 +40,7 @@ const Hero = () => {
       duration: 0.5
     }, "-=0.3");
 
-    // Create parallax effect on scroll
-    gsap.to(heroRef.current, {
-      backgroundPositionY: "30%",
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: true
-      }
-    });
-
-    // Fade out hero content as user scrolls down
+    // Create parallax effect on scroll for content
     gsap.to(".hero-content", {
       opacity: 0.6,
       y: 50,
@@ -59,6 +52,7 @@ const Hero = () => {
       }
     });
   }, []);
+
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -67,11 +61,35 @@ const Hero = () => {
       });
     }
   };
-  return <section ref={heroRef} id="home" className="relative min-h-screen flex items-center pt-16" style={{
-    backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png")',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center'
-  }}>
+
+  return (
+    <section 
+      ref={heroRef} 
+      id="home" 
+      className="relative min-h-screen flex items-center pt-16 overflow-hidden"
+    >
+      {/* Video Background */}
+      <div className="absolute inset-0 w-full h-full">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          poster="/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png"
+        >
+          <source src="/lovable-uploads/Gen-4 Turbo industrial refrigeration corridor, metallic pipes, smooth camera pan, cinematic lighting, 10s, no people 3862487970.mp4" type="video/mp4" />
+          {/* Fallback for browsers that don't support video */}
+          Your browser does not support the video tag.
+        </video>
+        {/* Dark overlay to maintain the current look and feel */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/70"
+          style={{ mixBlendMode: 'multiply' }}
+        ></div>
+      </div>
+      
       <div className="container relative z-10">
         <div className="max-w-3xl hero-content">
           <div className="hero-years inline-block bg-airflow-blue text-white px-4 py-1 rounded-full text-sm font-bold mb-4">
@@ -98,6 +116,8 @@ const Hero = () => {
           <div className="w-1.5 h-3 bg-white rounded-full animate-bounce"></div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Hero;
