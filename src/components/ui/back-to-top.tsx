@@ -28,12 +28,12 @@ const BackToTop: React.FC = () => {
         <span>ao</span>
         <span>topo</span>
       </div>
-      <div className="clone">
+      <div className="clone mx-0 px-0">
         <span>Volte </span>
         <span>ao</span>
-        <span>topo</span>
+        <span className="mx-[4px]">topo</span>
       </div>
-      <ArrowUp className="h-6 w-6" />
+      <ArrowUp className="h-6 w-6 px-0 mx-0" />
     </button>;
 };
 export default BackToTop;
