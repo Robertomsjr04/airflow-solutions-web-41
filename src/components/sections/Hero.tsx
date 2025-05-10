@@ -2,32 +2,28 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import AnimatedButton from '@/components/ui/animated-button';
 import { preloadImage, preloadVideo, getEncodedPath } from '@/utils/imageUtils';
-
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoSrc = '/lovable-uploads/Gen-4 Turbo industrial refrigeration corridor, metallic pipes, smooth camera pan, cinematic lighting, 10s, no people 3862487970.mp4';
   const posterSrc = '/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png';
-
   useEffect(() => {
     if (!heroRef.current) return;
 
     // Preload the hero image for the video poster and fallback
     preloadImage(posterSrc);
-    
+
     // Preload the video
     const encodedVideoPath = getEncodedPath(videoSrc);
-    preloadVideo(encodedVideoPath)
-      .then(() => {
-        if (videoRef.current) {
-          videoRef.current.play().catch(err => {
-            console.warn('Video playback error:', err);
-          });
-        }
-      })
-      .catch(err => {
-        console.error('Error preloading video:', err);
-      });
+    preloadVideo(encodedVideoPath).then(() => {
+      if (videoRef.current) {
+        videoRef.current.play().catch(err => {
+          console.warn('Video playback error:', err);
+        });
+      }
+    }).catch(err => {
+      console.error('Error preloading video:', err);
+    });
 
     // Create timeline for the hero animation
     const tl = gsap.timeline({
@@ -67,7 +63,6 @@ const Hero = () => {
       }
     });
   }, []);
-
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -76,33 +71,18 @@ const Hero = () => {
       });
     }
   };
-
-  return (
-    <section 
-      ref={heroRef} 
-      id="home" 
-      className="relative min-h-screen flex items-center pt-16 overflow-hidden"
-    >
+  return <section ref={heroRef} id="home" className="relative min-h-screen flex items-center pt-16 overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          poster={posterSrc}
-        >
+        <video ref={videoRef} autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover" poster={posterSrc}>
           <source src={getEncodedPath(videoSrc)} type="video/mp4" />
           {/* Fallback for browsers that don't support video */}
           Your browser does not support the video tag.
         </video>
         {/* Dark overlay to maintain the current look and feel */}
-        <div 
-          className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/70"
-          style={{ mixBlendMode: 'multiply' }}
-        ></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/70" style={{
+        mixBlendMode: 'multiply'
+      }}></div>
       </div>
       
       <div className="container relative z-10">
@@ -116,7 +96,7 @@ const Hero = () => {
           <p className="hero-description text-xl md:text-2xl text-gray-100 mb-8">
             Excelência em engenharia térmica com máxima eficiência energética, conformidade técnica e tecnologia de ponta.
           </p>
-          <div className="hero-button px-0 mx-0 py-0 rounded-none">
+          <div className="hero-button py-0 mx-0 px-0 rounded-none">
             <AnimatedButton onClick={scrollToContact} className="relative overflow-hidden group text-xs text-left rounded-sm px-[46px]">
               Fale com um Especialista
             </AnimatedButton>
@@ -131,8 +111,6 @@ const Hero = () => {
           <div className="w-1.5 h-3 bg-white rounded-full animate-bounce"></div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
