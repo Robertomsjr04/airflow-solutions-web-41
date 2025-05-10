@@ -1,12 +1,9 @@
-
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import AnimatedButton from '@/components/ui/animated-button';
 import { preloadImage } from '@/utils/imageUtils';
-
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
-
   useEffect(() => {
     if (!heroRef.current) return;
 
@@ -62,7 +59,6 @@ const Hero = () => {
       }
     });
   }, []);
-
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -71,7 +67,6 @@ const Hero = () => {
       });
     }
   };
-
   return <section ref={heroRef} id="home" className="relative min-h-screen flex items-center pt-16" style={{
     backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png")',
     backgroundSize: 'cover',
@@ -88,8 +83,8 @@ const Hero = () => {
           <p className="hero-description text-xl md:text-2xl text-gray-100 mb-8">
             Excelência em engenharia térmica com máxima eficiência energética, conformidade técnica e tecnologia de ponta.
           </p>
-          <div className="hero-button">
-            <AnimatedButton onClick={scrollToContact} className="relative overflow-hidden group text-xs">
+          <div className="hero-button px-0 mx-0 py-0 rounded-none">
+            <AnimatedButton onClick={scrollToContact} className="relative overflow-hidden group text-xs text-left rounded-sm px-[46px]">
               Fale com um Especialista
             </AnimatedButton>
           </div>
@@ -105,5 +100,4 @@ const Hero = () => {
       </div>
     </section>;
 };
-
 export default Hero;
