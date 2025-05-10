@@ -28,9 +28,20 @@ export const preloadVideo = (src: string): Promise<HTMLVideoElement> => {
     video.preload = 'auto';
     
     video.onloadeddata = () => resolve(video);
-    video.onerror = reject;
+    video.onerror = (e) => {
+      console.error('Error preloading video:', e);
+      reject(e);
+    };
     
     video.src = src;
     video.load();
   });
+};
+
+/**
+ * Renames a file path with spaces to a URL-compatible format
+ */
+export const getEncodedPath = (path: string): string => {
+  // Ensure the path has properly encoded URL characters
+  return path.includes(' ') ? encodeURI(path) : path;
 };

@@ -1,18 +1,33 @@
-
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import AnimatedButton from '@/components/ui/animated-button';
-import { preloadImage } from '@/utils/imageUtils';
+import { preloadImage, preloadVideo, getEncodedPath } from '@/utils/imageUtils';
 
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const videoSrc = '/lovable-uploads/Gen-4 Turbo industrial refrigeration corridor, metallic pipes, smooth camera pan, cinematic lighting, 10s, no people 3862487970.mp4';
+  const posterSrc = '/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png';
 
   useEffect(() => {
     if (!heroRef.current) return;
 
     // Preload the hero image for the video poster and fallback
-    preloadImage('/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png');
+    preloadImage(posterSrc);
+    
+    // Preload the video
+    const encodedVideoPath = getEncodedPath(videoSrc);
+    preloadVideo(encodedVideoPath)
+      .then(() => {
+        if (videoRef.current) {
+          videoRef.current.play().catch(err => {
+            console.warn('Video playback error:', err);
+          });
+        }
+      })
+      .catch(err => {
+        console.error('Error preloading video:', err);
+      });
 
     // Create timeline for the hero animation
     const tl = gsap.timeline({
@@ -77,9 +92,9 @@ const Hero = () => {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          poster="/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png"
+          poster={posterSrc}
         >
-          <source src="/lovable-uploads/Gen-4 Turbo industrial refrigeration corridor, metallic pipes, smooth camera pan, cinematic lighting, 10s, no people 3862487970.mp4" type="video/mp4" />
+          <source src={getEncodedPath(videoSrc)} type="video/mp4" />
           {/* Fallback for browsers that don't support video */}
           Your browser does not support the video tag.
         </video>
