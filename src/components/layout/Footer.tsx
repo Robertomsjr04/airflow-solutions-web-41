@@ -100,7 +100,12 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-white/20 mt-10 pt-6 text-sm text-center md:text-left md:flex md:justify-between md:items-center">
+        {/* Centered Back to Top Button */}
+        <div className="flex justify-center my-8">
+          <BackToTop />
+        </div>
+        
+        <div className="border-t border-white/20 mt-6 pt-6 text-sm text-center md:text-left md:flex md:justify-between md:items-center">
           <p>&copy; {currentYear} Air Flow. Todos os direitos reservados.</p>
           <div className="mt-4 md:mt-0 space-x-4">
             <a href="/politica-de-privacidade" className="hover:text-gray-300 transition-colors">Política de Privacidade</a>
@@ -108,7 +113,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <BackToTop />
     </footer>;
 };
 
