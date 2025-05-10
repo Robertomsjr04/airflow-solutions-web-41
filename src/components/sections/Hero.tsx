@@ -1,12 +1,15 @@
+
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import AnimatedButton from '@/components/ui/animated-button';
 import { preloadImage, preloadVideo, getEncodedPath } from '@/utils/imageUtils';
+
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoSrc = '/lovable-uploads/Gen-4 Turbo industrial refrigeration corridor, metallic pipes, smooth camera pan, cinematic lighting, 10s, no people 3862487970.mp4';
   const posterSrc = '/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png';
+
   useEffect(() => {
     if (!heroRef.current) return;
 
@@ -63,6 +66,7 @@ const Hero = () => {
       }
     });
   }, []);
+
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -71,10 +75,19 @@ const Hero = () => {
       });
     }
   };
+
   return <section ref={heroRef} id="home" className="relative min-h-screen flex items-center pt-16 overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
-        <video ref={videoRef} autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover" poster={posterSrc}>
+        <video 
+          ref={videoRef} 
+          autoPlay 
+          muted 
+          loop 
+          playsInline 
+          className="absolute inset-0 w-full h-full object-cover" 
+          poster={posterSrc}
+        >
           <source src={getEncodedPath(videoSrc)} type="video/mp4" />
           {/* Fallback for browsers that don't support video */}
           Your browser does not support the video tag.
@@ -113,4 +126,5 @@ const Hero = () => {
       </div>
     </section>;
 };
+
 export default Hero;
