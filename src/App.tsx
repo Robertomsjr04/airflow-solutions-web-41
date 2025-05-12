@@ -12,12 +12,14 @@ import ServiceAutomacao from "./pages/ServiceAutomacao";
 import ServiceInfraestrutura from "./pages/ServiceInfraestrutura";
 import ServiceDutos from "./pages/ServiceDutos";
 import NotFound from "./pages/NotFound";
+import CustomCursor from "./components/ui/custom-cursor";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <CustomCursor />
       <Toaster />
       <Sonner />
       <BrowserRouter>
