@@ -62,7 +62,7 @@ const ServiceAutomacao = () => {
         <ServiceDetail 
           title="Automação de Alta Performance"
           description="Desenvolvemos e implementamos sistemas avançados de automação e monitoramento que permitem o controle preciso e eficiente de toda a infraestrutura de climatização e refrigeração. Nossas soluções integradas possibilitam supervisão remota, otimização de consumo energético e manutenção preditiva, garantindo máxima performance operacional."
-          image="/lovable-uploads/8d0fd4ff-2181-4b92-a4c9-1c87d7900645.png"
+          image="/lovable-uploads/2411176c-2f8c-45d9-b99c-7fabb37dcbdf.png"
           features={automacaoFeatures}
           contactRef={contactRef}
         />

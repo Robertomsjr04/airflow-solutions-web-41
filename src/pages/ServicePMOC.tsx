@@ -59,7 +59,7 @@ const ServicePMOC = () => {
         <ServiceDetail 
           title="PMOC Completo e Certificado"
           description="O PMOC é uma exigência legal estabelecida pelo Ministério da Saúde para garantir a qualidade do ar em ambientes climatizados. Nossa equipe especializada desenvolve e implementa planos personalizados que atendem a todas as normas regulatórias, garantindo a saúde dos ocupantes e o funcionamento eficiente dos equipamentos."
-          image="/lovable-uploads/5da566e8-431e-4b53-a45a-adb6b3ed4618.png"
+          image="/lovable-uploads/dc8922d2-cef2-4a6b-9073-911c08440e7f.png"
           features={pmocFeatures}
           contactRef={contactRef}
         />

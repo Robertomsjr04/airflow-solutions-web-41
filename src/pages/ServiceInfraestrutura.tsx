@@ -59,7 +59,7 @@ const ServiceInfraestrutura = () => {
         <ServiceDetail 
           title="Soluções Completas em Infraestrutura"
           description="Oferecemos serviços especializados de manutenção e gestão para toda a infraestrutura complementar que dá suporte aos sistemas de climatização e refrigeração. Desde a manutenção de sistemas elétricos e geradores até o manejo responsável de gases refrigerantes, nossa equipe garante o funcionamento integrado e eficiente de todos os componentes essenciais."
-          image="/lovable-uploads/a3805306-4e49-4dec-b88c-209ec05565ad.png"
+          image="/lovable-uploads/eecf9cdd-5b27-45e2-a343-96f06026bc11.png"
           features={infraestruturaFeatures}
           contactRef={contactRef}
         />

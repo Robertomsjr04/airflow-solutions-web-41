@@ -59,7 +59,7 @@ const ServiceProjetos = () => {
         <ServiceDetail 
           title="Modernização e Eficiência Energética"
           description="Nossa equipe de engenheiros e projetistas desenvolve soluções personalizadas para retrofit, modernização e expansão de sistemas HVAC. Focamos na otimização do desempenho, aumento da eficiência energética e redução de custos operacionais, sempre considerando as necessidades específicas de cada cliente e as melhores práticas do setor."
-          image="/lovable-uploads/2db51423-7794-43b9-9656-8732c8a2b6e3.png"
+          image="/lovable-uploads/34e017b1-3228-4c92-a91b-9f802c5c0f34.png"
           features={projetosFeatures}
           contactRef={contactRef}
         />

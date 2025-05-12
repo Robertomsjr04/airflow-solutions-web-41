@@ -59,7 +59,7 @@ const ServiceDutos = () => {
         <ServiceDetail 
           title="Excelência em Tratamento de Ar"
           description="Projetamos, fabricamos e instalamos sistemas completos de dutos e tratamento de ar que garantem a qualidade do ar interior e a eficiência da distribuição do ar tratado. Utilizando tecnologias avançadas de monitoramento e filtragem, asseguramos ambientes controlados que atendem às mais rigorosas normas técnicas e regulatórias para indústrias e instalações críticas."
-          image="/lovable-uploads/668243b6-4b97-47b0-90f4-1d76fbce5779.png"
+          image="/lovable-uploads/5ae900de-2d68-4edc-b20b-c51e3ede6d1b.png"
           features={dutosFeatures}
           contactRef={contactRef}
         />

@@ -75,7 +75,7 @@ const ServiceClimatizacao = () => {
         <ServiceDetail 
           title="Especialistas em Sistemas HVAC Industriais"
           description="Nossa equipe especializada oferece serviços abrangentes de climatização e refrigeração industrial, desde manutenção preventiva e corretiva até recuperação de equipamentos e instalação de sistemas completos. Trabalhamos com uma ampla gama de equipamentos, incluindo chillers, sistemas VRV/VRF, fan-coils e muito mais, garantindo o funcionamento eficiente e prolongando a vida útil dos seus sistemas."
-          image="/lovable-uploads/6166a219-1b89-434b-a5b0-4b4944745dba.png"
+          image="/lovable-uploads/6a0deb70-05f7-4329-8741-5c61f19af673.png"
           features={climatizacaoFeatures}
           contactRef={contactRef}
         />
