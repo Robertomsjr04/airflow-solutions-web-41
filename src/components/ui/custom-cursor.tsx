@@ -41,27 +41,13 @@ export const CustomCursor: React.FC = () => {
   }, []);
 
   return (
-    <>
-      <div 
-        className={`custom-cursor ${isVisible ? 'visible' : ''} ${isPointer ? 'pointer' : ''}`} 
-        style={{ 
-          left: `${position.x}px`, 
-          top: `${position.y}px` 
-        }} 
-      />
-      <style jsx global>{`
-        /* Only apply on non-touch devices */
-        @media (hover: hover) {
-          body {
-            cursor: none;
-          }
-          
-          a, button, [role="button"], input[type="submit"], .cursor-pointer {
-            cursor: none;
-          }
-        }
-      `}</style>
-    </>
+    <div 
+      className={`custom-cursor ${isVisible ? 'visible' : ''} ${isPointer ? 'pointer' : ''}`} 
+      style={{ 
+        left: `${position.x}px`, 
+        top: `${position.y}px` 
+      }} 
+    />
   );
 };
 
