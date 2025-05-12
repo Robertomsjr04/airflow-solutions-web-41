@@ -68,7 +68,7 @@ const Header = () => {
   const mobileMenuButtonClass = `md:hidden ${headerStyle.text}`;
   
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${headerStyle.background} ${isScrolled ? 'shadow-md py-2' : 'py-4'}`}>
+    <header className={`fixed w-full z-50 transition-all duration-300 ${headerStyle.background} ${isScrolled ? 'shadow-md py-1' : 'py-2'}`}>
       <div className="container flex justify-between items-center">
         <div className="flex items-center">
           <LogoAirFlow />
