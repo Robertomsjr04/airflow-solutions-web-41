@@ -57,11 +57,11 @@ const Header = () => {
     setMobileMenuOpen(false);
   };
 
-  // Define text color based on whether header is transparent or not
+  // Modified headerStyle to always use black background
   const headerStyle = {
-    background: isScrolled ? 'bg-black' : 'bg-transparent',
-    text: isScrolled ? 'text-white' : 'text-white',
-    hoverText: isScrolled ? 'hover:text-gray-300' : 'hover:text-gray-200'
+    background: 'bg-black',
+    text: 'text-white',
+    hoverText: 'hover:text-gray-300'
   };
 
   const menuTextClass = `${headerStyle.text} ${headerStyle.hoverText} font-medium transition-colors`;
