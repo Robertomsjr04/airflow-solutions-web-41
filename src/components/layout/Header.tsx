@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -64,13 +63,13 @@ const Header = () => {
     hoverText: 'hover:text-gray-300'
   };
 
-  const menuTextClass = `${headerStyle.text} ${headerStyle.hoverText} font-medium transition-colors`;
-  const mobileMenuButtonClass = `md:hidden ${headerStyle.text}`;
+  const menuTextClass = `${headerStyle.text} ${headerStyle.hoverText} font-medium transition-colors cursor-pointer`;
+  const mobileMenuButtonClass = `md:hidden ${headerStyle.text} cursor-pointer`;
   
   return (
     <header className={`fixed w-full z-50 transition-all duration-300 ${headerStyle.background} ${isScrolled ? 'shadow-md py-1' : 'py-2'}`}>
       <div className="container flex justify-between items-center">
-        <div className="flex items-center">
+        <div className="flex items-center cursor-pointer" onClick={goToHome}>
           <LogoAirFlow />
         </div>
         
@@ -113,7 +112,7 @@ const Header = () => {
               </button>
             </li>
           </ul>
-          <button onClick={() => scrollToSection('contact')} className="btn-12 px-[15px] text-red-50">
+          <button onClick={() => scrollToSection('contact')} className="btn-12 px-[15px] text-red-50 cursor-pointer">
             <span className="text-sm mx-0 text-center font-extrabold py-0 px-0">atendimento em emergencia 24h</span>
           </button>
         </nav>
@@ -129,42 +128,42 @@ const Header = () => {
         <div className="md:hidden bg-black shadow-lg absolute top-full left-0 w-full py-4">
           <ul className="flex flex-col items-center space-y-4 px-6">
             <li>
-              <button onClick={goToHome} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2">
+              <button onClick={goToHome} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer">
                 Início
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('about')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2">
+              <button onClick={() => scrollToSection('about')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer">
                 Sobre
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('services')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2">
+              <button onClick={() => scrollToSection('services')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer">
                 Serviços
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('sectors')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2">
+              <button onClick={() => scrollToSection('sectors')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer">
                 Setores
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('differentials')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2">
+              <button onClick={() => scrollToSection('differentials')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer">
                 Diferenciais
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('testimonials')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2">
+              <button onClick={() => scrollToSection('testimonials')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer">
                 Depoimentos
               </button>
             </li>
             <li>
-              <button onClick={() => scrollToSection('contact')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2">
+              <button onClick={() => scrollToSection('contact')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer">
                 Contato
               </button>
             </li>
             <li className="pt-2">
-              <button onClick={() => scrollToSection('contact')} className="btn-12 w-full">
+              <button onClick={() => scrollToSection('contact')} className="btn-12 w-full cursor-pointer">
                 <span>atendimento em emergencia 24h</span>
               </button>
             </li>

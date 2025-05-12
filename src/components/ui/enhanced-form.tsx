@@ -89,7 +89,7 @@ export function EnhancedForm({ onSubmitSuccess }: EnhancedFormProps) {
             <FormItem>
               <FormLabel>Nome Completo *</FormLabel>
               <FormControl>
-                <Input placeholder="Seu nome" {...field} />
+                <Input placeholder="Seu nome" {...field} className="cursor-text" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -104,7 +104,7 @@ export function EnhancedForm({ onSubmitSuccess }: EnhancedFormProps) {
               <FormItem>
                 <FormLabel>Email *</FormLabel>
                 <FormControl>
-                  <Input placeholder="seu@email.com" {...field} />
+                  <Input placeholder="seu@email.com" {...field} className="cursor-text" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -118,7 +118,7 @@ export function EnhancedForm({ onSubmitSuccess }: EnhancedFormProps) {
               <FormItem>
                 <FormLabel>Telefone *</FormLabel>
                 <FormControl>
-                  <Input placeholder="(00) 00000-0000" {...field} />
+                  <Input placeholder="(00) 00000-0000" {...field} className="cursor-text" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -133,7 +133,7 @@ export function EnhancedForm({ onSubmitSuccess }: EnhancedFormProps) {
             <FormItem>
               <FormLabel>Empresa *</FormLabel>
               <FormControl>
-                <Input placeholder="Sua empresa" {...field} />
+                <Input placeholder="Sua empresa" {...field} className="cursor-text" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -148,18 +148,18 @@ export function EnhancedForm({ onSubmitSuccess }: EnhancedFormProps) {
               <FormLabel>Serviço de Interesse *</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
-                  <SelectTrigger>
+                  <SelectTrigger className="cursor-pointer">
                     <SelectValue placeholder="Selecione um serviço" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="pmoc">PMOC</SelectItem>
-                  <SelectItem value="projetos">Projeto e Instalação de AVAC</SelectItem>
-                  <SelectItem value="retrofit">Retrofit de Sistema</SelectItem>
-                  <SelectItem value="limpeza">Limpeza de Dutos e Trocadores de Calor</SelectItem>
-                  <SelectItem value="consultoria">Consultoria Técnica</SelectItem>
-                  <SelectItem value="manutencao">Manutenção Mecânica</SelectItem>
-                  <SelectItem value="outro">Outro</SelectItem>
+                  <SelectItem value="pmoc" className="cursor-pointer">PMOC</SelectItem>
+                  <SelectItem value="projetos" className="cursor-pointer">Projeto e Instalação de AVAC</SelectItem>
+                  <SelectItem value="retrofit" className="cursor-pointer">Retrofit de Sistema</SelectItem>
+                  <SelectItem value="limpeza" className="cursor-pointer">Limpeza de Dutos e Trocadores de Calor</SelectItem>
+                  <SelectItem value="consultoria" className="cursor-pointer">Consultoria Técnica</SelectItem>
+                  <SelectItem value="manutencao" className="cursor-pointer">Manutenção Mecânica</SelectItem>
+                  <SelectItem value="outro" className="cursor-pointer">Outro</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -176,7 +176,7 @@ export function EnhancedForm({ onSubmitSuccess }: EnhancedFormProps) {
               <FormControl>
                 <Textarea 
                   placeholder="Conte-nos sobre seu projeto ou necessidades..." 
-                  className="min-h-[150px]"
+                  className="min-h-[150px] cursor-text"
                   {...field}
                 />
               </FormControl>
@@ -187,7 +187,7 @@ export function EnhancedForm({ onSubmitSuccess }: EnhancedFormProps) {
         
         <Button 
           type="submit" 
-          className="w-full bg-airflow-blue hover:bg-airflow-lightBlue text-white"
+          className="w-full bg-airflow-blue hover:bg-airflow-lightBlue text-white cursor-pointer"
           disabled={isSubmitting}
         >
           {isSubmitting ? 'Enviando...' : 'Enviar Mensagem'}

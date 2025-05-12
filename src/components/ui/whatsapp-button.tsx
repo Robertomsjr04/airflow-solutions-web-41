@@ -21,7 +21,7 @@ export function WhatsAppButton({ phoneNumber, message = "Olá! Gostaria de saber
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-300 animate-pulse hover:animate-none"
+            className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-300 animate-pulse hover:animate-none cursor-pointer"
             aria-label="Entre em contato pelo WhatsApp"
           >
             <Phone size={28} className="stroke-[2.5px]" />
