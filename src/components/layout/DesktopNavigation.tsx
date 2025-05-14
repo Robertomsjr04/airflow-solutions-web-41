@@ -28,6 +28,15 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
   scrollToSection,
   navigateToService
 }) => {
+  // Custom style for home button that doesn't apply the persistent shadow
+  const homeButtonClass = cn(
+    navigationMenuTriggerStyle(), 
+    menuTextClass, 
+    "border-none",
+    // Remove persistent shadow but still highlight the active state
+    currentPath === '/' ? "bg-transparent hover:bg-accent" : ""
+  );
+
   return (
     <nav className="hidden md:flex space-x-2 items-center">
       <NavigationMenu>
@@ -35,8 +44,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
           <NavigationMenuItem>
             <NavigationMenuLink 
               onClick={goToHome} 
-              className={cn(navigationMenuTriggerStyle(), menuTextClass, "border-none")}
-              active={currentPath === '/'}
+              className={homeButtonClass}
             >
               Início
             </NavigationMenuLink>
