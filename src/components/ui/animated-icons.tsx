@@ -1,9 +1,9 @@
 
 import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
-interface AnimatedIconProps {
+export interface AnimatedIconProps {
   className?: string;
   color?: string;
   size?: number;
@@ -162,14 +162,14 @@ export const AnimatedBuildingIcon: React.FC<AnimatedIconProps> = ({
     })
   };
   
-  const pulseVariants = {
+  const pulseVariants: Variants = {
     hidden: { scale: 1, opacity: 0.7 },
     visible: {
       scale: [1, 1.05, 1],
       opacity: [0.7, 1, 0.7],
       transition: {
         repeat: Infinity,
-        repeatType: "reverse",
+        repeatType: "mirror",
         duration: 2,
         delay: 1
       }
@@ -376,13 +376,14 @@ export const AnimatedAirVentIcon: React.FC<AnimatedIconProps> = ({
     })
   };
 
-  const airFlowVariants = {
+  const airFlowVariants: Variants = {
     hidden: { opacity: 0, x: -5 },
     visible: (i: number) => ({
       opacity: [0, 1, 0],
       x: [-5, 0, 5],
       transition: {
         repeat: Infinity,
+        repeatType: "mirror",
         duration: 2,
         delay: i * 0.3 + 0.5
       }
@@ -477,7 +478,7 @@ export const AnimatedSettingsIcon: React.FC<AnimatedIconProps> = ({
     })
   };
 
-  const rotateVariants = {
+  const rotateVariants: Variants = {
     hidden: { rotate: 0 },
     visible: {
       rotate: 360,
@@ -485,7 +486,7 @@ export const AnimatedSettingsIcon: React.FC<AnimatedIconProps> = ({
         repeat: Infinity,
         repeatType: "loop",
         duration: 20,
-        ease: "linear",
+        ease: "linear"
       }
     }
   };
@@ -545,13 +546,13 @@ export const AnimatedActivityIcon: React.FC<AnimatedIconProps> = ({
     }
   };
 
-  const pulseVariants = {
+  const pulseVariants: Variants = {
     hidden: { scale: 1 },
     visible: {
       scale: [1, 1.1, 1],
       transition: {
         repeat: Infinity,
-        repeatType: "reverse",
+        repeatType: "mirror",
         duration: 1.2,
         delay: 1
       }
@@ -608,13 +609,13 @@ export const AnimatedWrenchIcon: React.FC<AnimatedIconProps> = ({
     })
   };
 
-  const rotateVariants = {
+  const rotateVariants: Variants = {
     hidden: { rotate: 0 },
     visible: {
       rotate: [-10, 10, -10],
       transition: {
         repeat: Infinity,
-        repeatType: "reverse",
+        repeatType: "mirror",
         duration: 2,
         delay: 1
       }
@@ -758,13 +759,13 @@ export const AnimatedShieldCheckIcon: React.FC<AnimatedIconProps> = ({
     }
   };
 
-  const pulseVariants = {
+  const pulseVariants: Variants = {
     hidden: { scale: 1 },
     visible: {
       scale: [1, 1.05, 1],
       transition: {
         repeat: Infinity,
-        repeatType: "reverse",
+        repeatType: "mirror",
         duration: 2,
         delay: 1.5
       }

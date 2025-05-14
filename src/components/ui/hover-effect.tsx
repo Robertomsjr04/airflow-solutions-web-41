@@ -1,10 +1,12 @@
 
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 import { ReactNode, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { LucideIcon } from "lucide-react";
+import { AnimatedIconProps } from "@/components/ui/animated-icons";
+
+type IconType = LucideIcon | React.FC<AnimatedIconProps>;
 
 export const HoverEffect = ({
   items,
@@ -15,8 +17,9 @@ export const HoverEffect = ({
     title: string;
     description: string;
     link: string;
-    icon?: LucideIcon;
+    icon?: IconType;
     color?: string;
+    isVisible?: boolean;
   }[];
   className?: string;
   onNavigate: (url: string) => void;
@@ -57,7 +60,11 @@ export const HoverEffect = ({
           <Card>
             {item.icon && (
               <div className={`${item.color || 'text-airflow-blue'} mb-4`}>
-                <item.icon size={32} />
+                {typeof item.icon === 'function' && 'isVisible' in item ? (
+                  <item.icon isVisible={item.isVisible} />
+                ) : (
+                  <item.icon size={32} />
+                )}
               </div>
             )}
             <CardTitle>{item.title}</CardTitle>
