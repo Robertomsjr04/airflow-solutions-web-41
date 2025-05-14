@@ -15,6 +15,7 @@ import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
 import { preloadImage, preloadVideo, getEncodedPath } from '@/utils/imageUtils';
 import { useLocation } from 'react-router-dom';
+import SkipLink from '@/components/ui/skip-link';
 
 const Index = () => {
   const location = useLocation();
@@ -28,7 +29,7 @@ const Index = () => {
       preloadImage('/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png');
       
       // Preload hero video
-      const videoPath = '/lovable-uploads/Gen-4 Turbo industrial refrigeration corridor, metallic pipes, smooth camera pan, cinematic lighting, 10s, no people 3862487970.mp4';
+      const videoPath = '/lovable-uploads/industrial-cooling.mp4';
       preloadVideo(getEncodedPath(videoPath)).catch(err => {
         console.warn('Failed to preload video:', err);
       });
@@ -53,8 +54,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <SkipLink targetId="main-content">Pular para o conteúdo principal</SkipLink>
       <Header />
-      <main>
+      <main id="main-content">
         <Hero />
         <About />
         <Services />

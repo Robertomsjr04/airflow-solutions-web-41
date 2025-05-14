@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -11,6 +12,7 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const currentPath = location.pathname;
   
   useEffect(() => {
     const handleScroll = () => {
@@ -67,7 +69,7 @@ const Header = () => {
   const mobileMenuButtonClass = `md:hidden ${headerStyle.text} cursor-pointer`;
   
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${headerStyle.background} ${isScrolled ? 'shadow-md py-1' : 'py-2'}`}>
+    <header className={`fixed w-full z-50 transition-all duration-300 ${headerStyle.background} ${isScrolled ? 'shadow-md py-1' : 'py-2'}`} role="navigation" aria-label="Menu principal">
       <div className="container flex justify-between items-center">
         <div className="flex items-center cursor-pointer" onClick={goToHome}>
           <LogoAirFlow />
@@ -77,7 +79,7 @@ const Header = () => {
         <nav className="hidden md:flex space-x-6 items-center">
           <ul className="flex space-x-6">
             <li>
-              <button onClick={goToHome} className={menuTextClass}>
+              <button onClick={goToHome} className={menuTextClass} aria-current={currentPath === '/' ? "page" : undefined}>
                 Início
               </button>
             </li>
@@ -112,23 +114,31 @@ const Header = () => {
               </button>
             </li>
           </ul>
-          <button onClick={() => scrollToSection('contact')} className="btn-12 px-[15px] text-red-50 cursor-pointer">
+          <button onClick={() => scrollToSection('contact')} className="btn-12 px-[15px] text-red-50 cursor-pointer" aria-label="Solicitar atendimento de emergência 24 horas">
             <span className="text-sm mx-0 text-center font-extrabold py-0 px-0">atendimento em emergencia 24h</span>
           </button>
         </nav>
         
         {/* Mobile Menu Button */}
-        <Button variant="ghost" size="icon" className={mobileMenuButtonClass} onClick={toggleMobileMenu}>
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          className={mobileMenuButtonClass} 
+          onClick={toggleMobileMenu}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-menu"
+          aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+        >
           <Menu className="h-6 w-6" />
         </Button>
       </div>
       
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-black shadow-lg absolute top-full left-0 w-full py-4">
+        <div id="mobile-menu" className="md:hidden bg-black shadow-lg absolute top-full left-0 w-full py-4">
           <ul className="flex flex-col items-center space-y-4 px-6">
             <li>
-              <button onClick={goToHome} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer">
+              <button onClick={goToHome} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer" aria-current={currentPath === '/' ? "page" : undefined}>
                 Início
               </button>
             </li>
@@ -163,7 +173,7 @@ const Header = () => {
               </button>
             </li>
             <li className="pt-2">
-              <button onClick={() => scrollToSection('contact')} className="btn-12 w-full cursor-pointer">
+              <button onClick={() => scrollToSection('contact')} className="btn-12 w-full cursor-pointer" aria-label="Solicitar atendimento de emergência 24 horas">
                 <span>atendimento em emergencia 24h</span>
               </button>
             </li>

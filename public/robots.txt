@@ -1,14 +1,25 @@
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Allow Google to index all content
 User-agent: Googlebot
 Allow: /
 
+# Allow Bing to index all content
 User-agent: Bingbot
 Allow: /
 
+# Allow Twitter bot to index all content
 User-agent: Twitterbot
 Allow: /
 
+# Allow Facebook bot to index all content
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
+# Sitemap location
+Sitemap: https://airflow.com.br/sitemap.xml
