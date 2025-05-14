@@ -96,9 +96,9 @@ const Header = () => {
     setMobileServicesOpen(false);
   };
 
-  // Modified headerStyle to always use black background
+  // Updated headerStyle to use dark-blue-bg class
   const headerStyle = {
-    background: 'bg-black',
+    background: 'dark-blue-bg',
     text: 'text-white',
     hoverText: 'hover:text-gray-300'
   };
@@ -221,7 +221,7 @@ const Header = () => {
       
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div id="mobile-menu" className="md:hidden bg-black shadow-lg absolute top-full left-0 w-full py-4">
+        <div id="mobile-menu" className="md:hidden dark-blue-bg shadow-lg absolute top-full left-0 w-full py-4">
           <ul className="flex flex-col items-center space-y-4 px-6">
             <li>
               <button onClick={goToHome} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer" aria-current={currentPath === '/' ? "page" : undefined}>
