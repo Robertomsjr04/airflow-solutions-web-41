@@ -10,13 +10,13 @@ const certificates = [
   {
     title: "Atestado Técnico",
     organization: "G6 Educacional",
-    image: "/lovable-uploads/b395e122-e1ad-4eed-a8ca-8000bc61fe88.png",
+    image: "/lovable-uploads/c742c9e2-2af1-4b43-a4e4-d71215c59926.png",
     alt: "Atestado Técnico - G6 Educacional"
   },
   {
     title: "Atestado de Capacidade Técnica",
     organization: "Instituto de Cardiologia",
-    image: "/lovable-uploads/68a0dd58-bda4-4f8f-bbf4-e272464a54f3.png",
+    image: "/lovable-uploads/abb64bbf-9410-485e-a92d-07cc979fa7f0.png",
     alt: "Atestado de Capacidade Técnica - Instituto de Cardiologia"
   }
 ];
