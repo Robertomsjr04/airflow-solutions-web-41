@@ -19,7 +19,7 @@ const About = () => {
           <div className="reveal-right">
             <h3 className="text-2xl font-bold mb-4">Nossa Missão</h3>
             <p className="text-gray-700 mb-6">
-              Fundada em 1990, a Air Flow tem se dedicado a fornecer soluções de refrigeração industrial e comercial de alta qualidade por mais de 30 anos. Nossa missão é garantir que suas instalações operem com <strong>alta performance, segurança operacional e conformidade técnica</strong>, combinando <strong>excelência em engenharia térmica</strong> e <strong>sustentabilidade</strong>.
+              Desde sua fundação, a Air Flow é referência na entrega de soluções completas em refrigeração industrial e comercial, com foco em <strong>alta performance térmica, confiabilidade operacional e conformidade</strong> com requisitos normativos (PMOC e ANVISA). Nosso trabalho une <strong>engenharia aplicada, sustentabilidade e rigor técnico</strong>, garantindo eficiência energética e segurança em ambientes críticos como hospitais, indústrias e centros comerciais.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
