@@ -1,0 +1,125 @@
+
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
+import { services } from '@/data/servicesData';
+
+interface DesktopNavigationProps {
+  currentPath: string;
+  menuTextClass: string;
+  goToHome: () => void;
+  scrollToSection: (id: string) => void;
+  navigateToService: (path: string) => void;
+}
+
+const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
+  currentPath,
+  menuTextClass,
+  goToHome,
+  scrollToSection,
+  navigateToService
+}) => {
+  return (
+    <nav className="hidden md:flex space-x-2 items-center">
+      <NavigationMenu>
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuLink 
+              onClick={goToHome} 
+              className={cn(navigationMenuTriggerStyle(), menuTextClass)}
+              active={currentPath === '/'}
+            >
+              Início
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          
+          <NavigationMenuItem>
+            <NavigationMenuLink 
+              onClick={() => scrollToSection('about')} 
+              className={cn(navigationMenuTriggerStyle(), menuTextClass)}
+            >
+              Sobre
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          
+          <NavigationMenuItem>
+            <NavigationMenuTrigger className={cn(menuTextClass)}>
+              Serviços
+            </NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="grid w-[400px] gap-2 p-4 md:w-[500px] md:grid-cols-2">
+                {services.map((service) => (
+                  <li key={service.path}>
+                    <NavigationMenuLink asChild>
+                      <a
+                        href={service.path}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          navigateToService(service.path);
+                        }}
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                      >
+                        <div className="text-sm font-medium leading-none">{service.name}</div>
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                ))}
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+          
+          <NavigationMenuItem>
+            <NavigationMenuLink 
+              onClick={() => scrollToSection('sectors')} 
+              className={cn(navigationMenuTriggerStyle(), menuTextClass)}
+            >
+              Setores
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          
+          <NavigationMenuItem>
+            <NavigationMenuLink 
+              onClick={() => scrollToSection('differentials')} 
+              className={cn(navigationMenuTriggerStyle(), menuTextClass)}
+            >
+              Diferenciais
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          
+          <NavigationMenuItem>
+            <NavigationMenuLink 
+              onClick={() => scrollToSection('testimonials')} 
+              className={cn(navigationMenuTriggerStyle(), menuTextClass)}
+            >
+              Depoimentos
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          
+          <NavigationMenuItem>
+            <NavigationMenuLink 
+              onClick={() => scrollToSection('contact')} 
+              className={cn(navigationMenuTriggerStyle(), menuTextClass)}
+            >
+              Contato
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+      
+      <button onClick={() => scrollToSection('contact')} className="btn-12 px-[15px] text-red-50 cursor-pointer" aria-label="Solicitar atendimento de emergência 24 horas">
+        <span className="text-sm mx-0 text-center font-extrabold py-0 px-0">atendimento em emergencia 24h</span>
+      </button>
+    </nav>
+  );
+};
+
+export default DesktopNavigation;
