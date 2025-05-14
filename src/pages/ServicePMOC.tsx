@@ -7,6 +7,7 @@ import Contact from '@/components/sections/Contact';
 import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
 import { SectionDivider } from '@/components/ui/section-divider';
+import ServiceNavigation from '@/components/navigation/ServiceNavigation';
 
 const pmocFeatures = [
   {
@@ -68,6 +69,8 @@ const ServicePMOC = () => {
         />
         
         <SectionDivider />
+        
+        <ServiceNavigation />
         
         <div ref={contactRef}>
           <Contact />

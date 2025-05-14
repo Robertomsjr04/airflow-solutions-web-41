@@ -10,6 +10,7 @@ import AlarmPanel from '@/components/interactive/AlarmPanel';
 import EnergyDashboard from '@/components/interactive/EnergyDashboard';
 import SnowEffect from '@/components/interactive/SnowEffect';
 import { SectionDivider } from '@/components/ui/section-divider';
+import ServiceNavigation from '@/components/navigation/ServiceNavigation';
 
 const automacaoFeatures = [
   {
@@ -108,6 +109,8 @@ const ServiceAutomacao = () => {
         </section>
         
         <SectionDivider />
+        
+        <ServiceNavigation />
         
         <div ref={contactRef}>
           <Contact />

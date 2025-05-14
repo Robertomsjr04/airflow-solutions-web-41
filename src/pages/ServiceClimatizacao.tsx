@@ -9,6 +9,7 @@ import { setupScrollAnimation } from '@/utils/scrollAnimation';
 import PneumaticValve from '@/components/interactive/PneumaticValve';
 import SnowEffect from '@/components/interactive/SnowEffect';
 import { SectionDivider } from '@/components/ui/section-divider';
+import ServiceNavigation from '@/components/navigation/ServiceNavigation';
 
 const climatizacaoFeatures = [
   {
@@ -148,6 +149,8 @@ const ServiceClimatizacao = () => {
         </section>
         
         <SectionDivider />
+        
+        <ServiceNavigation />
         
         <div ref={contactRef}>
           <Contact />
