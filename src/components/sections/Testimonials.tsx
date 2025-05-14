@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardFooter } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
@@ -5,6 +6,7 @@ import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Image } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { preloadImage } from '@/utils/imageUtils';
+
 const testimonials = [{
   name: "Carlos Mendes",
   position: "Diretor de Operações",
@@ -37,8 +39,9 @@ testimonials.forEach(testimonial => {
     preloadImage(testimonial.certificateImage).catch(err => console.warn('Failed to preload testimonial certificate image:', err));
   }
 });
+
 const Testimonials = () => {
-  return <section id="testimonials" className="---\n\n### \uD83D\uDD27 Pedido de Ajuste\n\n- **Descri\xE7\xE3o do ajuste:**  \n  Alterar a classe CSS do elemento para \"py-20 bg-airflow-gray\".\n\n- **Tela afetada:**  \n  (Por favor, forne\xE7a o nome da tela)\n\n- **Componente ou elemento:**  \n  (Por favor, forne\xE7a o nome do componente ou elemento)\n\n- **Comportamento esperado ap\xF3s o ajuste:**  \n  1. O desenvolvedor deve localizar o elemento na tela especificada.\n  2. O desenvolvedor deve alterar a classe CSS do elemento para \"py-20 bg-airflow-gray\".\n  3. Ap\xF3s a altera\xE7\xE3o, o elemento deve exibir as propriedades de estilo definidas pela classe \"py-20 bg-airflow-gray\".\n\n- **Extras:**  \n  (Por favor, forne\xE7a quaisquer observa\xE7\xF5es adicionais, se aplic\xE1vel)\n\n---\n\n**DO NOT CHANGE ANY UI/existing FUNCTIONALITY/WORKFLOW unrelated to the problem I listed now.**">
+  return <section id="testimonials" className="py-20 bg-airflow-gray">
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Depoimentos de Clientes</h2>
@@ -105,4 +108,5 @@ const Testimonials = () => {
       </div>
     </section>;
 };
+
 export default Testimonials;
