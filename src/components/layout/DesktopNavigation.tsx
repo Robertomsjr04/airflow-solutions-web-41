@@ -35,7 +35,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
           <NavigationMenuItem>
             <NavigationMenuLink 
               onClick={goToHome} 
-              className={cn(navigationMenuTriggerStyle(), menuTextClass)}
+              className={cn(navigationMenuTriggerStyle(), menuTextClass, "border-none")}
               active={currentPath === '/'}
             >
               Início
@@ -45,14 +45,14 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
           <NavigationMenuItem>
             <NavigationMenuLink 
               onClick={() => scrollToSection('about')} 
-              className={cn(navigationMenuTriggerStyle(), menuTextClass)}
+              className={cn(navigationMenuTriggerStyle(), menuTextClass, "border-none")}
             >
               Sobre
             </NavigationMenuLink>
           </NavigationMenuItem>
           
           <NavigationMenuItem>
-            <NavigationMenuTrigger className={cn(menuTextClass)}>
+            <NavigationMenuTrigger className={cn(menuTextClass, "border-none")}>
               Serviços
             </NavigationMenuTrigger>
             <NavigationMenuContent>
@@ -80,7 +80,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
           <NavigationMenuItem>
             <NavigationMenuLink 
               onClick={() => scrollToSection('sectors')} 
-              className={cn(navigationMenuTriggerStyle(), menuTextClass)}
+              className={cn(navigationMenuTriggerStyle(), menuTextClass, "border-none")}
             >
               Setores
             </NavigationMenuLink>
@@ -89,7 +89,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
           <NavigationMenuItem>
             <NavigationMenuLink 
               onClick={() => scrollToSection('differentials')} 
-              className={cn(navigationMenuTriggerStyle(), menuTextClass)}
+              className={cn(navigationMenuTriggerStyle(), menuTextClass, "border-none")}
             >
               Diferenciais
             </NavigationMenuLink>
@@ -98,7 +98,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
           <NavigationMenuItem>
             <NavigationMenuLink 
               onClick={() => scrollToSection('testimonials')} 
-              className={cn(navigationMenuTriggerStyle(), menuTextClass)}
+              className={cn(navigationMenuTriggerStyle(), menuTextClass, "border-none")}
             >
               Depoimentos
             </NavigationMenuLink>
@@ -107,7 +107,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
           <NavigationMenuItem>
             <NavigationMenuLink 
               onClick={() => scrollToSection('contact')} 
-              className={cn(navigationMenuTriggerStyle(), menuTextClass)}
+              className={cn(navigationMenuTriggerStyle(), menuTextClass, "border-none")}
             >
               Contato
             </NavigationMenuLink>
@@ -115,7 +115,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
         </NavigationMenuList>
       </NavigationMenu>
       
-      <button onClick={() => scrollToSection('contact')} className="btn-12 px-[15px] text-red-50 cursor-pointer" aria-label="Solicitar atendimento de emergência 24 horas">
+      <button onClick={() => scrollToSection('contact')} className="btn-12 px-[15px] text-white cursor-pointer" aria-label="Solicitar atendimento de emergência 24 horas">
         <span className="text-sm mx-0 text-center font-extrabold py-0 px-0">atendimento em emergencia 24h</span>
       </button>
     </nav>

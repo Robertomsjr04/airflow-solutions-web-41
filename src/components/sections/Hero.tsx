@@ -72,7 +72,7 @@ const Hero = () => {
     }
   };
 
-  return <section ref={heroRef} id="home" className="relative min-h-screen flex items-center pt-16 overflow-hidden">
+  return <section ref={heroRef} id="home" className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-black">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
         <video 
@@ -88,8 +88,8 @@ const Hero = () => {
           {/* Fallback for browsers that don't support video */}
           Your browser does not support the video tag.
         </video>
-        {/* Dark overlay to maintain the current look and feel */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/70" style={{
+        {/* Dark overlay to ensure black background regardless of video content */}
+        <div className="absolute inset-0 bg-black/80" style={{
         mixBlendMode: 'multiply'
       }}></div>
       </div>
@@ -102,7 +102,7 @@ const Hero = () => {
           <h1 className="hero-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight">
             Air Flow - Soluções em Refrigeração Industrial e Comercial
           </h1>
-          <p className="hero-description text-xl md:text-2xl text-gray-100 mb-8">
+          <p className="hero-description text-xl md:text-2xl text-white mb-8">
             Excelência em engenharia térmica com máxima eficiência energética, conformidade técnica e tecnologia de ponta.
           </p>
           <div className="hero-button py-0 mx-0 px-0 rounded-none">

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Menu } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -64,7 +65,7 @@ const Header = () => {
     setMobileServicesOpen(false);
   };
 
-  // Header style configuration based on scroll position and hero visibility
+  // Always use black background in hero section with white text
   const headerStyle = {
     background: isInHeroSection ? 'bg-black' : 'bg-white',
     text: isInHeroSection ? 'text-white' : 'text-black',
@@ -72,8 +73,8 @@ const Header = () => {
     shadow: isScrolled ? 'shadow-md' : ''
   };
 
-  const menuTextClass = `${headerStyle.text} ${headerStyle.hoverText} font-medium transition-colors cursor-pointer`;
-  const mobileMenuButtonClass = `md:hidden ${headerStyle.text} cursor-pointer`;
+  const menuTextClass = `${headerStyle.text} ${headerStyle.hoverText} font-medium transition-colors cursor-pointer bg-transparent`;
+  const mobileMenuButtonClass = `md:hidden ${headerStyle.text} cursor-pointer bg-transparent`;
   
   return (
     <header 

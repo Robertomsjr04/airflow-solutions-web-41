@@ -41,17 +41,17 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
       aria-hidden={!mobileMenuOpen}
     >
       <nav className="container flex flex-col space-y-2">
-        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg ${currentPath === '/' ? 'font-bold' : ''}`} onClick={goToHome}>
+        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent ${currentPath === '/' ? 'font-bold' : ''}`} onClick={goToHome}>
           Início
         </button>
         
-        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg`} onClick={() => scrollToSection('about')}>
+        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} onClick={() => scrollToSection('about')}>
           Sobre
         </button>
         
         <div className="relative">
           <button 
-            className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg flex justify-between items-center`} 
+            className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg flex justify-between items-center bg-transparent`} 
             onClick={toggleMobileServices}
             aria-expanded={mobileServicesOpen}
             aria-controls="mobile-services"
@@ -78,7 +78,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
               {services.map((service) => (
                 <button
                   key={service.path}
-                  className={`px-4 py-2 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full`}
+                  className={`px-4 py-2 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full bg-transparent`}
                   onClick={() => navigateToService(service.path)}
                 >
                   {service.name}
@@ -88,23 +88,23 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
           </div>
         </div>
         
-        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg`} onClick={() => scrollToSection('sectors')}>
+        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} onClick={() => scrollToSection('sectors')}>
           Setores
         </button>
         
-        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg`} onClick={() => scrollToSection('differentials')}>
+        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} onClick={() => scrollToSection('differentials')}>
           Diferenciais
         </button>
         
-        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg`} onClick={() => scrollToSection('testimonials')}>
+        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} onClick={() => scrollToSection('testimonials')}>
           Depoimentos
         </button>
         
-        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg`} onClick={() => scrollToSection('contact')}>
+        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} onClick={() => scrollToSection('contact')}>
           Contato
         </button>
         
-        <button onClick={() => scrollToSection('contact')} className="btn-12 mx-4 mt-4 px-[15px] text-red-50 cursor-pointer" aria-label="Solicitar atendimento de emergência 24 horas">
+        <button onClick={() => scrollToSection('contact')} className="btn-12 mx-4 mt-4 px-[15px] text-white cursor-pointer" aria-label="Solicitar atendimento de emergência 24 horas">
           <span className="text-sm mx-0 text-center font-extrabold py-0 px-0">atendimento em emergencia 24h</span>
         </button>
       </nav>
