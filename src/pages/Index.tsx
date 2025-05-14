@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -43,6 +42,10 @@ const Index = () => {
           img.src = image.src;
         });
       });
+      
+      // Preload certificate images for testimonials
+      preloadImage('/lovable-uploads/28a47dbe-cbaf-4eda-a45f-c9e7adb9ec02.png');
+      preloadImage('/lovable-uploads/64687e12-46cb-44b9-8574-13e6f0e8cce8.png');
     };
     
     preloadAssets();
