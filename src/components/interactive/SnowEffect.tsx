@@ -102,6 +102,7 @@ class Snowflake {
 
 const SnowEffect: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
   const [config, setConfig] = useState<SnowConfig>({
     count: 150,
     baseSpeed: 1.5,
@@ -112,6 +113,28 @@ const SnowEffect: React.FC = () => {
   const animationRef = useRef<number>(0);
   const lastTimeRef = useRef<number>(0);
   const [isVisible, setIsVisible] = useState(true);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      const isMobileDevice = window.innerWidth < 768;
+      setIsMobile(isMobileDevice);
+      
+      // Adjust snowflake count based on device
+      setConfig(prev => ({
+        ...prev,
+        count: isMobileDevice ? 50 : 150, // Reduce count on mobile
+        baseSize: isMobileDevice ? 2 : 3  // Smaller flakes on mobile
+      }));
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
 
   // Initialize and set up animation
   useEffect(() => {
@@ -132,11 +155,11 @@ const SnowEffect: React.FC = () => {
     };
     window.addEventListener('resize', handleResize);
     
-    // ScrollTrigger to manage performance
+    // ScrollTrigger to manage performance - only animate when in view
     ScrollTrigger.create({
-      trigger: 'body',
-      start: 'top top',
-      end: 'bottom bottom',
+      trigger: containerRef.current,
+      start: 'top bottom',
+      end: 'bottom top',
       onEnter: () => setIsVisible(true),
       onLeave: () => setIsVisible(false),
       onEnterBack: () => setIsVisible(true),
@@ -254,7 +277,7 @@ const SnowEffect: React.FC = () => {
               type="range" 
               id="snow-count" 
               min="10" 
-              max="500" 
+              max={isMobile ? "200" : "500"}
               value={config.count} 
               onChange={handleCountChange}
               className="flex-1"

@@ -91,6 +91,48 @@
   }
 }
 
+/* Animation for reveal and reveal-right elements */
+.reveal, .reveal-right {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.8s cubic-bezier(0.17, 0.85, 0.45, 1);
+}
+
+.reveal {
+  transform: translateY(40px);
+}
+
+.reveal-right {
+  transform: translateX(40px);
+}
+
+.reveal.active, .reveal-right.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) translateX(0);
+}
+
+/* Animation delay classes for sequential reveals */
+.reveal-delay-100 {
+  transition-delay: 100ms;
+}
+
+.reveal-delay-200 {
+  transition-delay: 200ms;
+}
+
+.reveal-delay-300 {
+  transition-delay: 300ms;
+}
+
+.reveal-delay-400 {
+  transition-delay: 400ms;
+}
+
+.reveal-delay-500 {
+  transition-delay: 500ms;
+}
+
 /* Animation for the technology badges */
 @keyframes fadeIn {
   from {
