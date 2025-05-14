@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardFooter } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
@@ -6,7 +5,6 @@ import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Image } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { preloadImage } from '@/utils/imageUtils';
-
 const testimonials = [{
   name: "Carlos Mendes",
   position: "Diretor de Operações",
@@ -39,10 +37,9 @@ testimonials.forEach(testimonial => {
     preloadImage(testimonial.certificateImage).catch(err => console.warn('Failed to preload testimonial certificate image:', err));
   }
 });
-
 const Testimonials = () => {
   return <section id="testimonials" className="py-20 bg-airflow-gray">
-      <div className="container">
+      <div className="---\n\n### \uD83D\uDD27 Pedido de Ajuste\n\n- **Descri\xE7\xE3o do ajuste:**  \n  (Ajustar o container para que se ajuste automaticamente ao conte\xFAdo)\n\n- **Tela afetada:**  \n  (Nome da tela)\n\n- **Componente ou elemento:**  \n  (Container)\n\n- **Comportamento esperado ap\xF3s o ajuste:**  \n  1. O container deve se ajustar automaticamente ao conte\xFAdo\n  2. Se o conte\xFAdo for maior que o tamanho do container, o container deve expandir\n  3. Se o conte\xFAdo for menor que o tamanho do container, o container deve contrair\n\n- **Extras:**  \n  (Nenhum)\n\n---\n\n**DO NOT CHANGE ANY UI/existing FUNCTIONALITY/WORKFLOW unrelated to the problem I listed now.**">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Depoimentos de Clientes</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto reveal">
@@ -108,5 +105,4 @@ const Testimonials = () => {
       </div>
     </section>;
 };
-
 export default Testimonials;
