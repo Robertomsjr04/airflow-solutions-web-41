@@ -404,7 +404,8 @@
 }
 
 .btn-12 span {
-  mix-blend-mode: difference;
+  /* Removed mix-blend-mode for proper color control */
+  transition: color 0.2s ease;
 }
 
 .btn-12:after,
@@ -443,6 +444,15 @@
 .btn-12:hover:after,
 .btn-12:hover:before {
   --progress: 0;
+}
+
+/* Adding text color change to black on hover and box-shadow for subtle shadow effect */
+.btn-12:hover span {
+  color: #000000;
+}
+
+.btn-12:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* New dark blue background styles */
