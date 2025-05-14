@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Menu } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -65,11 +64,11 @@ const Header = () => {
     setMobileServicesOpen(false);
   };
 
-  // Always use black background in hero section with white text
+  // Always use black background with white text, regardless of hero section
   const headerStyle = {
-    background: isInHeroSection ? 'bg-black' : 'bg-white',
-    text: isInHeroSection ? 'text-white' : 'text-black',
-    hoverText: isInHeroSection ? 'hover:text-gray-300' : 'hover:text-gray-600',
+    background: 'bg-black',
+    text: 'text-white',
+    hoverText: 'hover:text-gray-300',
     shadow: isScrolled ? 'shadow-md' : ''
   };
 
