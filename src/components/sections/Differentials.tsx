@@ -1,28 +1,31 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Shield, Clock, Users, BarChart3, Building } from 'lucide-react';
+import { 
+  AnimatedIcons, 
+  useScrollVisibility 
+} from '@/components/ui/animated-icons';
 
 const differentials = [
   {
     title: "30+ Anos de Experiência",
     description: "Soluções testadas e otimizadas para indústrias críticas, com expertise comprovada em projetos complexos.",
-    icon: Shield,
+    icon: "Shield",
   },
   {
     title: "Equipe Certificada ABRAVA",
     description: "Engenheiros e técnicos com treinamentos internacionais e certificações nas principais tecnologias do mercado.",
-    icon: Users,
+    icon: "Users",
   },
   {
     title: "Atendimento Nacional",
     description: "Projetos em todo o Brasil com padrão Air Flow, garantindo qualidade uniforme independente da localização.",
-    icon: Building,
+    icon: "Building",
   },
   {
     title: "Eficiência Energética",
     description: "Redução de até 40% nos custos operacionais através de soluções sustentáveis e sistemas de alta eficiência.",
-    icon: BarChart3,
+    icon: "Chart",
   }
 ];
 
@@ -40,21 +43,34 @@ const Differentials = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {differentials.map((item, index) => (
-            <div key={index} className="reveal" style={{ animationDelay: `${index * 100}ms` }}>
-              <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white h-full hover:bg-white/20 transition-colors">
-                <CardHeader className="flex flex-col items-center text-center pb-2">
-                  <div className="bg-white rounded-full p-3 mb-4">
-                    <item.icon className="h-6 w-6 text-airflow-blue" />
-                  </div>
-                  <h3 className="font-bold text-xl text-white">{item.title}</h3>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <p>{item.description}</p>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
+          {differentials.map((item, index) => {
+            // Use the useScrollVisibility hook for each card
+            const { ref, isVisible } = useScrollVisibility();
+            
+            // Get the appropriate icon component
+            const IconComponent = AnimatedIcons[item.icon as keyof typeof AnimatedIcons];
+            
+            return (
+              <div key={index} className="reveal" style={{ animationDelay: `${index * 100}ms` }} ref={ref}>
+                <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white h-full hover:bg-white/20 transition-colors">
+                  <CardHeader className="flex flex-col items-center text-center pb-2">
+                    <div className="bg-white rounded-full p-3 mb-4 flex items-center justify-center">
+                      <IconComponent 
+                        className="h-6 w-6 text-airflow-blue" 
+                        color="#1E4D8C" 
+                        size={24}
+                        isVisible={isVisible} 
+                      />
+                    </div>
+                    <h3 className="font-bold text-xl text-white">{item.title}</h3>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <p>{item.description}</p>
+                  </CardContent>
+                </Card>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
