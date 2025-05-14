@@ -1,10 +1,9 @@
 
 import React from 'react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { AirVent, BarChart, Settings, ShieldCheck, Thermometer, Wrench, Activity } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import AnimatedButton from '@/components/ui/animated-button';
+import { HoverEffect } from '@/components/ui/hover-effect';
 
 const services = [{
   title: "Climatização e Refrigeração Industrial",
@@ -60,6 +59,15 @@ const Services = () => {
     console.log("Navigating to:", url);
     navigate(url);
   };
+
+  // Transform services array to the format expected by HoverEffect
+  const hoverItems = services.map(service => ({
+    title: service.title,
+    description: service.description,
+    link: service.url,
+    icon: service.icon,
+    color: service.color
+  }));
   
   return <section id="services" className="py-20 bg-airflow-gray">
       <div className="container">
@@ -71,33 +79,11 @@ const Services = () => {
           <div className="w-20 h-1 bg-airflow-blue mx-auto mt-4"></div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => <div key={index} className="reveal" style={{
-          animationDelay: `${index * 100}ms`
-        }}>
-              <Card className="h-full shadow-lg hover:shadow-xl transition-shadow">
-                <CardHeader>
-                  <div className={`${service.color} mb-4`}>
-                    <service.icon size={32} />
-                  </div>
-                  <CardTitle>{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base text-gray-700">
-                    {service.description}
-                  </CardDescription>
-                </CardContent>
-                <CardFooter>
-                  <Button 
-                    variant="outline" 
-                    className="text-airflow-blue hover:bg-airflow-blue hover:text-white border-airflow-blue" 
-                    onClick={() => handleNavigate(service.url)}
-                  >
-                    Saiba Mais
-                  </Button>
-                </CardFooter>
-              </Card>
-            </div>)}
+        <div className="reveal">
+          <HoverEffect 
+            items={hoverItems} 
+            onNavigate={handleNavigate}
+          />
         </div>
         
         <div className="text-center mt-12 reveal flex justify-center">
