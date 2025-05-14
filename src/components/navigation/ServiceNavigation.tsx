@@ -49,19 +49,7 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ className }) => {
   return (
     <div className={`py-8 ${className}`}>
       <div className="container">
-        <h3 className="text-xl font-medium text-center mb-4">Navegação entre Serviços</h3>
-        
-        <div className="flex justify-center mb-4">
-          <Button 
-            variant="secondary" 
-            onClick={goToServicesSection}
-            className="w-full md:w-auto max-w-xs mx-auto"
-          >
-            Ver Todos os Serviços
-          </Button>
-        </div>
-        
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex gap-2">
             {prevService && (
               <Button 
@@ -86,6 +74,14 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ className }) => {
               </Button>
             )}
           </div>
+          
+          <Button 
+            variant="secondary" 
+            onClick={goToServicesSection}
+            className="w-full md:w-auto"
+          >
+            Ver Todos os Serviços
+          </Button>
         </div>
       </div>
     </div>
