@@ -6,6 +6,7 @@ import ServiceDetail from '@/components/sections/ServiceDetail';
 import Contact from '@/components/sections/Contact';
 import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
+import { SectionDivider } from '@/components/ui/section-divider';
 
 const dutosFeatures = [
   {
@@ -56,6 +57,8 @@ const ServiceDutos = () => {
           </div>
         </div>
         
+        <SectionDivider />
+        
         <ServiceDetail 
           title="Excelência em Tratamento de Ar"
           description="Projetamos, fabricamos e instalamos sistemas completos de dutos e tratamento de ar que garantem a qualidade do ar interior e a eficiência da distribuição do ar tratado. Utilizando tecnologias avançadas de monitoramento e filtragem, asseguramos ambientes controlados que atendem às mais rigorosas normas técnicas e regulatórias para indústrias e instalações críticas."
@@ -63,6 +66,8 @@ const ServiceDutos = () => {
           features={dutosFeatures}
           contactRef={contactRef}
         />
+        
+        <SectionDivider />
         
         <div ref={contactRef}>
           <Contact />

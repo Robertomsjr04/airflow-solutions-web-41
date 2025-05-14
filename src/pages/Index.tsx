@@ -16,6 +16,7 @@ import { setupScrollAnimation } from '@/utils/scrollAnimation';
 import { preloadImage, preloadVideo, getEncodedPath } from '@/utils/imageUtils';
 import { useLocation } from 'react-router-dom';
 import SkipLink from '@/components/ui/skip-link';
+import { SectionDivider } from '@/components/ui/section-divider';
 
 const Index = () => {
   const location = useLocation();
@@ -58,17 +59,25 @@ const Index = () => {
       <Header />
       <main id="main-content">
         <Hero />
+        <SectionDivider />
         <About />
+        <SectionDivider />
         <Services />
+        <SectionDivider />
         <Sectors />
+        <SectionDivider />
         <div id="work">
           <OurWork />
         </div>
+        <SectionDivider variant="subtle" />
         <div id="technology">
           <TechnologyCloud />
         </div>
+        <SectionDivider />
         <Differentials />
+        <SectionDivider />
         <Testimonials />
+        <SectionDivider />
         <Contact />
       </main>
       <Footer />

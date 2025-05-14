@@ -9,6 +9,7 @@ import { setupScrollAnimation } from '@/utils/scrollAnimation';
 import AlarmPanel from '@/components/interactive/AlarmPanel';
 import EnergyDashboard from '@/components/interactive/EnergyDashboard';
 import SnowEffect from '@/components/interactive/SnowEffect';
+import { SectionDivider } from '@/components/ui/section-divider';
 
 const automacaoFeatures = [
   {
@@ -59,6 +60,8 @@ const ServiceAutomacao = () => {
           </div>
         </div>
         
+        <SectionDivider />
+        
         <ServiceDetail 
           title="Automação de Alta Performance"
           description="Desenvolvemos e implementamos sistemas avançados de automação e monitoramento que permitem o controle preciso e eficiente de toda a infraestrutura de climatização e refrigeração. Nossas soluções integradas possibilitam supervisão remota, otimização de consumo energético e manutenção preditiva, garantindo máxima performance operacional."
@@ -66,6 +69,8 @@ const ServiceAutomacao = () => {
           features={automacaoFeatures}
           contactRef={contactRef}
         />
+        
+        <SectionDivider variant="subtle" />
         
         <section className="py-16 bg-airflow-gray">
           <div className="container">
@@ -101,6 +106,8 @@ const ServiceAutomacao = () => {
             </div>
           </div>
         </section>
+        
+        <SectionDivider />
         
         <div ref={contactRef}>
           <Contact />

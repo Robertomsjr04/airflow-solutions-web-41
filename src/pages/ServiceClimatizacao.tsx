@@ -8,6 +8,7 @@ import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
 import PneumaticValve from '@/components/interactive/PneumaticValve';
 import SnowEffect from '@/components/interactive/SnowEffect';
+import { SectionDivider } from '@/components/ui/section-divider';
 
 const climatizacaoFeatures = [
   {
@@ -72,6 +73,8 @@ const ServiceClimatizacao = () => {
           </div>
         </div>
         
+        <SectionDivider />
+        
         <ServiceDetail 
           title="Especialistas em Sistemas HVAC Industriais"
           description="Nossa equipe especializada oferece serviços abrangentes de climatização e refrigeração industrial, desde manutenção preventiva e corretiva até recuperação de equipamentos e instalação de sistemas completos. Trabalhamos com uma ampla gama de equipamentos, incluindo chillers, sistemas VRV/VRF, fan-coils e muito mais, garantindo o funcionamento eficiente e prolongando a vida útil dos seus sistemas."
@@ -79,6 +82,8 @@ const ServiceClimatizacao = () => {
           features={climatizacaoFeatures}
           contactRef={contactRef}
         />
+        
+        <SectionDivider variant="subtle" />
         
         <section className="py-16 bg-airflow-gray">
           <div className="container">
@@ -141,6 +146,8 @@ const ServiceClimatizacao = () => {
             </div>
           </div>
         </section>
+        
+        <SectionDivider />
         
         <div ref={contactRef}>
           <Contact />

@@ -6,6 +6,7 @@ import ServiceDetail from '@/components/sections/ServiceDetail';
 import Contact from '@/components/sections/Contact';
 import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
+import { SectionDivider } from '@/components/ui/section-divider';
 
 const infraestruturaFeatures = [
   {
@@ -56,6 +57,8 @@ const ServiceInfraestrutura = () => {
           </div>
         </div>
         
+        <SectionDivider />
+        
         <ServiceDetail 
           title="Soluções Completas em Infraestrutura"
           description="Oferecemos serviços especializados de manutenção e gestão para toda a infraestrutura complementar que dá suporte aos sistemas de climatização e refrigeração. Desde a manutenção de sistemas elétricos e geradores até o manejo responsável de gases refrigerantes, nossa equipe garante o funcionamento integrado e eficiente de todos os componentes essenciais."
@@ -63,6 +66,8 @@ const ServiceInfraestrutura = () => {
           features={infraestruturaFeatures}
           contactRef={contactRef}
         />
+        
+        <SectionDivider />
         
         <div ref={contactRef}>
           <Contact />

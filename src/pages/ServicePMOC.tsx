@@ -6,6 +6,7 @@ import ServiceDetail from '@/components/sections/ServiceDetail';
 import Contact from '@/components/sections/Contact';
 import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
+import { SectionDivider } from '@/components/ui/section-divider';
 
 const pmocFeatures = [
   {
@@ -56,6 +57,8 @@ const ServicePMOC = () => {
           </div>
         </div>
         
+        <SectionDivider />
+        
         <ServiceDetail 
           title="PMOC Completo e Certificado"
           description="O PMOC é uma exigência legal estabelecida pelo Ministério da Saúde para garantir a qualidade do ar em ambientes climatizados. Nossa equipe especializada desenvolve e implementa planos personalizados que atendem a todas as normas regulatórias, garantindo a saúde dos ocupantes e o funcionamento eficiente dos equipamentos."
@@ -63,6 +66,8 @@ const ServicePMOC = () => {
           features={pmocFeatures}
           contactRef={contactRef}
         />
+        
+        <SectionDivider />
         
         <div ref={contactRef}>
           <Contact />

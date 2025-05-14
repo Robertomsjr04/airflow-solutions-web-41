@@ -6,6 +6,7 @@ import ServiceDetail from '@/components/sections/ServiceDetail';
 import Contact from '@/components/sections/Contact';
 import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
+import { SectionDivider } from '@/components/ui/section-divider';
 
 const projetosFeatures = [
   {
@@ -56,6 +57,8 @@ const ServiceProjetos = () => {
           </div>
         </div>
         
+        <SectionDivider />
+        
         <ServiceDetail 
           title="Modernização e Eficiência Energética"
           description="Nossa equipe de engenheiros e projetistas desenvolve soluções personalizadas para retrofit, modernização e expansão de sistemas HVAC. Focamos na otimização do desempenho, aumento da eficiência energética e redução de custos operacionais, sempre considerando as necessidades específicas de cada cliente e as melhores práticas do setor."
@@ -63,6 +66,8 @@ const ServiceProjetos = () => {
           features={projetosFeatures}
           contactRef={contactRef}
         />
+        
+        <SectionDivider />
         
         <div ref={contactRef}>
           <Contact />
