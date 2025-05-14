@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -44,8 +45,9 @@ const Index = () => {
       });
       
       // Preload certificate images for testimonials
-      preloadImage('/lovable-uploads/28a47dbe-cbaf-4eda-a45f-c9e7adb9ec02.png');
-      preloadImage('/lovable-uploads/64687e12-46cb-44b9-8574-13e6f0e8cce8.png');
+      preloadImage('/lovable-uploads/c742c9e2-2af1-4b43-a4e4-d71215c59926.png');
+      preloadImage('/lovable-uploads/abb64bbf-9410-485e-a92d-07cc979fa7f0.png');
+      preloadImage('/lovable-uploads/667b6ba4-aae3-4c50-9dad-8d1e622350e3.png');
     };
     
     preloadAssets();

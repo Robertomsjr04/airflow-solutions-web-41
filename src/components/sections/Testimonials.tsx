@@ -13,16 +13,16 @@ const testimonials = [{
   company: "Shopping Center São Paulo",
   text: "Trabalhamos com a Air Flow há mais de 5 anos. A implementação do PMOC garantiu que nosso shopping center atenda a todos os requisitos regulatórios, mantendo o conforto ideal para nossos clientes.",
   rating: 5,
-  certificateImage: "/lovable-uploads/28a47dbe-cbaf-4eda-a45f-c9e7adb9ec02.png",
-  certificateAlt: "Certificado de Qualidade de Serviço"
+  certificateImage: "/lovable-uploads/c742c9e2-2af1-4b43-a4e4-d71215c59926.png",
+  certificateAlt: "Atestado Técnico - G6 Educacional"
 }, {
   name: "Dra. Ana Santos",
   position: "Gerente de Instalações",
   company: "Hospital Santa Casa",
   text: "A compreensão da Air Flow sobre as necessidades de refrigeração hospitalar é excepcional. Sua equipe de manutenção mantém nossos sistemas críticos funcionando perfeitamente, o que é vital para o bem-estar dos nossos pacientes.",
   rating: 5,
-  certificateImage: "/lovable-uploads/64687e12-46cb-44b9-8574-13e6f0e8cce8.png",
-  certificateAlt: "Certificado de Atestado Técnico"
+  certificateImage: "/lovable-uploads/abb64bbf-9410-485e-a92d-07cc979fa7f0.png",
+  certificateAlt: "Atestado de Capacidade Técnica - Instituto de Cardiologia"
 }, {
   name: "Roberto Alves",
   position: "Gerente Industrial",
