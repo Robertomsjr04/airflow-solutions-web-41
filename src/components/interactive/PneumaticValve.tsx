@@ -17,6 +17,7 @@ const PneumaticValve: React.FC<PneumaticValveProps> = ({ onValveChange }) => {
   const airFlowRef = useRef<SVGPathElement>(null);
   const valveSoundRef = useRef<Howl | null>(null);
   const [isHighPressure, setIsHighPressure] = useState(false);
+  const [dragInstance, setDragInstance] = useState<any>(null);
 
   useEffect(() => {
     // Initialize the valve sound
@@ -81,6 +82,8 @@ const PneumaticValve: React.FC<PneumaticValveProps> = ({ onValveChange }) => {
       }
     })[0];
 
+    setDragInstance(draggable);
+
     return () => {
       // Clean up draggable instance
       draggable.kill();
@@ -89,6 +92,23 @@ const PneumaticValve: React.FC<PneumaticValveProps> = ({ onValveChange }) => {
       }
     };
   }, [onValveChange]);
+
+  // Function to ensure draggable is always enabled
+  useEffect(() => {
+    if (dragInstance && !dragInstance.enabled()) {
+      dragInstance.enable();
+    }
+    
+    // Check periodically if drag is disabled and re-enable it
+    const checkInterval = setInterval(() => {
+      if (dragInstance && !dragInstance.enabled()) {
+        dragInstance.enable();
+        console.log("Re-enabled valve control");
+      }
+    }, 2000);
+    
+    return () => clearInterval(checkInterval);
+  }, [dragInstance]);
 
   return (
     <div className="pneumatic-valve-container bg-white rounded-lg p-6 shadow-md">
@@ -121,6 +141,7 @@ const PneumaticValve: React.FC<PneumaticValveProps> = ({ onValveChange }) => {
             strokeWidth={isHighPressure ? 2 : 0}
             className={`valve-handle hover:fill-airflow-blue transition-colors duration-300 ${isHighPressure ? 'animate-pulse' : ''}`}
             cursor="pointer"
+            style={{ touchAction: "none" }} // Prevent touch actions from interfering with drag
           />
           
           {/* Valve handle detail */}
