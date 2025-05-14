@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Menu } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -9,7 +8,7 @@ import DesktopNavigation from './DesktopNavigation';
 import MobileNavigation from './MobileNavigation';
 
 const Header = () => {
-  const isScrolled = useHeaderScroll();
+  const { isScrolled, isInHeroSection } = useHeaderScroll();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const navigate = useNavigate();
@@ -65,18 +64,25 @@ const Header = () => {
     setMobileServicesOpen(false);
   };
 
-  // Header style configuration
+  // Header style configuration based on scroll position and hero visibility
   const headerStyle = {
-    background: isScrolled ? 'bg-black' : 'dark-blue-bg',
-    text: 'text-white',
-    hoverText: 'hover:text-gray-300'
+    background: isInHeroSection ? 'bg-black' : 'bg-white',
+    text: isInHeroSection ? 'text-white' : 'text-black',
+    hoverText: isInHeroSection ? 'hover:text-gray-300' : 'hover:text-gray-600',
+    shadow: isScrolled ? 'shadow-md' : ''
   };
 
   const menuTextClass = `${headerStyle.text} ${headerStyle.hoverText} font-medium transition-colors cursor-pointer`;
   const mobileMenuButtonClass = `md:hidden ${headerStyle.text} cursor-pointer`;
   
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black shadow-md py-1' : 'dark-blue-bg py-2'}`} role="navigation" aria-label="Menu principal">
+    <header 
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled ? `${headerStyle.shadow} py-1` : 'py-2'
+      } ${headerStyle.background}`} 
+      role="navigation" 
+      aria-label="Menu principal"
+    >
       <div className="container flex justify-between items-center">
         <div className="flex items-center cursor-pointer" onClick={goToHome}>
           <LogoAirFlow />
@@ -115,6 +121,7 @@ const Header = () => {
         goToHome={goToHome}
         scrollToSection={scrollToSection}
         navigateToService={navigateToService}
+        headerStyle={headerStyle}
       />
     </header>
   );

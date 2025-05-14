@@ -1,6 +1,8 @@
 
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { services } from '@/data/servicesData';
+import { cn } from '@/lib/utils';
 
 interface MobileNavigationProps {
   isScrolled: boolean;
@@ -11,6 +13,12 @@ interface MobileNavigationProps {
   goToHome: () => void;
   scrollToSection: (id: string) => void;
   navigateToService: (path: string) => void;
+  headerStyle: {
+    background: string;
+    text: string;
+    hoverText: string;
+    shadow?: string;
+  };
 }
 
 const MobileNavigation: React.FC<MobileNavigationProps> = ({
@@ -21,74 +29,85 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
   currentPath,
   goToHome,
   scrollToSection,
-  navigateToService
+  navigateToService,
+  headerStyle
 }) => {
-  if (!mobileMenuOpen) return null;
-  
   return (
-    <div id="mobile-menu" className={`md:hidden ${isScrolled ? 'bg-black' : 'dark-blue-bg'} shadow-lg absolute top-full left-0 w-full py-4`}>
-      <ul className="flex flex-col items-center space-y-4 px-6">
-        <li>
-          <button onClick={goToHome} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer" aria-current={currentPath === '/' ? "page" : undefined}>
-            Início
-          </button>
-        </li>
-        <li>
-          <button onClick={() => scrollToSection('about')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer">
-            Sobre
-          </button>
-        </li>
-        <li className="w-full">
+    <div 
+      id="mobile-menu"
+      className={`md:hidden ${headerStyle.background} ${isScrolled ? 'shadow-sm' : ''} overflow-hidden transition-all duration-300 ${
+        mobileMenuOpen ? 'max-h-screen pb-4' : 'max-h-0'
+      }`}
+      aria-hidden={!mobileMenuOpen}
+    >
+      <nav className="container flex flex-col space-y-2">
+        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg ${currentPath === '/' ? 'font-bold' : ''}`} onClick={goToHome}>
+          Início
+        </button>
+        
+        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg`} onClick={() => scrollToSection('about')}>
+          Sobre
+        </button>
+        
+        <div className="relative">
           <button 
-            onClick={toggleMobileServices} 
-            className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer flex items-center justify-center"
+            className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg flex justify-between items-center`} 
+            onClick={toggleMobileServices}
+            aria-expanded={mobileServicesOpen}
+            aria-controls="mobile-services"
           >
-            Serviços {mobileServicesOpen ? '▲' : '▼'}
+            <span>Serviços</span>
+            <svg 
+              className={`w-4 h-4 transition-transform ${mobileServicesOpen ? 'transform rotate-180' : ''}`} 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
           </button>
           
-          {mobileServicesOpen && (
-            <div className="mt-2 py-2 bg-gray-900 rounded-md w-full">
-              <ul className="flex flex-col space-y-2">
-                {services.map((service) => (
-                  <li key={service.path} className="w-full">
-                    <button
-                      onClick={() => navigateToService(service.path)}
-                      className="text-sm text-gray-200 hover:text-white w-full text-center py-2 cursor-pointer"
-                    >
-                      {service.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
+          <div
+            id="mobile-services"
+            className={`overflow-hidden transition-all duration-300 ${
+              mobileServicesOpen ? 'max-h-96' : 'max-h-0'
+            }`}
+          >
+            <div className="flex flex-col ml-6">
+              {services.map((service) => (
+                <button
+                  key={service.path}
+                  className={`px-4 py-2 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full`}
+                  onClick={() => navigateToService(service.path)}
+                >
+                  {service.name}
+                </button>
+              ))}
             </div>
-          )}
-        </li>
-        <li>
-          <button onClick={() => scrollToSection('sectors')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer">
-            Setores
-          </button>
-        </li>
-        <li>
-          <button onClick={() => scrollToSection('differentials')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer">
-            Diferenciais
-          </button>
-        </li>
-        <li>
-          <button onClick={() => scrollToSection('testimonials')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer">
-            Depoimentos
-          </button>
-        </li>
-        <li>
-          <button onClick={() => scrollToSection('contact')} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer">
-            Contato
-          </button>
-        </li>
-        <li className="pt-2">
-          <button onClick={() => scrollToSection('contact')} className="btn-12 w-full cursor-pointer" aria-label="Solicitar atendimento de emergência 24 horas">
-            <span>atendimento em emergencia 24h</span>
-          </button>
-        </li>
-      </ul>
+          </div>
+        </div>
+        
+        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg`} onClick={() => scrollToSection('sectors')}>
+          Setores
+        </button>
+        
+        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg`} onClick={() => scrollToSection('differentials')}>
+          Diferenciais
+        </button>
+        
+        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg`} onClick={() => scrollToSection('testimonials')}>
+          Depoimentos
+        </button>
+        
+        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg`} onClick={() => scrollToSection('contact')}>
+          Contato
+        </button>
+        
+        <button onClick={() => scrollToSection('contact')} className="btn-12 mx-4 mt-4 px-[15px] text-red-50 cursor-pointer" aria-label="Solicitar atendimento de emergência 24 horas">
+          <span className="text-sm mx-0 text-center font-extrabold py-0 px-0">atendimento em emergencia 24h</span>
+        </button>
+      </nav>
     </div>
   );
 };
