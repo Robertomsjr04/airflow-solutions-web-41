@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -96,9 +95,9 @@ const Header = () => {
     setMobileServicesOpen(false);
   };
 
-  // Updated headerStyle to use dark-blue-bg class
+  // Updated headerStyle to conditionally use bg-black when scrolled
   const headerStyle = {
-    background: 'dark-blue-bg',
+    background: isScrolled ? 'bg-black' : 'dark-blue-bg',
     text: 'text-white',
     hoverText: 'hover:text-gray-300'
   };
@@ -107,7 +106,7 @@ const Header = () => {
   const mobileMenuButtonClass = `md:hidden ${headerStyle.text} cursor-pointer`;
   
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${headerStyle.background} ${isScrolled ? 'shadow-md py-1' : 'py-2'}`} role="navigation" aria-label="Menu principal">
+    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black shadow-md py-1' : 'dark-blue-bg py-2'}`} role="navigation" aria-label="Menu principal">
       <div className="container flex justify-between items-center">
         <div className="flex items-center cursor-pointer" onClick={goToHome}>
           <LogoAirFlow />
@@ -221,7 +220,7 @@ const Header = () => {
       
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div id="mobile-menu" className="md:hidden dark-blue-bg shadow-lg absolute top-full left-0 w-full py-4">
+        <div id="mobile-menu" className={`md:hidden ${isScrolled ? 'bg-black' : 'dark-blue-bg'} shadow-lg absolute top-full left-0 w-full py-4`}>
           <ul className="flex flex-col items-center space-y-4 px-6">
             <li>
               <button onClick={goToHome} className="text-white hover:text-gray-300 font-medium transition-colors w-full text-center py-2 cursor-pointer" aria-current={currentPath === '/' ? "page" : undefined}>
