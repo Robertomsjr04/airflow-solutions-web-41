@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 const About = () => {
@@ -16,7 +15,7 @@ const About = () => {
           
           <div className="reveal-right">
             <h3 className="text-2xl font-bold mb-4">Nossa Missão</h3>
-            <p className="text-gray-700 mb-6">
+            <p className="---\n\n### \uD83D\uDD27 Pedido de Ajuste\n\n- **Descri\xE7\xE3o do ajuste:**  \n  Alterar a cor do texto para \"text-gray-700\" e adicionar uma margem inferior de \"mb-6\".\n\n- **Tela afetada:**  \n  (Nome exato da tela)\n\n- **Componente ou elemento:**  \n  Texto\n\n- **Comportamento esperado ap\xF3s o ajuste:**  \n  1. O texto deve ter a cor alterada para \"text-gray-700\".\n  2. Deve haver uma margem inferior de \"mb-6\" abaixo do texto.\n\n- **Extras:**  \n  N/A\n\n---\n\n**DO NOT CHANGE ANY UI/existing FUNCTIONALITY/WORKFLOW unrelated to the problem I listed now.**">
               Fundada em 1990, a Air Flow tem se dedicado a fornecer soluções de refrigeração industrial e comercial de alta qualidade por mais de 30 anos. Nossa missão é garantir que suas instalações operem com <strong>alta performance, segurança operacional e conformidade técnica</strong>, combinando <strong>excelência em engenharia térmica</strong> e <strong>sustentabilidade</strong>.
             </p>
             
