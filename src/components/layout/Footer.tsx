@@ -99,9 +99,7 @@ const Footer = () => {
         </div>
         
         {/* Centered Back to Top Button */}
-        <div className="flex justify-center my-8">
-          <BackToTop />
-        </div>
+        
         
         <div className="border-t border-white/20 mt-6 pt-6 text-sm text-center md:text-left md:flex md:justify-between md:items-center">
           <p>&copy; {currentYear} Air Flow. Todos os direitos reservados.</p>
