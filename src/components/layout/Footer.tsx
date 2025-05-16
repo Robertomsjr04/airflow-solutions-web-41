@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 import BackToTop from '@/components/ui/back-to-top';
@@ -15,10 +14,10 @@ const Footer = () => {
               Especializada na instalação e manutenção de sistemas de refrigeração industrial e comercial desde 1990.
             </p>
             <div className="flex items-center space-x-4">
-              <a href="https://facebook.com/airflow" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
+              <a href="https://www.facebook.com/share/12HgyHm552r/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
                 <Facebook className="w-6 h-6" />
               </a>
-              <a href="https://instagram.com/airflow" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
+              <a href="https://www.instagram.com/airflowbsb?igsh=MWw5YjBkanptamY0NQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
                 <Instagram className="w-6 h-6" />
               </a>
               <a href="https://linkedin.com/company/airflow" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
