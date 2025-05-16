@@ -1,34 +1,49 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Image } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { preloadImage } from '@/utils/imageUtils';
+import AnimatedButton from '@/components/ui/animated-button';
 
 const certificates = [
   {
     title: "Atestado Técnico",
     organization: "G6 Educacional",
     image: "/lovable-uploads/c742c9e2-2af1-4b43-a4e4-d71215c59926.png",
-    alt: "Atestado Técnico - G6 Educacional"
+    alt: "Atestado Técnico - G6 Educacional",
+    description: "Certificado que atesta a qualidade dos nossos serviços de climatização para a G6 Educacional, confirmando a excelência na instalação de sistemas de ar condicionado."
   },
   {
     title: "Atestado de Capacidade Técnica",
     organization: "Instituto de Cardiologia",
     image: "/lovable-uploads/abb64bbf-9410-485e-a92d-07cc979fa7f0.png",
-    alt: "Atestado de Capacidade Técnica - Instituto de Cardiologia"
+    alt: "Atestado de Capacidade Técnica - Instituto de Cardiologia",
+    description: "Certificação técnica emitida pelo Instituto de Cardiologia, reconhecendo nossa competência na implementação de sistemas de climatização em ambientes hospitalares."
   }
 ];
 
-// Preload certificate images
-certificates.forEach(certificate => {
-  preloadImage(certificate.image).catch(err => 
-    console.warn('Failed to preload certificate image:', err)
-  );
-});
-
 const Testimonials = () => {
+  const [loadedImages, setLoadedImages] = useState<{[key: string]: boolean}>({});
+  const [isLoading, setIsLoading] = useState<{[key: string]: boolean}>({});
+  
+  const handleLoadImage = (imageUrl: string, index: number) => {
+    if (!loadedImages[imageUrl]) {
+      setIsLoading(prev => ({...prev, [imageUrl]: true}));
+      
+      const img = new Image();
+      img.src = imageUrl;
+      img.onload = () => {
+        setLoadedImages(prev => ({...prev, [imageUrl]: true}));
+        setIsLoading(prev => ({...prev, [imageUrl]: false}));
+      };
+      img.onerror = () => {
+        console.error(`Failed to load image: ${imageUrl}`);
+        setIsLoading(prev => ({...prev, [imageUrl]: false}));
+      };
+    }
+  };
+  
   return (
     <section id="testimonials" className="py-20 bg-airflow-gray">
       <div className="container mx-auto px-4">
@@ -44,39 +59,43 @@ const Testimonials = () => {
           {certificates.map((certificate, index) => (
             <div key={index} className="reveal" style={{ animationDelay: `${index * 100}ms` }}>
               <Dialog>
-                <DialogTrigger asChild>
-                  <div className="cursor-pointer group relative">
-                    <div className="relative border rounded-md overflow-hidden bg-white shadow-lg hover:shadow-xl transition-shadow">
-                      <AspectRatio ratio={3/4} className="bg-muted">
-                        <img 
-                          src={certificate.image} 
-                          alt={certificate.alt} 
-                          className="object-cover w-full h-full transition-transform group-hover:scale-105" 
-                          loading={index < 1 ? "eager" : "lazy"}
-                        />
-                        <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <div className="bg-white/80 rounded-full p-2">
-                                <Image className="w-5 h-5 text-gray-700" />
-                              </div>
-                            </TooltipTrigger>
-                            <TooltipContent>Ver certificado</TooltipContent>
-                          </Tooltip>
-                        </div>
-                      </AspectRatio>
+                <div className="bg-white p-6 rounded-lg shadow-md h-full flex flex-col">
+                  <h3 className="font-semibold text-xl mb-2">{certificate.title}</h3>
+                  <p className="text-sm text-airflow-blue mb-3">{certificate.organization}</p>
+                  
+                  <p className="text-gray-700 mb-4 flex-grow">{certificate.description}</p>
+                  
+                  <DialogTrigger asChild>
+                    <div className="flex justify-center mt-2">
+                      <AnimatedButton 
+                        className="py-2 px-4 text-xs"
+                        onClick={() => handleLoadImage(certificate.image, index)}
+                      >
+                        Ver Certificado
+                      </AnimatedButton>
                     </div>
-                    <p className="text-center mt-3 font-medium">{certificate.title}</p>
-                    <p className="text-center text-sm text-airflow-blue">{certificate.organization}</p>
-                  </div>
-                </DialogTrigger>
+                  </DialogTrigger>
+                </div>
+                
                 <DialogContent className="max-w-3xl w-[90vw] p-1">
                   <div className="relative w-full">
-                    <img 
-                      src={certificate.image} 
-                      alt={certificate.alt} 
-                      className="w-full object-contain max-h-[80vh]" 
-                    />
+                    {isLoading[certificate.image] && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-white/80">
+                        <div className="h-10 w-10 border-4 border-t-airflow-blue rounded-full animate-spin"></div>
+                      </div>
+                    )}
+                    
+                    {loadedImages[certificate.image] ? (
+                      <img 
+                        src={certificate.image} 
+                        alt={certificate.alt} 
+                        className="w-full object-contain max-h-[80vh]" 
+                      />
+                    ) : (
+                      <div className="w-full h-[50vh] bg-gray-100 flex items-center justify-center">
+                        <p className="text-gray-500">Carregando certificado...</p>
+                      </div>
+                    )}
                   </div>
                   <div className="p-2 text-center">
                     <p className="font-medium">{certificate.title}</p>
