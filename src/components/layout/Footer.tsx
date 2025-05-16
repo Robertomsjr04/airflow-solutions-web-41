@@ -1,7 +1,6 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 import BackToTop from '@/components/ui/back-to-top';
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return <footer className="dark-blue-bg text-white pt-12 pb-6">
@@ -89,11 +88,11 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Phone className="w-5 h-5 mr-3 flex-shrink-0" />
-                <span>+55 (11) 5555-1234</span>
+                <span>+55 (61) 3081-3550</span>
               </li>
               <li className="flex items-center">
                 <Mail className="w-5 h-5 mr-3 flex-shrink-0" />
-                <span>contato@airflow.com</span>
+                <span>airflow.arcondicionado@gmail.com</span>
               </li>
             </ul>
           </div>
@@ -114,5 +113,4 @@ const Footer = () => {
       </div>
     </footer>;
 };
-
 export default Footer;
