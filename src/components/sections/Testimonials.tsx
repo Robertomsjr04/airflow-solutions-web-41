@@ -2,9 +2,10 @@
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-import { Image } from 'lucide-react';
+import { Image as LucideImage } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import AnimatedButton from '@/components/ui/animated-button';
+import { preloadImage } from '@/utils/imageUtils';
 
 const certificates = [
   {
@@ -27,20 +28,20 @@ const Testimonials = () => {
   const [loadedImages, setLoadedImages] = useState<{[key: string]: boolean}>({});
   const [isLoading, setIsLoading] = useState<{[key: string]: boolean}>({});
   
-  const handleLoadImage = (imageUrl: string, index: number) => {
+  const handleLoadImage = (imageUrl: string) => {
     if (!loadedImages[imageUrl]) {
       setIsLoading(prev => ({...prev, [imageUrl]: true}));
       
-      const img = new Image();
-      img.src = imageUrl;
-      img.onload = () => {
-        setLoadedImages(prev => ({...prev, [imageUrl]: true}));
-        setIsLoading(prev => ({...prev, [imageUrl]: false}));
-      };
-      img.onerror = () => {
-        console.error(`Failed to load image: ${imageUrl}`);
-        setIsLoading(prev => ({...prev, [imageUrl]: false}));
-      };
+      // Use the preloadImage utility instead of direct Image constructor
+      preloadImage(imageUrl)
+        .then(() => {
+          setLoadedImages(prev => ({...prev, [imageUrl]: true}));
+          setIsLoading(prev => ({...prev, [imageUrl]: false}));
+        })
+        .catch(error => {
+          console.error(`Failed to load image: ${imageUrl}`, error);
+          setIsLoading(prev => ({...prev, [imageUrl]: false}));
+        });
     }
   };
   
@@ -69,7 +70,7 @@ const Testimonials = () => {
                     <div className="flex justify-center mt-2">
                       <AnimatedButton 
                         className="py-2 px-4 text-xs"
-                        onClick={() => handleLoadImage(certificate.image, index)}
+                        onClick={() => handleLoadImage(certificate.image)}
                       >
                         Ver Certificado
                       </AnimatedButton>
