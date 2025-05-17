@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { services } from '@/data/servicesData';
+import { WhatsApp } from 'lucide-react';
 
 interface DesktopNavigationProps {
   currentPath: string;
@@ -123,9 +124,16 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
         </NavigationMenuList>
       </NavigationMenu>
       
-      <button onClick={() => scrollToSection('contact')} className="btn-12 px-[15px] text-white cursor-pointer" aria-label="Solicitar atendimento de emergência 24 horas">
+      <a 
+        href="https://wa.me/5561999124752" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="btn-12 px-[15px] text-white cursor-pointer flex items-center gap-2" 
+        aria-label="Solicitar atendimento de emergência 24 horas via WhatsApp"
+      >
+        <WhatsApp size={16} />
         <span className="text-sm mx-0 text-center font-extrabold py-0 px-0">atendimento em emergencia 24h</span>
-      </button>
+      </a>
     </nav>
   );
 };
