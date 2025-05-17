@@ -156,7 +156,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
           className="emergency-button mx-auto" 
           aria-label="Solicitar atendimento de emergência 24 horas"
         >
-          <span>atendimento em emergencia 24h</span>
+          <span>Atendimento em emergência 24h</span>
         </button>
       </nav>
     </div>
