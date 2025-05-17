@@ -123,8 +123,8 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
         </NavigationMenuList>
       </NavigationMenu>
       
-      <button onClick={() => scrollToSection('contact')} className="btn-12 px-[15px] text-white cursor-pointer" aria-label="Solicitar atendimento de emergência 24 horas">
-        <span className="text-sm mx-0 text-center font-extrabold py-0 px-0">atendimento em emergencia 24h</span>
+      <button onClick={() => scrollToSection('contact')} className="emergency-button" aria-label="Solicitar atendimento de emergência 24 horas">
+        <span>atendimento em emergencia 24h</span>
       </button>
     </nav>
   );

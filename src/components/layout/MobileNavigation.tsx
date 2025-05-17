@@ -153,10 +153,10 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
             scrollToSection('contact');
             handleNavClick('emergency');
           }} 
-          className="btn-12 mx-4 mt-4 px-[15px] text-white cursor-pointer" 
+          className="emergency-button mx-auto" 
           aria-label="Solicitar atendimento de emergência 24 horas"
         >
-          <span className="text-sm mx-0 text-center font-extrabold py-0 px-0">atendimento em emergencia 24h</span>
+          <span>atendimento em emergencia 24h</span>
         </button>
       </nav>
     </div>

@@ -689,3 +689,56 @@ header {
     cursor: pointer;
   }
 }
+
+/* New Emergency Button Styles */
+.emergency-button {
+  width: 6.5em;
+  height: 2.3em;
+  margin: 0.5em;
+  background-color: #ea384c;
+  color: #fff;
+  border: none;
+  border-radius: 0.625em;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.emergency-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  transition: all 0.3s;
+  transform: skewX(-30deg);
+  z-index: 0;
+}
+
+.emergency-button:hover::before {
+  left: 0;
+  transform: skewX(-30deg);
+}
+
+.emergency-button:hover {
+  color: #000;
+}
+
+.emergency-button span {
+  position: relative;
+  z-index: 1;
+  display: block;
+  text-align: center;
+}
+
+/* Media queries for the emergency button on mobile */
+@media (max-width: 768px) {
+  .emergency-button {
+    font-size: 16px;
+  }
+}
