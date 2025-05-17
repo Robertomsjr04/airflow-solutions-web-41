@@ -57,8 +57,8 @@ const Contact = () => {
                 <div className="bg-airflow-gray p-6 rounded-lg shadow-md">
                   <h4 className="font-bold text-airflow-blue mb-2">Informações de Contato</h4>
                   <p className="text-gray-700">
-                    Telefone: +55 (11) 5555-1234<br />
-                    Email: contato@airflow.com<br />
+                    Telefone: +55 (61) 3081-3550<br />
+                    Email: airflow.arcondicionado@gmail.com<br />
                     Horário: Seg-Sex, 8h - 18h
                   </p>
                   <p className="text-xs text-gray-500 mt-2">Atendimento emergencial 24h</p>

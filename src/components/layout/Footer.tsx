@@ -1,6 +1,8 @@
+
 import React from 'react';
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 import BackToTop from '@/components/ui/back-to-top';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return <footer className="dark-blue-bg text-white pt-12 pb-6">
@@ -111,4 +113,5 @@ const Footer = () => {
       </div>
     </footer>;
 };
+
 export default Footer;
