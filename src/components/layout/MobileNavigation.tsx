@@ -1,8 +1,8 @@
+
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { services } from '@/data/servicesData';
 import { cn } from '@/lib/utils';
-import { WhatsApp } from 'lucide-react';
 
 interface MobileNavigationProps {
   isScrolled: boolean;
@@ -104,16 +104,9 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
           Contato
         </button>
         
-        <a 
-          href="https://wa.me/5561999124752" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="btn-12 mx-4 mt-4 px-[15px] text-white cursor-pointer flex items-center justify-center gap-2" 
-          aria-label="Solicitar atendimento de emergência 24 horas via WhatsApp"
-        >
-          <WhatsApp size={16} />
+        <button onClick={() => scrollToSection('contact')} className="btn-12 mx-4 mt-4 px-[15px] text-white cursor-pointer" aria-label="Solicitar atendimento de emergência 24 horas">
           <span className="text-sm mx-0 text-center font-extrabold py-0 px-0">atendimento em emergencia 24h</span>
-        </a>
+        </button>
       </nav>
     </div>
   );
