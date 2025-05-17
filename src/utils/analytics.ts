@@ -1,27 +1,59 @@
 
 // Google Analytics implementation
-export const initializeAnalytics = () => {
-  // Load Google Analytics Script
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=G-MEASUREMENT_ID`;
-  document.head.appendChild(script);
+interface Window {
+  dataLayer: any[];
+  gtag: (...args: any[]) => void;
+}
 
-  // Initialize Google Analytics
-  window.dataLayer = window.dataLayer || [];
-  function gtag(...args: any[]) {
-    window.dataLayer.push(args);
+declare global {
+  interface Window {
+    dataLayer: any[];
+    gtag: (...args: any[]) => void;
   }
-  gtag('js', new Date());
-  gtag('config', 'G-MEASUREMENT_ID');
+}
+
+// Make sure GA ID is consistent
+const GA_MEASUREMENT_ID = 'G-MEASUREMENT_ID';
+
+export const initializeAnalytics = () => {
+  try {
+    // Check if script already exists to prevent duplicates
+    if (document.querySelector(`script[src*="googletagmanager"]`)) {
+      console.log('Google Analytics already initialized');
+      return;
+    }
+    
+    // Load Google Analytics Script
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    document.head.appendChild(script);
+
+    // Initialize Google Analytics
+    window.dataLayer = window.dataLayer || [];
+    function gtag(...args: any[]) {
+      window.dataLayer.push(args);
+    }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_MEASUREMENT_ID);
+    
+    console.log('Google Analytics initialized successfully');
+  } catch (error) {
+    console.warn('Failed to initialize analytics:', error);
+  }
 };
 
 // Track page views
 export const trackPageView = (path: string) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('config', 'G-MEASUREMENT_ID', {
-      page_path: path,
-    });
+  try {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('config', GA_MEASUREMENT_ID, {
+        page_path: path,
+      });
+    }
+  } catch (error) {
+    console.warn('Error tracking page view:', error);
   }
 };
 
@@ -32,12 +64,16 @@ export const trackEvent = (
   label?: string, 
   value?: number
 ) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', action, {
-      event_category: category,
-      event_label: label,
-      value: value,
-    });
+  try {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', action, {
+        event_category: category,
+        event_label: label,
+        value: value,
+      });
+    }
+  } catch (error) {
+    console.warn('Error tracking event:', error);
   }
 };
 

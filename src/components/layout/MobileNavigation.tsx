@@ -1,8 +1,8 @@
 
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import { services } from '@/data/servicesData';
 import { cn } from '@/lib/utils';
+import { trackEvent } from '@/utils/analytics';
 
 interface MobileNavigationProps {
   isScrolled: boolean;
@@ -32,6 +32,11 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
   navigateToService,
   headerStyle
 }) => {
+  // Track navigation events
+  const handleNavClick = (itemName: string) => {
+    trackEvent('mobile_navigation', 'click', itemName);
+  };
+
   return (
     <div 
       id="mobile-menu"
@@ -41,11 +46,23 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
       aria-hidden={!mobileMenuOpen}
     >
       <nav className="container flex flex-col space-y-2">
-        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent ${currentPath === '/' ? 'font-bold' : ''}`} onClick={goToHome}>
+        <button 
+          className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent ${currentPath === '/' ? 'font-bold' : ''}`} 
+          onClick={() => {
+            goToHome();
+            handleNavClick('home');
+          }}
+        >
           Início
         </button>
         
-        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} onClick={() => scrollToSection('about')}>
+        <button 
+          className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} 
+          onClick={() => {
+            scrollToSection('about');
+            handleNavClick('about');
+          }}
+        >
           Sobre
         </button>
         
@@ -79,7 +96,10 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
                 <button
                   key={service.path}
                   className={`px-4 py-2 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full bg-transparent`}
-                  onClick={() => navigateToService(service.path)}
+                  onClick={() => {
+                    navigateToService(service.path);
+                    handleNavClick(`service_${service.name}`);
+                  }}
                 >
                   {service.name}
                 </button>
@@ -88,23 +108,54 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
           </div>
         </div>
         
-        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} onClick={() => scrollToSection('sectors')}>
+        <button 
+          className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} 
+          onClick={() => {
+            scrollToSection('sectors');
+            handleNavClick('sectors');
+          }}
+        >
           Setores
         </button>
         
-        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} onClick={() => scrollToSection('differentials')}>
+        <button 
+          className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} 
+          onClick={() => {
+            scrollToSection('differentials');
+            handleNavClick('differentials');
+          }}
+        >
           Diferenciais
         </button>
         
-        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} onClick={() => scrollToSection('testimonials')}>
+        <button 
+          className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} 
+          onClick={() => {
+            scrollToSection('testimonials');
+            handleNavClick('testimonials');
+          }}
+        >
           Depoimentos
         </button>
         
-        <button className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} onClick={() => scrollToSection('contact')}>
+        <button 
+          className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} 
+          onClick={() => {
+            scrollToSection('contact');
+            handleNavClick('contact');
+          }}
+        >
           Contato
         </button>
         
-        <button onClick={() => scrollToSection('contact')} className="btn-12 mx-4 mt-4 px-[15px] text-white cursor-pointer" aria-label="Solicitar atendimento de emergência 24 horas">
+        <button 
+          onClick={() => {
+            scrollToSection('contact');
+            handleNavClick('emergency');
+          }} 
+          className="btn-12 mx-4 mt-4 px-[15px] text-white cursor-pointer" 
+          aria-label="Solicitar atendimento de emergência 24 horas"
+        >
           <span className="text-sm mx-0 text-center font-extrabold py-0 px-0">atendimento em emergencia 24h</span>
         </button>
       </nav>

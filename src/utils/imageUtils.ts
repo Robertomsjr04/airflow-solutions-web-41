@@ -28,16 +28,31 @@ export const preloadImage = (src: string): Promise<HTMLImageElement> => {
       return;
     }
     
+    // Check if src is a valid URL or path
+    if (!src.startsWith('http') && !src.startsWith('/')) {
+      console.warn('Invalid image path format:', src);
+      reject(new Error('Invalid image path format'));
+      return;
+    }
+    
     const img = new Image();
     
     img.onload = () => resolve(img);
     img.onerror = (e) => {
-      console.error('Error preloading image:', src, e);
+      console.warn('Error preloading image:', src);
       reject(e);
     };
     
-    // Add a timestamp to prevent caching issues in development
-    img.src = src.includes('?') ? src : `${src}?_t=${new Date().getTime()}`;
+    // Add timestamp to prevent caching issues in development
+    const cacheBuster = process.env.NODE_ENV === 'development' ? `?_t=${new Date().getTime()}` : '';
+    img.src = src.includes('?') ? src : `${src}${cacheBuster}`;
+    
+    // Set a timeout to reject after 10 seconds
+    setTimeout(() => {
+      if (!img.complete) {
+        reject(new Error('Image load timeout'));
+      }
+    }, 10000);
   });
 };
 
@@ -54,7 +69,19 @@ export const getFallbackImage = (category: ImageCategory = 'default'): string =>
 export const preloadImages = (sources: string[]): Promise<HTMLImageElement[]> => {
   // Filter out empty sources to avoid errors
   const validSources = sources.filter(src => src && src !== '');
-  return Promise.all(validSources.map(src => preloadImage(src)));
+  
+  if (validSources.length === 0) {
+    return Promise.resolve([]);
+  }
+  
+  return Promise.allSettled(validSources.map(src => preloadImage(src)))
+    .then(results => {
+      // Return only successfully loaded images
+      return results
+        .filter((result): result is PromiseFulfilledResult<HTMLImageElement> => 
+          result.status === 'fulfilled')
+        .map(result => result.value);
+    });
 };
 
 /**
@@ -71,14 +98,32 @@ export const preloadVideo = (src: string): Promise<HTMLVideoElement> => {
     const video = document.createElement('video');
     video.preload = 'auto';
     
-    video.onloadeddata = () => resolve(video);
+    // Set a small segment to preload
+    video.preload = 'metadata';
+    
+    video.onloadedmetadata = () => resolve(video);
     video.onerror = (e) => {
-      console.error('Error preloading video:', src, e);
+      console.warn('Error preloading video:', src);
       reject(e);
     };
     
+    // Check if browser supports the video format
+    const canPlay = video.canPlayType('video/mp4');
+    if (!canPlay) {
+      console.warn('Browser cannot play this video format');
+      reject(new Error('Unsupported video format'));
+      return;
+    }
+    
     video.src = src;
     video.load();
+    
+    // Set a timeout to reject after 10 seconds
+    setTimeout(() => {
+      if (video.readyState === 0) {
+        reject(new Error('Video load timeout'));
+      }
+    }, 10000);
   });
 };
 
@@ -86,6 +131,7 @@ export const preloadVideo = (src: string): Promise<HTMLVideoElement> => {
  * Renames a file path with spaces to a URL-compatible format
  */
 export const getEncodedPath = (path: string): string => {
+  if (!path) return '';
   // Ensure the path has properly encoded URL characters
   return path && path.includes(' ') ? encodeURI(path) : path;
 };
@@ -112,20 +158,44 @@ export const handleImageLoad = (
     .then(() => {
       setLoaded(true);
       setLoading(false);
+      setError(false);
     })
     .catch(() => {
       setError(true);
       setLoading(false);
+      setLoaded(false);
     });
 };
 
 /**
- * Add dimensions to image URL for CDNs that support on-the-fly resizing
- * (Not implemented for now as we don't know if a CDN is being used)
+ * Check if an image exists
  */
-export const getOptimizedImageUrl = (url: string, width?: number, height?: number): string => {
-  // For now, just return the URL as-is
-  // In the future, this could add width/height parameters for CDN-based image resizing
-  return url;
+export const imageExists = (src: string): Promise<boolean> => {
+  return new Promise((resolve) => {
+    if (!src) {
+      resolve(false);
+      return;
+    }
+    
+    const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = src;
+  });
 };
 
+/**
+ * Add dimensions to image URL for CDNs that support on-the-fly resizing
+ */
+export const getOptimizedImageUrl = (url: string, width?: number, height?: number): string => {
+  if (!url) return DEFAULT_FALLBACK_IMAGE;
+  
+  // Check if URL is for a lovable upload
+  if (url.includes('lovable-uploads')) {
+    // For now, just return the URL as-is
+    return url;
+  }
+  
+  // For other URLs, we could add width/height parameters for CDN-based image resizing
+  return url;
+};
