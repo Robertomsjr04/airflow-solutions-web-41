@@ -1,11 +1,10 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-import { Image as LucideImage } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import AnimatedButton from '@/components/ui/animated-button';
-import { preloadImage } from '@/utils/imageUtils';
+import OptimizedImage from '@/components/ui/optimized-image';
 
 const certificates = [
   {
@@ -25,26 +24,6 @@ const certificates = [
 ];
 
 const Testimonials = () => {
-  const [loadedImages, setLoadedImages] = useState<{[key: string]: boolean}>({});
-  const [isLoading, setIsLoading] = useState<{[key: string]: boolean}>({});
-  
-  const handleLoadImage = (imageUrl: string) => {
-    if (!loadedImages[imageUrl]) {
-      setIsLoading(prev => ({...prev, [imageUrl]: true}));
-      
-      // Use the preloadImage utility instead of direct Image constructor
-      preloadImage(imageUrl)
-        .then(() => {
-          setLoadedImages(prev => ({...prev, [imageUrl]: true}));
-          setIsLoading(prev => ({...prev, [imageUrl]: false}));
-        })
-        .catch(error => {
-          console.error(`Failed to load image: ${imageUrl}`, error);
-          setIsLoading(prev => ({...prev, [imageUrl]: false}));
-        });
-    }
-  };
-  
   return (
     <section id="testimonials" className="py-20 bg-airflow-gray">
       <div className="container mx-auto px-4">
@@ -70,7 +49,6 @@ const Testimonials = () => {
                     <div className="flex justify-center mt-2">
                       <AnimatedButton 
                         className="py-2 px-4 text-xs"
-                        onClick={() => handleLoadImage(certificate.image)}
                       >
                         Ver Certificado
                       </AnimatedButton>
@@ -80,23 +58,14 @@ const Testimonials = () => {
                 
                 <DialogContent className="max-w-3xl w-[90vw] p-1">
                   <div className="relative w-full">
-                    {isLoading[certificate.image] && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-white/80">
-                        <div className="h-10 w-10 border-4 border-t-airflow-blue rounded-full animate-spin"></div>
-                      </div>
-                    )}
-                    
-                    {loadedImages[certificate.image] ? (
-                      <img 
-                        src={certificate.image} 
-                        alt={certificate.alt} 
-                        className="w-full object-contain max-h-[80vh]" 
-                      />
-                    ) : (
-                      <div className="w-full h-[50vh] bg-gray-100 flex items-center justify-center">
-                        <p className="text-gray-500">Carregando certificado...</p>
-                      </div>
-                    )}
+                    <OptimizedImage
+                      src={certificate.image}
+                      alt={certificate.alt}
+                      className="w-full object-contain max-h-[80vh]"
+                      fallbackCategory="testimonial"
+                      width={800}
+                      height={600}
+                    />
                   </div>
                   <div className="p-2 text-center">
                     <p className="font-medium">{certificate.title}</p>

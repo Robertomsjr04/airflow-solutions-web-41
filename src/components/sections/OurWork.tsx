@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Card } from '@/components/ui/card';
@@ -8,10 +8,9 @@ import Autoplay from 'embla-carousel-autoplay';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import AnimatedButton from '@/components/ui/animated-button';
 import { Marquee } from '@/components/ui/marquee';
+import OptimizedImage from '@/components/ui/optimized-image';
 
 const OurWork = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState<number | null>(null);
-  
   const clientLogos = [
     {
       src: "/lovable-uploads/459a3eeb-243a-474b-a3a8-eb23f6255ab0.png",
@@ -80,18 +79,28 @@ const OurWork = () => {
                     <DialogTrigger asChild>
                       <Card className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow duration-300">
                         <div className="relative aspect-square">
-                          <img 
+                          <OptimizedImage 
                             src={image.src} 
                             alt={image.alt} 
                             className="object-cover w-full h-full" 
-                            loading={index < 3 ? "eager" : "lazy"} 
+                            loading={index < 3 ? "eager" : "lazy"}
+                            fallbackCategory="project"
+                            width={300}
+                            height={300}
                           />
                         </div>
                       </Card>
                     </DialogTrigger>
                     <DialogContent className="max-w-3xl w-[90vw] p-1">
                       <div className="relative w-full">
-                        <img src={image.src} alt={image.alt} className="w-full object-contain max-h-[80vh]" />
+                        <OptimizedImage 
+                          src={image.src} 
+                          alt={image.alt} 
+                          className="w-full object-contain max-h-[80vh]"
+                          fallbackCategory="project" 
+                          width={800}
+                          height={600}
+                        />
                       </div>
                       <div className="p-2 text-center text-sm text-gray-600">{image.description}</div>
                     </DialogContent>
@@ -120,7 +129,15 @@ const OurWork = () => {
             {clientLogos.map((logo, index) => (
               <div key={index} className="flex items-center justify-center mx-8">
                 <Avatar className="w-20 h-20 border-2 border-gray-100 shadow-sm">
-                  <AvatarImage src={logo.src} alt={logo.alt} className="object-contain" />
+                  <AvatarImage 
+                    src={logo.src} 
+                    alt={logo.alt} 
+                    className="object-contain"
+                    onError={(e) => {
+                      // Fallback to AvatarFallback when image fails to load
+                      e.currentTarget.style.display = 'none';
+                    }} 
+                  />
                   <AvatarFallback>{logo.alt.substring(0, 2)}</AvatarFallback>
                 </Avatar>
               </div>
