@@ -46,9 +46,9 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
       }`}
       aria-hidden={!mobileMenuOpen}
     >
-      <nav className="container flex flex-col space-y-2">
+      <nav className="container flex flex-col space-y-3 py-2">
         <button 
-          className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent ${currentPath === '/' ? 'font-bold' : ''}`} 
+          className={`px-5 py-3.5 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent ${currentPath === '/' ? 'font-bold' : ''}`} 
           onClick={() => {
             goToHome();
             handleNavClick('home');
@@ -58,7 +58,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
         </button>
         
         <button 
-          className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} 
+          className={`px-5 py-3.5 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} 
           onClick={() => {
             scrollToSection('about');
             handleNavClick('about');
@@ -69,14 +69,14 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
         
         <div className="relative">
           <button 
-            className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg flex justify-between items-center bg-transparent`} 
+            className={`px-5 py-3.5 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg flex justify-between items-center bg-transparent`} 
             onClick={toggleMobileServices}
             aria-expanded={mobileServicesOpen}
             aria-controls="mobile-services"
           >
             <span>Serviços</span>
             <svg 
-              className={`w-4 h-4 transition-transform ${mobileServicesOpen ? 'transform rotate-180' : ''}`} 
+              className={`w-5 h-5 transition-transform ${mobileServicesOpen ? 'transform rotate-180' : ''}`} 
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24" 
@@ -96,7 +96,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
               {services.map((service) => (
                 <button
                   key={service.path}
-                  className={`px-4 py-2 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full bg-transparent`}
+                  className={`px-5 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full bg-transparent`}
                   onClick={() => {
                     navigateToService(service.path);
                     handleNavClick(`service_${service.name}`);
@@ -110,7 +110,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
         </div>
         
         <button 
-          className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} 
+          className={`px-5 py-3.5 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} 
           onClick={() => {
             scrollToSection('sectors');
             handleNavClick('sectors');
@@ -120,7 +120,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
         </button>
         
         <button 
-          className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} 
+          className={`px-5 py-3.5 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} 
           onClick={() => {
             scrollToSection('differentials');
             handleNavClick('differentials');
@@ -130,7 +130,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
         </button>
         
         <button 
-          className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} 
+          className={`px-5 py-3.5 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} 
           onClick={() => {
             scrollToSection('testimonials');
             handleNavClick('testimonials');
@@ -140,7 +140,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
         </button>
         
         <button 
-          className={`px-4 py-3 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} 
+          className={`px-5 py-3.5 ${headerStyle.text} ${headerStyle.hoverText} text-left font-medium transition-colors w-full text-lg bg-transparent`} 
           onClick={() => {
             scrollToSection('contact');
             handleNavClick('contact');
@@ -152,10 +152,10 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
         <WhatsAppButton 
           phoneNumber="5561999124752" 
           message="Olá! Preciso de um atendimento de emergência."
-          className="emergency-button mx-auto" 
+          className="emergency-button w-full flex justify-center items-center mt-2 py-3 text-base font-bold" 
           aria-label="Solicitar atendimento de emergência 24 horas"
         >
-          <span>Atendimento em emergência 24h</span>
+          <span>ATENDIMENTO EM EMERGÊNCIA 24H</span>
         </WhatsAppButton>
       </nav>
     </div>

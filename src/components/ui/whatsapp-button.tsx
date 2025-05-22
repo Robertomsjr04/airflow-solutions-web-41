@@ -27,7 +27,10 @@ export function WhatsAppButton({
 
   if (children) {
     return (
-      <button onClick={handleWhatsAppClick} className={className}>
+      <button 
+        onClick={handleWhatsAppClick} 
+        className={cn("bg-red-600 hover:bg-red-700 transition-colors text-white rounded-md", className)}
+      >
         {children}
       </button>
     );
@@ -52,3 +55,6 @@ export function WhatsAppButton({
     </TooltipProvider>
   );
 }
+
+// Import cn utility function since we're using it
+import { cn } from '@/lib/utils';
