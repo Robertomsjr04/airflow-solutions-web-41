@@ -89,8 +89,8 @@ const OurWork = () => {
                             className="object-cover w-full h-full" 
                             loading={index < 3 ? "eager" : "lazy"}
                             fallbackCategory="project"
-                            width={400}
-                            height={400}
+                            width={500}
+                            height={500}
                             responsive={true}
                           />
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 flex items-center justify-center transition-all duration-300">
