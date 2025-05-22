@@ -4,12 +4,13 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ServiceDetail from '@/components/sections/ServiceDetail';
 import Contact from '@/components/sections/Contact';
-import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
 import PneumaticValve from '@/components/interactive/PneumaticValve';
 import SnowEffect from '@/components/interactive/SnowEffect';
 import { SectionDivider } from '@/components/ui/section-divider';
 import ServiceNavigation from '@/components/navigation/ServiceNavigation';
+import AnimatedButton from '@/components/ui/animated-button';
+import { Button } from '@/components/ui/button';
 
 const climatizacaoFeatures = [
   {
@@ -157,7 +158,6 @@ const ServiceClimatizacao = () => {
         </div>
       </main>
       <Footer />
-      <WhatsAppButton phoneNumber="+5511555512345" />
     </div>
   );
 };

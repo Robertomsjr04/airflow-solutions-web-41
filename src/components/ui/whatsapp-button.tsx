@@ -12,10 +12,6 @@ export function WhatsAppButton({
   phoneNumber,
   message = "Olá! Gostaria de saber mais sobre seus serviços."
 }: WhatsAppButtonProps) {
-  const formattedNumber = phoneNumber.replace(/[^0-9]/g, '');
-  const encodedMessage = encodeURIComponent(message);
-  const whatsappUrl = `https://wa.me/${formattedNumber}?text=${encodedMessage}`;
-  
   // Return null to effectively remove the button
   return null;
 }
