@@ -3,6 +3,7 @@ import React from 'react';
 import { services } from '@/data/servicesData';
 import { cn } from '@/lib/utils';
 import { trackEvent } from '@/utils/analytics';
+import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 
 interface MobileNavigationProps {
   isScrolled: boolean;
@@ -36,6 +37,9 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
   const handleNavClick = (itemName: string) => {
     trackEvent('mobile_navigation', 'click', itemName);
   };
+
+  // Emergency WhatsApp number - This should be the same as in DesktopNavigation
+  const emergencyWhatsAppNumber = "+5511999999999"; // Replace with the actual emergency number
 
   return (
     <div 
@@ -148,16 +152,14 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
           Contato
         </button>
         
-        <button 
-          onClick={() => {
-            scrollToSection('contact');
-            handleNavClick('emergency');
-          }} 
+        <WhatsAppButton 
+          phoneNumber={emergencyWhatsAppNumber} 
+          message="Olá! Preciso de um atendimento de emergência."
           className="emergency-button mx-auto" 
           aria-label="Solicitar atendimento de emergência 24 horas"
         >
           <span>Atendimento em emergência 24h</span>
-        </button>
+        </WhatsAppButton>
       </nav>
     </div>
   );

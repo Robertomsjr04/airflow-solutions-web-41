@@ -1,8 +1,11 @@
+
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { services } from '@/data/servicesData';
+import { WhatsAppButton } from '@/components/ui/whatsapp-button';
+
 interface DesktopNavigationProps {
   currentPath: string;
   menuTextClass: string;
@@ -10,6 +13,7 @@ interface DesktopNavigationProps {
   scrollToSection: (id: string) => void;
   navigateToService: (path: string) => void;
 }
+
 const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
   currentPath,
   menuTextClass,
@@ -21,6 +25,10 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
   const homeButtonClass = cn(navigationMenuTriggerStyle(), menuTextClass, "border-none",
   // Remove persistent shadow but still highlight the active state
   currentPath === '/' ? "bg-transparent hover:bg-accent" : "");
+  
+  // Emergency WhatsApp number - This could be moved to a config or env file for easier administration
+  const emergencyWhatsAppNumber = "+5511999999999"; // Replace with the actual emergency number
+  
   return <nav className="hidden md:flex space-x-2 items-center">
       <NavigationMenu>
         <NavigationMenuList>
@@ -82,9 +90,15 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
         </NavigationMenuList>
       </NavigationMenu>
       
-      <button onClick={() => scrollToSection('contact')} className="emergency-button" aria-label="Solicitar atendimento de emergência 24 horas">
+      <WhatsAppButton 
+        phoneNumber={emergencyWhatsAppNumber}
+        message="Olá! Preciso de um atendimento de emergência."
+        className="emergency-button"
+        aria-label="Solicitar atendimento de emergência 24 horas"
+      >
         <span className="mx-0 font-semibold text-left text-xs px-[9px]">Atendimento em emergência 24h</span>
-      </button>
+      </WhatsAppButton>
     </nav>;
 };
+
 export default DesktopNavigation;
