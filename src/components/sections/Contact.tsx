@@ -29,7 +29,7 @@ const Contact = () => {
                 </p>
                 
                 <div className="aspect-w-16 aspect-h-9 mb-6">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117002.25250279298!2d-46.70201161358946!3d-23.58574398293008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a2b2ed7f3a1%3A0xab35da2f5ca62674!2sS%C3%A3o%20Paulo%2C%20SP%2C%20Brazil!5e0!3m2!1sen!2sus!4v1686309058804!5m2!1sen!2sus" width="600" height="300" style={{
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.662858559675!2d-48.0644611!3d-15.9853725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935bcdb08e8c3999%3A0xf47cb3f8be80cb49!2sQd.%2012%20Cj.%20H%20Lt.%2009%20-%20Setor%20Sul%20Gama%2C%20Bras%C3%ADlia%20-%20DF%2C%2072415-608!5e0!3m2!1spt-BR!2sbr!4v1685894507318!5m2!1spt-BR!2sbr" width="600" height="300" style={{
                   border: 0
                 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="rounded-lg shadow-md w-full"></iframe>
                 </div>
