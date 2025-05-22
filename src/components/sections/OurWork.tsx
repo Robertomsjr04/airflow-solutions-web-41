@@ -81,7 +81,7 @@ const OurWork = () => {
               {images.map((image, index) => <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <Dialog>
                     <DialogTrigger asChild>
-                      <Card className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow duration-300">
+                      <Card className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow duration-300 group relative">
                         <div className="relative aspect-square">
                           <OptimizedImage 
                             src={image.src} 
@@ -92,6 +92,9 @@ const OurWork = () => {
                             width={300}
                             height={300}
                           />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 flex items-center justify-center transition-all duration-300">
+                            <ZoomIn className="text-white/0 group-hover:text-white/90 transform scale-0 group-hover:scale-100 transition-all duration-300" size={24} />
+                          </div>
                         </div>
                       </Card>
                     </DialogTrigger>
