@@ -82,14 +82,14 @@ const OurWork = () => {
                   <Dialog>
                     <DialogTrigger asChild>
                       <Card className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow duration-300 group relative">
-                        <div className="relative aspect-square w-full">
+                        <div className="relative w-full" style={{ paddingBottom: '133.33%' }}>
                           <OptimizedImage 
                             src={image.src} 
                             alt={image.alt} 
-                            className="object-cover w-full h-full" 
+                            className="object-cover absolute inset-0 w-full h-full" 
                             loading={index < 3 ? "eager" : "lazy"}
                             fallbackCategory="project"
-                            width={500}
+                            width={375}
                             height={500}
                             responsive={true}
                           />
@@ -108,7 +108,7 @@ const OurWork = () => {
                           className="w-full object-contain"
                           fallbackCategory="project" 
                           width={800}
-                          height={600}
+                          height={1067}
                         />
                       </div>
                       <div className="p-2 text-center text-sm text-gray-600">{image.description}</div>

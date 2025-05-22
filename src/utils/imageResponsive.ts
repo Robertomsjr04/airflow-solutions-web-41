@@ -15,18 +15,22 @@ export const isMobileDevice = (): boolean => {
  */
 export const getResponsiveImageDimensions = (
   defaultWidth: number, 
-  defaultHeight: number
+  defaultHeight: number,
+  aspectRatio: number = 4/3 // Default to portrait 3:4 (width:height) ratio
 ): { width: number, height: number } => {
   if (isMobileDevice()) {
     // Scale down for mobile devices - maintain aspect ratio
     const scaleFactor = 0.7; // 70% of original size for mobile devices
     return {
       width: Math.round(defaultWidth * scaleFactor),
-      height: Math.round(defaultHeight * scaleFactor)
+      height: Math.round((defaultWidth * aspectRatio) * scaleFactor)
     };
   }
   
-  return { width: defaultWidth, height: defaultHeight };
+  return { 
+    width: defaultWidth, 
+    height: Math.round(defaultWidth * aspectRatio) 
+  };
 };
 
 /**

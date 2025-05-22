@@ -15,6 +15,7 @@ interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> 
   fallbackCategory?: ImageCategory;
   showPlaceholder?: boolean;
   responsive?: boolean;
+  aspectRatio?: number; // Added aspect ratio prop with default 4:3
   onLoad?: () => void;
   onError?: () => void;
 }
@@ -24,10 +25,11 @@ export const OptimizedImage = ({
   alt,
   className,
   width: defaultWidth = 300,
-  height: defaultHeight = 300,
+  height: defaultHeight = 400, // Updated to default 4:3 ratio
   fallbackCategory = 'default',
   showPlaceholder = true,
   responsive = true,
+  aspectRatio = 4/3, // Default to portrait 3:4 (width:height) ratio
   onLoad,
   onError,
   ...props
@@ -39,7 +41,7 @@ export const OptimizedImage = ({
   
   // Calculate responsive dimensions
   const { width, height } = responsive 
-    ? getResponsiveImageDimensions(Number(defaultWidth), Number(defaultHeight))
+    ? getResponsiveImageDimensions(Number(defaultWidth), Number(defaultHeight), aspectRatio)
     : { width: defaultWidth, height: defaultHeight };
   
   useEffect(() => {
@@ -81,7 +83,7 @@ export const OptimizedImage = ({
   return (
     <div 
       className={cn("relative", className)} 
-      style={{ width: responsive ? '100%' : width, height: 'auto', maxWidth: width }}
+      style={props.style || { width: responsive ? '100%' : width, height: 'auto', maxWidth: width }}
     >
       {isLoading && showPlaceholder && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
