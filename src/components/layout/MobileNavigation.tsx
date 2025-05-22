@@ -152,10 +152,10 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
         <WhatsAppButton 
           phoneNumber="5561999124752" 
           message="Olá! Preciso de um atendimento de emergência."
-          className="emergency-button w-full flex justify-center items-center mt-2 py-3 text-base font-bold" 
+          className="emergency-button w-full flex justify-center items-center mt-2 py-2 text-base font-bold" 
           aria-label="Solicitar atendimento de emergência 24 horas"
         >
-          <span>ATENDIMENTO EM EMERGÊNCIA 24H</span>
+          <span>EM EMERGÊNCIA</span>
         </WhatsAppButton>
       </nav>
     </div>
