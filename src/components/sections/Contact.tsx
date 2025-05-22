@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { QuoteRequestForm } from '@/components/ui/quote-request-form';
 const Contact = () => {
@@ -38,8 +39,8 @@ const Contact = () => {
                 <div className="bg-airflow-gray p-6 rounded-lg shadow-md">
                   <h4 className="font-bold text-airflow-blue mb-2">Endereço</h4>
                   <p className="text-gray-700">
-                    Av. Industrial, 123<br />
-                    São Paulo, SP 04538-133<br />
+                    Quadra 12 conjunto H lote 09<br />
+                    Setor Sul Gama DF 72415-608<br />
                     Brasil
                   </p>
                 </div>
