@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AnimatedButton from '@/components/ui/animated-button';
 import { HoverEffect } from '@/components/ui/hover-effect';
@@ -7,6 +7,7 @@ import {
   AnimatedIcons, 
   useScrollVisibility 
 } from '@/components/ui/animated-icons';
+import { motion, useAnimation } from 'framer-motion';
 
 const services = [{
   title: "Climatização e Refrigeração Industrial",
@@ -49,6 +50,14 @@ const services = [{
 const Services = () => {
   const navigate = useNavigate();
   const { ref, isVisible } = useScrollVisibility();
+  const [hoveredService, setHoveredService] = useState<number | null>(null);
+  const controls = useAnimation();
+  
+  useEffect(() => {
+    if (isVisible) {
+      controls.start("visible");
+    }
+  }, [isVisible, controls]);
   
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
@@ -64,8 +73,35 @@ const Services = () => {
     navigate(url);
   };
 
+  const handleServiceHover = (index: number | null) => {
+    setHoveredService(index);
+  };
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
   // Transform services array to the format expected by HoverEffect
-  const hoverItems = services.map(service => ({
+  const hoverItems = services.map((service, index) => ({
     title: service.title,
     description: service.description,
     link: service.url,
@@ -77,13 +113,23 @@ const Services = () => {
   return (
     <section id="services" className="py-20 bg-airflow-gray" ref={ref}>
       <div className="container">
-        <div className="text-center mb-12">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Nossos Serviços</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto reveal">
             Soluções completas e personalizadas em refrigeração industrial e comercial para manter suas instalações funcionando com máxima eficiência e conformidade técnica.
           </p>
-          <div className="w-20 h-1 bg-airflow-blue mx-auto mt-4"></div>
-        </div>
+          <motion.div 
+            className="w-20 h-1 bg-airflow-blue mx-auto mt-4"
+            initial={{ width: 0 }}
+            animate={{ width: 80 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          ></motion.div>
+        </motion.div>
         
         <div className="reveal">
           <HoverEffect 
@@ -92,11 +138,16 @@ const Services = () => {
           />
         </div>
         
-        <div className="text-center mt-12 reveal flex justify-center">
+        <motion.div 
+          className="text-center mt-12 reveal flex justify-center"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        >
           <AnimatedButton onClick={scrollToContact} className="px-5 text-xs text-center py-[12px]">
             Solicite seu Orçamento Agora
           </AnimatedButton>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
