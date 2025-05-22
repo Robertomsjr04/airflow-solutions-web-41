@@ -82,15 +82,16 @@ const OurWork = () => {
                   <Dialog>
                     <DialogTrigger asChild>
                       <Card className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow duration-300 group relative">
-                        <div className="relative aspect-square">
+                        <div className="relative aspect-square w-full">
                           <OptimizedImage 
                             src={image.src} 
                             alt={image.alt} 
                             className="object-cover w-full h-full" 
                             loading={index < 3 ? "eager" : "lazy"}
                             fallbackCategory="project"
-                            width={300}
-                            height={300}
+                            width={400}
+                            height={400}
+                            responsive={true}
                           />
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 flex items-center justify-center transition-all duration-300">
                             <ZoomIn className="text-white/0 group-hover:text-white/90 transform scale-0 group-hover:scale-100 transition-all duration-300" size={24} />

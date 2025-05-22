@@ -28,3 +28,14 @@ export const getResponsiveImageDimensions = (
   
   return { width: defaultWidth, height: defaultHeight };
 };
+
+/**
+ * Calculate aspect ratio based on original dimensions
+ * Returns a CSS value like "100%" to maintain square aspect ratio
+ */
+export const getAspectRatioStyles = (width: number, height: number): { paddingTop: string } => {
+  const ratio = (height / width) * 100;
+  return {
+    paddingTop: `${ratio}%`
+  };
+};
