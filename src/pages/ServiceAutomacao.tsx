@@ -4,7 +4,6 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ServiceDetail from '@/components/sections/ServiceDetail';
 import Contact from '@/components/sections/Contact';
-import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
 import AlarmPanel from '@/components/interactive/AlarmPanel';
 import EnergyDashboard from '@/components/interactive/EnergyDashboard';
@@ -117,7 +116,6 @@ const ServiceAutomacao = () => {
         </div>
       </main>
       <Footer />
-      <WhatsAppButton phoneNumber="+5511555512345" />
     </div>
   );
 };

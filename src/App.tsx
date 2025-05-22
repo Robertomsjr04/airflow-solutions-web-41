@@ -12,6 +12,8 @@ import ServiceProjetos from "./pages/ServiceProjetos";
 import ServiceAutomacao from "./pages/ServiceAutomacao";
 import ServiceInfraestrutura from "./pages/ServiceInfraestrutura";
 import ServiceDutos from "./pages/ServiceDutos";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/NotFound";
 import CustomCursor from "./components/ui/custom-cursor";
 import { initializeAnalytics, trackPageView } from "./utils/analytics";
@@ -55,6 +57,8 @@ const App = () => {
             <Route path="/servicos/automacao" element={<ServiceAutomacao />} />
             <Route path="/servicos/infraestrutura" element={<ServiceInfraestrutura />} />
             <Route path="/servicos/dutos" element={<ServiceDutos />} />
+            <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
+            <Route path="/termos-de-servico" element={<TermsOfService />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
