@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, MessageCircle } from 'lucide-react';
 import BackToTop from '@/components/ui/back-to-top';
 
 const Footer = () => {
@@ -91,6 +91,17 @@ const Footer = () => {
               <li className="flex items-center">
                 <Phone className="w-5 h-5 mr-3 flex-shrink-0" />
                 <span>+55 (61) 3081-3550</span>
+              </li>
+              <li className="flex items-center">
+                <MessageCircle className="w-5 h-5 mr-3 flex-shrink-0" />
+                <a 
+                  href="https://wa.me/5561999124752"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-gray-300 transition-colors"
+                >
+                  +55 (61) 99912-4752
+                </a>
               </li>
               <li className="flex items-start">
                 <Mail className="w-5 h-5 mr-3 mt-1 flex-shrink-0" />

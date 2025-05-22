@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -15,7 +16,15 @@ export function WhatsAppButton({
   return <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          
+          <a 
+            href={whatsappUrl}
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="fixed right-6 bottom-6 z-50 bg-[#25D366] hover:bg-[#20c05c] text-white p-3.5 rounded-full shadow-lg transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#25D366]"
+            aria-label="Contato WhatsApp"
+          >
+            <MessageCircle size={28} />
+          </a>
         </TooltipTrigger>
         <TooltipContent side="left" className="bg-[#25D366] text-white border-[#128C7E]">
           <p>Fale conosco pelo WhatsApp</p>
