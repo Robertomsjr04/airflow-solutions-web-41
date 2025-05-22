@@ -1,8 +1,6 @@
-
 import React from 'react';
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, MessageCircle } from 'lucide-react';
 import BackToTop from '@/components/ui/back-to-top';
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return <footer className="dark-blue-bg text-white pt-12 pb-6">
@@ -11,9 +9,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <h3 className="text-xl font-bold mb-4 text-white">Air Flow</h3>
-            <p className="mb-4">
-              Especializada na instalação e manutenção de sistemas de refrigeração industrial e comercial desde 1990.
-            </p>
+            <p className="mb-4">Especializada na instalação e manutenção de sistemas de refrigeração industrial e comercial a mais de 30 anos.</p>
             <div className="flex items-center space-x-4">
               <a href="https://www.facebook.com/share/12HgyHm552r/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
                 <Facebook className="w-6 h-6" />
@@ -94,12 +90,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <MessageCircle className="w-5 h-5 mr-3 flex-shrink-0" />
-                <a 
-                  href="https://wa.me/5561999124752"
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-gray-300 transition-colors"
-                >
+                <a href="https://wa.me/5561999124752" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
                   +55 (61) 99912-4752
                 </a>
               </li>
@@ -124,5 +115,4 @@ const Footer = () => {
       </div>
     </footer>;
 };
-
 export default Footer;
