@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -85,7 +86,7 @@ const Index = () => {
         <Contact />
       </main>
       <Footer />
-      <WhatsAppButton phoneNumber="+5511555512345" />
+      <WhatsAppButton phoneNumber="+5561999124752" />
     </div>
   );
 };

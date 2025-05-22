@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { QuoteRequestForm } from '@/components/ui/quote-request-form';
 import { motion } from 'framer-motion';
+import { Phone, MessageCircle } from 'lucide-react';
 
 const Contact = () => {
   const [mapHovered, setMapHovered] = useState(false);
@@ -91,8 +92,22 @@ const Contact = () => {
                 >
                   <h4 className="font-bold text-airflow-blue mb-2">Informações de Contato</h4>
                   <p className="text-gray-700">
-                    Telefone: +55 (61) 3081-3550<br />
-                    <span className="inline-block break-all">Email: airflow.arcondicionado@gmail.com</span><br />
+                    <span className="flex items-center gap-1">
+                      <Phone size={14} className="flex-shrink-0" /> 
+                      <span className="inline-block">+55 (61) 3081-3550</span>
+                    </span>
+                    <span className="flex items-center gap-1 mt-1">
+                      <MessageCircle size={14} className="flex-shrink-0" />
+                      <a 
+                        href="https://wa.me/5561999124752"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block text-airflow-blue hover:underline"
+                      >
+                        +55 (61) 99912-4752
+                      </a>
+                    </span>
+                    <span className="inline-block break-all mt-1">Email: airflow.arcondicionado@gmail.com</span><br />
                     Horário: Seg-Sex, 8h - 18h
                   </p>
                   <p className="text-xs text-gray-500 mt-2">Atendimento emergencial 24h</p>
