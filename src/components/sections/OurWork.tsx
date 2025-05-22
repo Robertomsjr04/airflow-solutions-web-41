@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger, DialogTitle } from '@/components/ui/dialog';
 import { Card } from '@/components/ui/card';
 import { images } from '@/utils/projectImages';
 import Autoplay from 'embla-carousel-autoplay';
@@ -9,6 +9,8 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import AnimatedButton from '@/components/ui/animated-button';
 import { Marquee } from '@/components/ui/marquee';
 import OptimizedImage from '@/components/ui/optimized-image';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { ZoomIn } from 'lucide-react';
 
 const OurWork = () => {
   const clientLogos = [
@@ -48,6 +50,8 @@ const OurWork = () => {
     }
   ];
   
+  const isMobile = useIsMobile();
+  
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -57,11 +61,11 @@ const OurWork = () => {
     }
   };
   
-  return <section id="our-work" className="py-16 bg-white">
+  return <section id="our-work" className="py-12 md:py-16 bg-white">
       <div className="container">
-        <div className="text-center mb-12 reveal">
-          <h2 className="text-3xl font-bold mb-4">Nossos Projetos</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <div className="text-center mb-8 md:mb-12 reveal">
+          <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">Nossos Projetos</h2>
+          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
             Conheça alguns dos nossos trabalhos em instalações e manutenções de sistemas de refrigeração industrial e comercial.
           </p>
         </div>
@@ -91,12 +95,13 @@ const OurWork = () => {
                         </div>
                       </Card>
                     </DialogTrigger>
-                    <DialogContent className="max-w-3xl w-[90vw] p-1">
-                      <div className="relative w-full">
+                    <DialogContent className="max-w-3xl w-[95vw] md:w-[90vw] p-1 md:p-2">
+                      <DialogTitle className="sr-only">{image.alt}</DialogTitle>
+                      <div className="relative w-full overflow-auto max-h-[80vh] touch-pan-y">
                         <OptimizedImage 
                           src={image.src} 
                           alt={image.alt} 
-                          className="w-full object-contain max-h-[80vh]"
+                          className="w-full object-contain"
                           fallbackCategory="project" 
                           width={800}
                           height={600}
@@ -107,28 +112,28 @@ const OurWork = () => {
                   </Dialog>
                 </CarouselItem>)}
             </CarouselContent>
-            <CarouselPrevious className="left-2 lg:-left-12 bg-white/80 hover:bg-white border-airflow-blue text-airflow-blue" />
-            <CarouselNext className="right-2 lg:-right-12 bg-white/80 hover:bg-white border-airflow-blue text-airflow-blue" />
+            <CarouselPrevious className={`${isMobile ? 'left-0 bg-white/90' : 'left-2 lg:-left-12 bg-white/80'} hover:bg-white border-airflow-blue text-airflow-blue`} />
+            <CarouselNext className={`${isMobile ? 'right-0 bg-white/90' : 'right-2 lg:-right-12 bg-white/80'} hover:bg-white border-airflow-blue text-airflow-blue`} />
           </Carousel>
         </div>
 
-        <div className="text-center mt-12 reveal">
-          <p className="text-gray-600 mb-6">
+        <div className="text-center mt-8 md:mt-12 reveal">
+          <p className="text-gray-600 mb-4 md:mb-6">
             Trabalhamos com as principais marcas do mercado e oferecemos soluções personalizadas para cada tipo de instalação.
           </p>
           <div className="flex justify-center">
-            <AnimatedButton onClick={scrollToContact} className="py-3 px-5 text-xs">
+            <AnimatedButton onClick={scrollToContact} className={`py-2 md:py-3 px-4 md:px-5 text-xs ${isMobile ? 'w-3/4' : ''}`}>
               Solicite um orçamento
             </AnimatedButton>
           </div>
         </div>
         
-        <div className="mt-16 reveal">
-          <h3 className="text-2xl font-bold mb-8 text-center">Nossos Clientes</h3>
-          <Marquee className="py-4" speed={40} pauseOnHover={true}>
+        <div className="mt-12 md:mt-16 reveal">
+          <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 text-center">Nossos Clientes</h3>
+          <Marquee className="py-4" speed={isMobile ? 30 : 40} pauseOnHover={true}>
             {clientLogos.map((logo, index) => (
-              <div key={index} className="flex items-center justify-center mx-8">
-                <Avatar className="w-20 h-20 border-2 border-gray-100 shadow-sm">
+              <div key={index} className="flex items-center justify-center mx-4 md:mx-8">
+                <Avatar className="w-16 h-16 md:w-20 md:h-20 border-2 border-gray-100 shadow-sm">
                   <AvatarImage 
                     src={logo.src} 
                     alt={logo.alt} 

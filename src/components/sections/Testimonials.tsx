@@ -1,10 +1,12 @@
 
 import React from 'react';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger, DialogTitle } from '@/components/ui/dialog';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import AnimatedButton from '@/components/ui/animated-button';
 import OptimizedImage from '@/components/ui/optimized-image';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { ImageOff, ZoomIn } from 'lucide-react';
 
 const certificates = [
   {
@@ -24,47 +26,54 @@ const certificates = [
 ];
 
 const Testimonials = () => {
+  const isMobile = useIsMobile();
+  
   return (
-    <section id="testimonials" className="py-20 bg-airflow-gray">
+    <section id="testimonials" className="py-16 md:py-20 bg-airflow-gray">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 reveal">Certificações e Atestados</h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto reveal">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4 reveal">Certificações e Atestados</h2>
+          <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto reveal">
             Conheça nossos atestados técnicos e certificações que comprovam a qualidade dos nossos serviços.
           </p>
-          <div className="w-20 h-1 bg-airflow-blue mx-auto mt-4"></div>
+          <div className="w-20 h-1 bg-airflow-blue mx-auto mt-3 md:mt-4"></div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
           {certificates.map((certificate, index) => (
             <div key={index} className="reveal" style={{ animationDelay: `${index * 100}ms` }}>
               <Dialog>
-                <div className="bg-white p-6 rounded-lg shadow-md h-full flex flex-col">
-                  <h3 className="font-semibold text-xl mb-2">{certificate.title}</h3>
+                <div className="bg-white p-4 md:p-6 rounded-lg shadow-md h-full flex flex-col">
+                  <h3 className="font-semibold text-lg md:text-xl mb-2">{certificate.title}</h3>
                   <p className="text-sm text-airflow-blue mb-3">{certificate.organization}</p>
                   
-                  <p className="text-gray-700 mb-4 flex-grow">{certificate.description}</p>
+                  <p className="text-sm md:text-base text-gray-700 mb-4 flex-grow">{certificate.description}</p>
                   
                   <DialogTrigger asChild>
                     <div className="flex justify-center mt-2">
                       <AnimatedButton 
-                        className="py-2 px-4 text-xs"
+                        className={`py-2 px-4 text-xs ${isMobile ? 'w-full' : ''}`}
                       >
                         Ver Certificado
+                        <ZoomIn className="ml-2 h-4 w-4" />
                       </AnimatedButton>
                     </div>
                   </DialogTrigger>
                 </div>
                 
-                <DialogContent className="max-w-3xl w-[90vw] p-1">
-                  <div className="relative w-full">
+                <DialogContent className="max-w-3xl w-[95vw] md:w-[90vw] p-1 md:p-3">
+                  <DialogTitle className="sr-only">{certificate.title}</DialogTitle>
+                  <div className="relative w-full overflow-auto max-h-[80vh] touch-pan-y">
                     <OptimizedImage
                       src={certificate.image}
                       alt={certificate.alt}
-                      className="w-full object-contain max-h-[80vh]"
+                      className="w-full object-contain"
                       fallbackCategory="testimonial"
                       width={800}
                       height={600}
+                      onError={() => {
+                        console.error(`Falha ao carregar certificado: ${certificate.title}`);
+                      }}
                     />
                   </div>
                   <div className="p-2 text-center">

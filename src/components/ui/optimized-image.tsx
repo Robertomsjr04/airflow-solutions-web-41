@@ -1,13 +1,20 @@
 
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { getFallbackImage, ImageCategory, preloadImage } from '@/utils/imageUtils';
+import { 
+  getFallbackImage, 
+  ImageCategory, 
+  preloadImage,
+  getResponsiveImageDimensions 
+} from '@/utils/imageUtils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   alt: string;
   fallbackCategory?: ImageCategory;
   showPlaceholder?: boolean;
+  responsive?: boolean;
   onLoad?: () => void;
   onError?: () => void;
 }
@@ -16,10 +23,11 @@ export const OptimizedImage = ({
   src,
   alt,
   className,
-  width,
-  height,
+  width: defaultWidth = 300,
+  height: defaultHeight = 300,
   fallbackCategory = 'default',
   showPlaceholder = true,
+  responsive = true,
   onLoad,
   onError,
   ...props
@@ -27,6 +35,12 @@ export const OptimizedImage = ({
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [imageSrc, setImageSrc] = useState(src);
+  const isMobile = useIsMobile();
+  
+  // Calculate responsive dimensions
+  const { width, height } = responsive 
+    ? getResponsiveImageDimensions(Number(defaultWidth), Number(defaultHeight))
+    : { width: defaultWidth, height: defaultHeight };
   
   useEffect(() => {
     let isMounted = true;
@@ -65,7 +79,10 @@ export const OptimizedImage = ({
   }, [src, fallbackCategory, onLoad, onError]);
 
   return (
-    <div className={cn("relative", className)} style={{ width, height }}>
+    <div 
+      className={cn("relative", className)} 
+      style={{ width: responsive ? '100%' : width, height: 'auto', maxWidth: width }}
+    >
       {isLoading && showPlaceholder && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
           <div className="h-10 w-10 border-4 border-t-airflow-blue rounded-full animate-spin"></div>
@@ -76,7 +93,7 @@ export const OptimizedImage = ({
         src={hasError ? getFallbackImage(fallbackCategory) : imageSrc}
         alt={alt}
         className={cn(
-          "transition-opacity duration-300",
+          "transition-opacity duration-300 w-full h-auto object-cover",
           isLoading ? "opacity-0" : "opacity-100",
           className
         )}

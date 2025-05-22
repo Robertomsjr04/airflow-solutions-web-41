@@ -1,4 +1,3 @@
-
 /**
  * Utilitário para gerenciamento de imagens
  */
@@ -15,6 +14,15 @@ const FALLBACKS = {
 };
 
 export type ImageCategory = keyof typeof FALLBACKS | 'default';
+
+/**
+ * Get device-appropriate image timeout
+ */
+export const getImageTimeout = (): number => {
+  // Mobile devices may have slower connections, so we give them more time
+  const isMobile = window.innerWidth < 768;
+  return isMobile ? 15000 : 10000; // 15 seconds for mobile, 10 for desktop
+};
 
 /**
  * Preload an image and return a promise
@@ -47,12 +55,12 @@ export const preloadImage = (src: string): Promise<HTMLImageElement> => {
     const cacheBuster = process.env.NODE_ENV === 'development' ? `?_t=${new Date().getTime()}` : '';
     img.src = src.includes('?') ? src : `${src}${cacheBuster}`;
     
-    // Set a timeout to reject after 10 seconds
+    // Set a dynamic timeout based on device
     setTimeout(() => {
       if (!img.complete) {
         reject(new Error('Image load timeout'));
       }
-    }, 10000);
+    }, getImageTimeout());
   });
 };
 
@@ -118,12 +126,12 @@ export const preloadVideo = (src: string): Promise<HTMLVideoElement> => {
     video.src = src;
     video.load();
     
-    // Set a timeout to reject after 10 seconds
+    // Set a timeout to reject after 15 seconds for mobile, 10 seconds for desktop
     setTimeout(() => {
       if (video.readyState === 0) {
         reject(new Error('Video load timeout'));
       }
-    }, 10000);
+    }, getImageTimeout());
   });
 };
 
@@ -186,6 +194,7 @@ export const imageExists = (src: string): Promise<boolean> => {
 
 /**
  * Add dimensions to image URL for CDNs that support on-the-fly resizing
+ * and optimize for mobile devices
  */
 export const getOptimizedImageUrl = (url: string, width?: number, height?: number): string => {
   if (!url) return DEFAULT_FALLBACK_IMAGE;
@@ -197,5 +206,32 @@ export const getOptimizedImageUrl = (url: string, width?: number, height?: numbe
   }
   
   // For other URLs, we could add width/height parameters for CDN-based image resizing
+  // or implement responsive images based on device
   return url;
+};
+
+/**
+ * Check if the device is mobile
+ */
+export const isMobileDevice = (): boolean => {
+  return window.innerWidth < 768;
+};
+
+/**
+ * Get appropriate image dimensions based on device
+ */
+export const getResponsiveImageDimensions = (
+  defaultWidth: number, 
+  defaultHeight: number
+): { width: number, height: number } => {
+  if (isMobileDevice()) {
+    // Scale down for mobile devices - maintain aspect ratio
+    const scaleFactor = 0.8; // 80% of original size
+    return {
+      width: Math.round(defaultWidth * scaleFactor),
+      height: Math.round(defaultHeight * scaleFactor)
+    };
+  }
+  
+  return { width: defaultWidth, height: defaultHeight };
 };

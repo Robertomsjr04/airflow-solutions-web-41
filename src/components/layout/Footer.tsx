@@ -1,32 +1,37 @@
+
 import React from 'react';
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, MessageCircle } from 'lucide-react';
 import BackToTop from '@/components/ui/back-to-top';
+import { useIsMobile } from '@/hooks/use-mobile';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  return <footer className="dark-blue-bg text-white pt-12 pb-6">
+  const isMobile = useIsMobile();
+  
+  return <footer className="dark-blue-bg text-white pt-10 pb-6">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-white">Air Flow</h3>
-            <p className="mb-4">Especializada na instalação e manutenção de sistemas de refrigeração industrial e comercial a mais de 30 anos.</p>
+            <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-white">Air Flow</h3>
+            <p className="mb-4 text-sm md:text-base">Especializada na instalação e manutenção de sistemas de refrigeração industrial e comercial a mais de 30 anos.</p>
             <div className="flex items-center space-x-4">
               <a href="https://www.facebook.com/share/12HgyHm552r/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
-                <Facebook className="w-6 h-6" />
+                <Facebook className="w-5 h-5 md:w-6 md:h-6" />
               </a>
               <a href="https://www.instagram.com/airflowbsb?igsh=MWw5YjBkanptamY0NQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
-                <Instagram className="w-6 h-6" />
+                <Instagram className="w-5 h-5 md:w-6 md:h-6" />
               </a>
               <a href="https://linkedin.com/company/airflow" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
-                
+                <Linkedin className="w-5 h-5 md:w-6 md:h-6" />
               </a>
             </div>
           </div>
           
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-white">Links Rápidos</h3>
-            <ul className="space-y-2">
+            <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-white">Links Rápidos</h3>
+            <ul className="space-y-1 md:space-y-2 text-sm md:text-base">
               <li>
                 <a href="#home" className="hover:text-gray-300 transition-colors">Início</a>
               </li>
@@ -53,8 +58,8 @@ const Footer = () => {
           
           {/* Services */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-white">Serviços</h3>
-            <ul className="space-y-2">
+            <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-white">Serviços</h3>
+            <ul className="space-y-1 md:space-y-2 text-sm md:text-base">
               <li>
                 <a href="#services" className="hover:text-gray-300 transition-colors">Climatização e Refrigeração Industrial (HVAC)</a>
               </li>
@@ -78,36 +83,37 @@ const Footer = () => {
           
           {/* Contact */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-white">Contate-nos</h3>
-            <ul className="space-y-4">
+            <h3 className="text-lg md:text-xl font-bold mb-3 md:mb-4 text-white">Contate-nos</h3>
+            <ul className="space-y-3 md:space-y-4 text-sm md:text-base">
               <li className="flex items-start">
-                <MapPin className="w-5 h-5 mr-3 mt-1 flex-shrink-0" />
+                <MapPin className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3 mt-1 flex-shrink-0" />
                 <span>Quadra 12 conjunto H lote 09<br />Setor Sul Gama DF 72415-608<br />Brasil</span>
               </li>
               <li className="flex items-center">
-                <Phone className="w-5 h-5 mr-3 flex-shrink-0" />
+                <Phone className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3 flex-shrink-0" />
                 <span>+55 (61) 3081-3550</span>
               </li>
               <li className="flex items-center">
-                <MessageCircle className="w-5 h-5 mr-3 flex-shrink-0" />
+                <MessageCircle className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3 flex-shrink-0" />
                 <a href="https://wa.me/5561999124752" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
                   +55 (61) 99912-4752
                 </a>
               </li>
               <li className="flex items-start">
-                <Mail className="w-5 h-5 mr-3 mt-1 flex-shrink-0" />
+                <Mail className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-3 mt-1 flex-shrink-0" />
                 <span className="break-all">airflow.arcondicionado@gmail.com</span>
               </li>
             </ul>
           </div>
         </div>
         
-        {/* Centered Back to Top Button */}
+        <div className="mt-2 flex justify-center">
+          <BackToTop />
+        </div>
         
-        
-        <div className="border-t border-white/20 mt-6 pt-6 text-sm text-center md:text-left md:flex md:justify-between md:items-center">
+        <div className="border-t border-white/20 mt-4 md:mt-6 pt-4 md:pt-6 text-xs md:text-sm text-center md:text-left md:flex md:justify-between md:items-center">
           <p>&copy; {currentYear} Air Flow. Todos os direitos reservados.</p>
-          <div className="mt-4 md:mt-0 space-x-4">
+          <div className="mt-2 md:mt-0 space-x-2 md:space-x-4">
             <a href="/politica-de-privacidade" className="hover:text-gray-300 transition-colors">Política de Privacidade</a>
             <a href="/termos-de-servico" className="hover:text-gray-300 transition-colors">Termos de Serviço</a>
           </div>
@@ -115,4 +121,5 @@ const Footer = () => {
       </div>
     </footer>;
 };
+
 export default Footer;
