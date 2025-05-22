@@ -18,7 +18,7 @@ const Footer = () => {
                 <Instagram className="w-6 h-6" />
               </a>
               <a href="https://linkedin.com/company/airflow" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
-                <Linkedin className="w-6 h-6" />
+                
               </a>
             </div>
           </div>
