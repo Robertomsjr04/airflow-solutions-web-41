@@ -1,7 +1,6 @@
 
 import React from 'react';
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, MessageCircle } from 'lucide-react';
-import BackToTop from '@/components/ui/back-to-top';
+import { Phone, Mail, MapPin, Facebook, Instagram, MessageCircle } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const Footer = () => {
@@ -21,9 +20,6 @@ const Footer = () => {
               </a>
               <a href="https://www.instagram.com/airflowbsb?igsh=MWw5YjBkanptamY0NQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
                 <Instagram className="w-5 h-5 md:w-6 md:h-6" />
-              </a>
-              <a href="https://linkedin.com/company/airflow" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-colors">
-                <Linkedin className="w-5 h-5 md:w-6 md:h-6" />
               </a>
             </div>
           </div>
@@ -105,10 +101,6 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-        </div>
-        
-        <div className="mt-2 flex justify-center">
-          <BackToTop />
         </div>
         
         <div className="border-t border-white/20 mt-4 md:mt-6 pt-4 md:pt-6 text-xs md:text-sm text-center md:text-left md:flex md:justify-between md:items-center">

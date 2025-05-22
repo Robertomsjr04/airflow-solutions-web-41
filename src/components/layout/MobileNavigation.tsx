@@ -38,9 +38,6 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
     trackEvent('mobile_navigation', 'click', itemName);
   };
 
-  // Emergency WhatsApp number - This should be the same as in DesktopNavigation
-  const emergencyWhatsAppNumber = "+5511999999999"; // Replace with the actual emergency number
-
   return (
     <div 
       id="mobile-menu"
@@ -153,7 +150,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
         </button>
         
         <WhatsAppButton 
-          phoneNumber={emergencyWhatsAppNumber} 
+          phoneNumber="5561999124752" 
           message="Olá! Preciso de um atendimento de emergência."
           className="emergency-button mx-auto" 
           aria-label="Solicitar atendimento de emergência 24 horas"

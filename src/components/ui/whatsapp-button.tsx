@@ -4,14 +4,14 @@ import { MessageCircle } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface WhatsAppButtonProps {
-  phoneNumber: string;
+  phoneNumber?: string;
   message?: string;
   className?: string;
   children?: React.ReactNode;
 }
 
 export function WhatsAppButton({
-  phoneNumber,
+  phoneNumber = "5561999124752",
   message = "Olá! Gostaria de saber mais sobre seus serviços de emergência.",
   className,
   children

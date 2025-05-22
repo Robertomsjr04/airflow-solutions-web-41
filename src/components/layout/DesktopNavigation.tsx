@@ -26,9 +26,6 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
   // Remove persistent shadow but still highlight the active state
   currentPath === '/' ? "bg-transparent hover:bg-accent" : "");
   
-  // Emergency WhatsApp number - This could be moved to a config or env file for easier administration
-  const emergencyWhatsAppNumber = "+5511999999999"; // Replace with the actual emergency number
-  
   return <nav className="hidden md:flex space-x-2 items-center">
       <NavigationMenu>
         <NavigationMenuList>
@@ -91,7 +88,7 @@ const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
       </NavigationMenu>
       
       <WhatsAppButton 
-        phoneNumber={emergencyWhatsAppNumber}
+        phoneNumber="5561999124752"
         message="Olá! Preciso de um atendimento de emergência."
         className="emergency-button"
         aria-label="Solicitar atendimento de emergência 24 horas"
