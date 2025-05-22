@@ -72,13 +72,13 @@ const OurWork = () => {
 
         <div className="reveal">
           <Carousel opts={{
-          loop: true,
-          align: "center"
-        }} plugins={[Autoplay({
-          delay: 5000
-        })]} className="w-full max-w-5xl mx-auto">
-            <CarouselContent>
-              {images.map((image, index) => <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+            loop: true,
+            align: isMobile ? "start" : "center"
+          }} plugins={[Autoplay({
+            delay: 5000
+          })]} className="w-full max-w-5xl mx-auto">
+            <CarouselContent className={isMobile ? "-ml-2 md:-ml-4" : ""}>
+              {images.map((image, index) => <CarouselItem key={index} className={`${isMobile ? 'pl-2 md:pl-4' : ''} md:basis-1/2 lg:basis-1/3`}>
                   <Dialog>
                     <DialogTrigger asChild>
                       <Card className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow duration-300 group relative">
@@ -89,8 +89,8 @@ const OurWork = () => {
                             className="object-cover absolute inset-0 w-full h-full" 
                             loading={index < 3 ? "eager" : "lazy"}
                             fallbackCategory="project"
-                            width={375}
-                            height={500}
+                            width={isMobile ? 320 : 375}
+                            height={isMobile ? 427 : 500}
                             responsive={true}
                           />
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 flex items-center justify-center transition-all duration-300">

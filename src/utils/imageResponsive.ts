@@ -19,8 +19,8 @@ export const getResponsiveImageDimensions = (
   aspectRatio: number = 4/3 // Default to portrait 3:4 (width:height) ratio
 ): { width: number, height: number } => {
   if (isMobileDevice()) {
-    // Scale down for mobile devices - maintain aspect ratio
-    const scaleFactor = 0.7; // 70% of original size for mobile devices
+    // Scale for mobile devices - maintain aspect ratio but use full width
+    const scaleFactor = 1.0; // Use full size (100%) for mobile devices
     return {
       width: Math.round(defaultWidth * scaleFactor),
       height: Math.round((defaultWidth * aspectRatio) * scaleFactor)
