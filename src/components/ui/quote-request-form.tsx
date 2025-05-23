@@ -7,6 +7,7 @@ import { useToast } from '@/hooks/use-toast';
 import './quote-request-form.css';
 import emailjs from 'emailjs-com';
 import { trackEvent, trackFormSubmission } from '@/utils/analytics';
+import { formatBrazilianPhone, validateBrazilianPhone } from '@/utils/phoneFormatter';
 
 const formSchema = z.object({
   name: z.string().min(3, {
@@ -18,8 +19,8 @@ const formSchema = z.object({
   company: z.string().min(2, {
     message: 'Empresa deve ter pelo menos 2 caracteres'
   }),
-  phone: z.string().min(10, {
-    message: 'Telefone inválido'
+  phone: z.string().refine(validateBrazilianPhone, {
+    message: 'Telefone inválido. Digite no formato: 81988878888'
   }),
   service: z.string({
     required_error: 'Selecione um serviço'
@@ -61,6 +62,11 @@ export function QuoteRequestForm({
   
   const isSubmitting = form.formState.isSubmitting;
   const errors = form.formState.errors;
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatBrazilianPhone(e.target.value);
+    form.setValue('phone', formatted);
+  };
   
   const onSubmit = async (data: FormValues) => {
     try {
@@ -127,7 +133,14 @@ export function QuoteRequestForm({
           </div>
           
           <div className="user-box">
-            <input type="tel" id="phone" {...form.register('phone')} required />
+            <input 
+              type="tel" 
+              id="phone" 
+              {...form.register('phone')} 
+              onChange={handlePhoneChange}
+              placeholder="Ex: 81988878888"
+              required 
+            />
             <label htmlFor="phone">Telefone *</label>
             {errors.phone && <span className="error-message">{errors.phone.message}</span>}
           </div>
