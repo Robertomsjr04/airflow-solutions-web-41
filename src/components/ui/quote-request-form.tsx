@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -138,7 +137,6 @@ export function QuoteRequestForm({
               id="phone" 
               {...form.register('phone')} 
               onChange={handlePhoneChange}
-              placeholder="Ex: 81988878888"
               required 
             />
             <label htmlFor="phone">Telefone *</label>
