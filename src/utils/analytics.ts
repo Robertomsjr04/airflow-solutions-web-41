@@ -1,4 +1,3 @@
-
 // Google Analytics implementation
 interface Window {
   dataLayer: any[];
@@ -12,8 +11,8 @@ declare global {
   }
 }
 
-// Make sure GA ID is consistent
-const GA_MEASUREMENT_ID = 'G-MEASUREMENT_ID';
+// Updated with a real Google Analytics ID
+const GA_MEASUREMENT_ID = 'G-L7QK3EN5YF';
 
 export const initializeAnalytics = () => {
   try {

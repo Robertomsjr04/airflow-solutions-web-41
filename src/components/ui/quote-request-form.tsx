@@ -5,6 +5,8 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useToast } from '@/hooks/use-toast';
 import './quote-request-form.css';
+import emailjs from 'emailjs-com';
+import { trackEvent, trackFormSubmission } from '@/utils/analytics';
 
 const formSchema = z.object({
   name: z.string().min(3, {
@@ -33,6 +35,11 @@ interface QuoteRequestFormProps {
   onSubmitSuccess?: () => void;
 }
 
+// EmailJS configuration
+const EMAILJS_SERVICE_ID = 'service_airflow';
+const EMAILJS_TEMPLATE_ID = 'template_quote_request';
+const EMAILJS_USER_ID = 'wvgkuZY_VUB081QOV';
+
 export function QuoteRequestForm({
   onSubmitSuccess
 }: QuoteRequestFormProps) {
@@ -56,19 +63,45 @@ export function QuoteRequestForm({
   const errors = form.formState.errors;
   
   const onSubmit = async (data: FormValues) => {
-    // Simulate API call
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Map the form values to template parameters
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        company: data.company,
+        phone: data.phone,
+        service: data.service,
+        message: data.message,
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_USER_ID
+      );
+      
+      // Track successful form submission
+      trackFormSubmission('quote_request', true);
+      trackEvent('contact', 'form_submission', 'quote_request');
+
       toast({
         title: "Mensagem Enviada!",
         description: "Agradecemos seu contato. Retornaremos em breve.",
         variant: "default"
       });
+      
       form.reset();
+      
       if (onSubmitSuccess) {
         onSubmitSuccess();
       }
     } catch (error) {
+      console.error("Error sending email:", error);
+      // Track failed form submission
+      trackFormSubmission('quote_request', false);
+      
       toast({
         title: "Erro ao enviar",
         description: "Ocorreu um erro ao enviar sua mensagem. Tente novamente.",
