@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { services } from '@/data/servicesData';
 import { cn } from '@/lib/utils';
@@ -152,7 +151,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
         <WhatsAppButton 
           phoneNumber="5561999124752" 
           message="Olá! Preciso de um atendimento de emergência."
-          className="emergency-button w-full flex justify-center items-center mt-2 py-2 text-base font-bold" 
+          className="mt-2 py-3.5" 
           aria-label="Solicitar atendimento de emergência 24 horas"
         >
           <span>EM EMERGÊNCIA</span>

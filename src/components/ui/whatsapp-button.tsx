@@ -29,7 +29,7 @@ export function WhatsAppButton({
     return (
       <button 
         onClick={handleWhatsAppClick} 
-        className={cn("bg-red-600 hover:bg-red-700 transition-colors text-white w-full flex justify-center items-center", className)}
+        className={cn("bg-red-600 hover:bg-red-700 transition-colors text-white w-full flex justify-center items-center text-center font-bold", className)}
       >
         {children}
       </button>
