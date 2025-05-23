@@ -1,44 +1,21 @@
-import React, { useEffect, useRef, useState } from 'react';
+
+import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import AnimatedButton from '@/components/ui/animated-button';
-import { preloadImage, preloadVideo, getEncodedPath } from '@/utils/imageUtils';
+import { preloadImage } from '@/utils/imageUtils';
 import OptimizedImage from '@/components/ui/optimized-image';
 
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
-  const [videoError, setVideoError] = useState(false);
   
-  // Simplify video name to avoid encoding issues
-  const videoSrc = '/lovable-uploads/industrial-cooling.mp4';
   const posterSrc = '/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png';
 
   useEffect(() => {
     if (!heroRef.current) return;
 
-    // Preload the hero image for the video poster and fallback
+    // Preload the hero image
     preloadImage(posterSrc)
-      .catch(err => console.warn('Failed to preload hero poster image:', err));
-
-    // Play video without relying on complex path encoding
-    if (videoRef.current) {
-      preloadVideo(videoSrc)
-        .then(() => {
-          setVideoLoaded(true);
-          if (videoRef.current) {
-            videoRef.current.play()
-              .catch(err => {
-                console.warn('Video playback error:', err);
-                setVideoError(true);
-              });
-          }
-        })
-        .catch(err => {
-          console.warn('Video preloading error:', err);
-          setVideoError(true);
-        });
-    }
+      .catch(err => console.warn('Failed to preload hero image:', err));
 
     // Create timeline for the hero animation
     const tl = gsap.timeline({
@@ -88,41 +65,22 @@ const Hero = () => {
     }
   };
 
-  return <section ref={heroRef} id="home" className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-black">
-      {/* Video Background */}
+  return (
+    <section ref={heroRef} id="home" className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-black">
+      {/* Hero Background Image */}
       <div className="absolute inset-0 w-full h-full">
-        {!videoError && (
-          <video 
-            ref={videoRef} 
-            autoPlay 
-            muted 
-            loop 
-            playsInline 
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`} 
-            poster={posterSrc}
-          >
-            <source src={videoSrc} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        )}
+        <OptimizedImage
+          src={posterSrc}
+          alt="Air Flow Industrial Cooling"
+          className="absolute inset-0 w-full h-full object-cover"
+          fallbackCategory="default"
+          loading="eager"
+          width={1920}
+          height={1080}
+        />
         
-        {/* Fallback image if video fails */}
-        {!videoLoaded || videoError ? (
-          <OptimizedImage
-            src={posterSrc}
-            alt="Air Flow Industrial Cooling"
-            className="absolute inset-0 w-full h-full object-cover"
-            fallbackCategory="default"
-            loading="eager"
-            width={1920}
-            height={1080}
-          />
-        ) : null}
-        
-        {/* Dark overlay to ensure black background regardless of video content */}
-        <div className="absolute inset-0 bg-black/80" style={{
-          mixBlendMode: 'multiply'
-        }}></div>
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/60"></div>
       </div>
       
       <div className="container relative z-10">
@@ -151,7 +109,8 @@ const Hero = () => {
           <div className="w-1.5 h-3 bg-white rounded-full animate-bounce"></div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
 
 export default Hero;
