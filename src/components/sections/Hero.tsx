@@ -9,7 +9,7 @@ const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
   
   // Usando a nova imagem fornecida
-  const primaryHeroImage = '/lovable-uploads/bfdfed69-01bb-411d-a3df-f9328cd18bb0.png';
+  const primaryHeroImage = '/lovable-uploads/55dade52-ab86-405c-a03c-7af8bccbce1c.png';
 
   useEffect(() => {
     if (!heroRef.current) return;
@@ -82,7 +82,7 @@ const Hero = () => {
         <OptimizedImage
           src={primaryHeroImage}
           alt="Air Flow - Instalação e Manutenção de Ar Condicionado"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-contain object-center bg-black"
           fallbackCategory="default"
           lazy={false}
           loading="eager"
@@ -92,7 +92,7 @@ const Hero = () => {
         />
         
         {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
       </div>
       
       <div className="container relative z-10">
