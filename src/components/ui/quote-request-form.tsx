@@ -8,7 +8,6 @@ import './quote-request-form.css';
 import emailjs from 'emailjs-com';
 import { trackEvent, trackFormSubmission } from '@/utils/analytics';
 import { formatBrazilianPhone, validateBrazilianPhone } from '@/utils/phoneFormatter';
-import { WhatsAppButton } from '@/components/ui/whatsapp-button';
 
 const formSchema = z.object({
   name: z.string().min(3, {
@@ -37,10 +36,10 @@ interface QuoteRequestFormProps {
   onSubmitSuccess?: () => void;
 }
 
-// EmailJS configuration - Configurações atualizadas para teste
-const EMAILJS_SERVICE_ID = 'default_service';
-const EMAILJS_TEMPLATE_ID = 'template_airflow';
-const EMAILJS_USER_ID = 'your_user_id_here';
+// EmailJS configuration
+const EMAILJS_SERVICE_ID = 'service_airflow';
+const EMAILJS_TEMPLATE_ID = 'template_quote_request';
+const EMAILJS_USER_ID = 'wvgkuZY_VUB081QOV';
 
 export function QuoteRequestForm({
   onSubmitSuccess
@@ -69,71 +68,10 @@ export function QuoteRequestForm({
     const formatted = formatBrazilianPhone(inputValue);
     form.setValue('phone', formatted, { shouldValidate: true });
   };
-
-  const sendWhatsAppMessage = (data: FormValues) => {
-    const message = `Olá! Gostaria de solicitar um orçamento:
-
-*Nome:* ${data.name}
-*Email:* ${data.email}
-*Empresa:* ${data.company}
-*Telefone:* ${data.phone}
-*Serviço:* ${data.service}
-*Mensagem:* ${data.message}
-
-Aguardo retorno. Obrigado!`;
-
-    const whatsappUrl = `https://wa.me/5561999124752?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-  };
-
-  const validateEmailJSConfig = () => {
-    if (!EMAILJS_SERVICE_ID || EMAILJS_SERVICE_ID === 'default_service') {
-      console.warn('EmailJS Service ID não configurado');
-      return false;
-    }
-    if (!EMAILJS_TEMPLATE_ID || EMAILJS_TEMPLATE_ID === 'template_airflow') {
-      console.warn('EmailJS Template ID não configurado');
-      return false;
-    }
-    if (!EMAILJS_USER_ID || EMAILJS_USER_ID === 'your_user_id_here') {
-      console.warn('EmailJS User ID não configurado');
-      return false;
-    }
-    return true;
-  };
   
   const onSubmit = async (data: FormValues) => {
     try {
-      console.log('Iniciando envio do formulário:', data);
-      
-      // Verifica se as credenciais do EmailJS estão configuradas
-      const isEmailConfigured = validateEmailJSConfig();
-      
-      if (!isEmailConfigured) {
-        console.log('EmailJS não configurado, usando WhatsApp como alternativa');
-        
-        toast({
-          title: "Redirecionando para WhatsApp",
-          description: "Vamos abrir o WhatsApp para você enviar sua mensagem diretamente.",
-          variant: "default"
-        });
-        
-        sendWhatsAppMessage(data);
-        
-        // Track successful form submission
-        trackFormSubmission('quote_request_whatsapp', true);
-        trackEvent('contact', 'form_submission', 'whatsapp_fallback');
-        
-        form.reset();
-        
-        if (onSubmitSuccess) {
-          onSubmitSuccess();
-        }
-        
-        return;
-      }
-
-      // Tenta enviar via EmailJS
+      // Map the form values to template parameters
       const templateParams = {
         from_name: data.name,
         from_email: data.email,
@@ -141,11 +79,9 @@ Aguardo retorno. Obrigado!`;
         phone: data.phone,
         service: data.service,
         message: data.message,
-        to_email: 'airflow.arcondicionado@gmail.com'
       };
 
-      console.log('Enviando email via EmailJS:', templateParams);
-
+      // Send email using EmailJS
       await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
@@ -169,26 +105,15 @@ Aguardo retorno. Obrigado!`;
         onSubmitSuccess();
       }
     } catch (error) {
-      console.error("Erro ao enviar email:", error);
-      
+      console.error("Error sending email:", error);
       // Track failed form submission
       trackFormSubmission('quote_request', false);
       
-      // Em caso de erro, oferece alternativa via WhatsApp
       toast({
-        title: "Problema no envio",
-        description: "Houve um problema no envio. Que tal enviar via WhatsApp?",
+        title: "Erro ao enviar",
+        description: "Ocorreu um erro ao enviar sua mensagem. Tente novamente.",
         variant: "destructive"
       });
-      
-      // Aguarda 2 segundos e abre WhatsApp automaticamente
-      setTimeout(() => {
-        sendWhatsAppMessage(data);
-        form.reset();
-        if (onSubmitSuccess) {
-          onSubmitSuccess();
-        }
-      }, 2000);
     }
   };
 
@@ -256,16 +181,6 @@ Aguardo retorno. Obrigado!`;
           <span></span>
           {isSubmitting ? 'Enviando...' : 'Enviar Solicitação'}
         </button>
-        
-        <div className="mt-4 text-center">
-          <p className="text-sm text-gray-600 mb-2">Ou envie diretamente via WhatsApp:</p>
-          <WhatsAppButton 
-            message="Olá! Gostaria de solicitar um orçamento para seus serviços."
-            className="w-full"
-          >
-            Enviar via WhatsApp
-          </WhatsAppButton>
-        </div>
       </form>
     </div>;
 }
