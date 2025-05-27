@@ -1,16 +1,14 @@
+
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import emailjs from 'emailjs-com'
+import { loadPolyfills } from './utils/browserSupport.ts'
 
 // Inicializar EmailJS
 emailjs.init('wvgkuZY_VUB081QOV')
 console.log('📧 EmailJS inicializado com sucesso')
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import { loadPolyfills } from './utils/browserSupport.ts'
 
 // Load polyfills before rendering the app
 const renderApp = async () => {
