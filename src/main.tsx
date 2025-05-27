@@ -7,7 +7,7 @@ import emailjs from 'emailjs-com'
 import { loadPolyfills } from './utils/browserSupport.ts'
 
 // Inicializar EmailJS
-emailjs.init('wvgkuZY_VUB081QOV')
+emailjs.init('YCl2SLRuE85ciO20p')
 console.log('📧 EmailJS inicializado com sucesso')
 
 // Load polyfills before rendering the app

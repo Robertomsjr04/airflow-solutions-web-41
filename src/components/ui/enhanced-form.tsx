@@ -42,8 +42,8 @@ interface EnhancedFormProps {
 }
 
 // EmailJS configuration
-const EMAILJS_SERVICE_ID = 'service_airflow';
-const EMAILJS_TEMPLATE_ID = 'template_quote_request';
+const EMAILJS_SERVICE_ID = 'service_yx1r8kl';
+const EMAILJS_TEMPLATE_ID = 'template_airflow';quest';
 const EMAILJS_USER_ID = 'wvgkuZY_VUB081QOV';
 
 export function EnhancedForm({ onSubmitSuccess }: EnhancedFormProps) {

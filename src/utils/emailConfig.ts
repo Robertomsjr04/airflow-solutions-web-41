@@ -1,8 +1,8 @@
 
 export const EMAIL_CONFIG = {
-  SERVICE_ID: 'service_airflow',
-  TEMPLATE_ID: 'template_quote_request',
-  USER_ID: 'wvgkuZY_VUB081QOV',
+  SERVICE_ID: 'service_yx1r8kl',
+  TEMPLATE_ID: 'template_airflow',
+  USER_ID: 'YCl2SLRuE85ciO20p',
   TO_EMAIL: 'airflow.arcondicionado@gmail.com'
 } as const;
 
