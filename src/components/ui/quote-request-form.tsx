@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -63,8 +64,9 @@ export function QuoteRequestForm({
   const errors = form.formState.errors;
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formatted = formatBrazilianPhone(e.target.value);
-    form.setValue('phone', formatted);
+    const inputValue = e.target.value;
+    const formatted = formatBrazilianPhone(inputValue);
+    form.setValue('phone', formatted, { shouldValidate: true });
   };
   
   const onSubmit = async (data: FormValues) => {
@@ -135,8 +137,9 @@ export function QuoteRequestForm({
             <input 
               type="tel" 
               id="phone" 
-              {...form.register('phone')} 
+              value={form.watch('phone')}
               onChange={handlePhoneChange}
+              placeholder="(11) 99999-9999"
               required 
             />
             <label htmlFor="phone">Telefone *</label>
