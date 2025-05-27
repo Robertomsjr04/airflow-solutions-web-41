@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import AnimatedButton from '@/components/ui/animated-button';
@@ -8,7 +7,7 @@ import { OptimizedImage } from '@/components/ui/optimized-image';
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
   
-  const primaryHeroImage = '/lovable-uploads/d4a03e7e-0fe0-4f17-8567-880a8c9e8b99.png';
+  const primaryHeroImage = '/lovable-uploads/8d865c4c-d79c-4827-8862-e5916efb1db7.jpg';
 
   useEffect(() => {
     if (!heroRef.current) return;
@@ -76,7 +75,7 @@ const Hero = () => {
       <div className="absolute inset-0 w-full h-full">
         <OptimizedImage
           src={primaryHeroImage}
-          alt="Equipamentos Modernos de Refrigeração Industrial - Air Flow"
+          alt="Equipamentos Industriais Modernos de Refrigeração - Air Flow"
           className="absolute inset-0 w-full h-full object-cover object-center"
           fallbackCategory="default"
           loading="eager"

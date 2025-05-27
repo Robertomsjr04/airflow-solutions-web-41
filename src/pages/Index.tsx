@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -26,7 +25,7 @@ const Index = () => {
     // Preload critical images for better user experience
     const preloadAssets = () => {
       // Preload primary hero image
-      preloadImage('/lovable-uploads/d4a03e7e-0fe0-4f17-8567-880a8c9e8b99.png')
+      preloadImage('/lovable-uploads/8d865c4c-d79c-4827-8862-e5916efb1db7.jpg')
         .then(() => console.log('Primary hero image preloaded'))
         .catch(err => console.warn('Failed to preload primary hero image:', err));
       
