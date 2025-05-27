@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -139,7 +138,6 @@ export function QuoteRequestForm({
               id="phone" 
               value={form.watch('phone')}
               onChange={handlePhoneChange}
-              placeholder="(11) 99999-9999"
               required 
             />
             <label htmlFor="phone">Telefone *</label>
