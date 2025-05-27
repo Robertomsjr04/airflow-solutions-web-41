@@ -1,9 +1,8 @@
-
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import AnimatedButton from '@/components/ui/animated-button';
 import { preloadImage } from '@/utils/imageUtils';
-import OptimizedImage from '@/components/ui/optimized-image';
+import { OptimizedImage } from '@/components/ui/optimized-image';
 
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);

@@ -8,7 +8,7 @@ import Autoplay from 'embla-carousel-autoplay';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import AnimatedButton from '@/components/ui/animated-button';
 import { Marquee } from '@/components/ui/marquee';
-import OptimizedImage from '@/components/ui/optimized-image';
+import { OptimizedImage } from '@/components/ui/optimized-image';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { ZoomIn } from 'lucide-react';
 

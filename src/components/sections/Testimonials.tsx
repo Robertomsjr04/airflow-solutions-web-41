@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogTrigger, DialogTitle } from '@/components/
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import AnimatedButton from '@/components/ui/animated-button';
-import OptimizedImage from '@/components/ui/optimized-image';
+import { OptimizedImage } from '@/components/ui/optimized-image';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { ImageOff, ZoomIn } from 'lucide-react';
 
