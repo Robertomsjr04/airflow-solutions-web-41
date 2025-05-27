@@ -16,9 +16,24 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/NotFound";
 import CustomCursor from "./components/ui/custom-cursor";
+import { SEOHead } from "./components/layout/SEOHead";
 import { initializeAnalytics, trackPageView } from "./utils/analytics";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutos
+      gcTime: 10 * 60 * 1000, // 10 minutos
+      retry: (failureCount, error: any) => {
+        // Não tentar novamente para erros 4xx
+        if (error?.status >= 400 && error?.status < 500) {
+          return false;
+        }
+        return failureCount < 3;
+      },
+    },
+  },
+});
 
 // Analytics tracker component
 const AnalyticsTracker = () => {
@@ -44,6 +59,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <SEOHead />
         <CustomCursor />
         <Toaster />
         <Sonner />

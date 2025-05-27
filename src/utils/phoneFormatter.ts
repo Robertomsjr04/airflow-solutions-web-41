@@ -27,5 +27,34 @@ export const validateBrazilianPhone = (phone: string): boolean => {
   const numbers = phone.replace(/\D/g, '');
   
   // Aceita números com 10 dígitos (fixo) ou 11 dígitos (celular)
-  return numbers.length === 10 || numbers.length === 11;
+  if (numbers.length !== 10 && numbers.length !== 11) {
+    return false;
+  }
+
+  // Validações adicionais para DDD válidos (11-99)
+  const ddd = parseInt(numbers.substring(0, 2));
+  if (ddd < 11 || ddd > 99) {
+    return false;
+  }
+
+  // Para celular (11 dígitos), o terceiro dígito deve ser 9
+  if (numbers.length === 11 && numbers[2] !== '9') {
+    return false;
+  }
+
+  // Para telefone fixo (10 dígitos), o terceiro dígito não pode ser 0 ou 1
+  if (numbers.length === 10 && (numbers[2] === '0' || numbers[2] === '1')) {
+    return false;
+  }
+
+  return true;
+};
+
+export const cleanPhoneNumber = (phone: string): string => {
+  return phone.replace(/\D/g, '');
+};
+
+export const isValidPhoneFormat = (phone: string): boolean => {
+  const phoneRegex = /^\(\d{2}\)\s\d{4,5}-\d{4}$/;
+  return phoneRegex.test(phone);
 };

@@ -1,115 +1,81 @@
 
-import { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { 
-  getFallbackImage, 
-  ImageCategory, 
-  preloadImage,
-  getResponsiveImageDimensions 
-} from '@/utils/imageUtils';
-import { useIsMobile } from '@/hooks/use-mobile';
 
 interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   alt: string;
-  fallbackCategory?: ImageCategory;
-  showPlaceholder?: boolean;
-  responsive?: boolean;
-  aspectRatio?: number;
-  onLoad?: () => void;
-  onError?: () => void;
+  className?: string;
+  fallbackSrc?: string;
+  lazy?: boolean;
+  quality?: number;
 }
 
-export const OptimizedImage = ({
+export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   src,
   alt,
   className,
-  width: defaultWidth = 300,
-  height: defaultHeight = 400,
-  fallbackCategory = 'default',
-  showPlaceholder = true,
-  responsive = true,
-  aspectRatio = 4/3,
-  onLoad,
-  onError,
+  fallbackSrc = '/placeholder.svg',
+  lazy = true,
+  quality = 85,
   ...props
-}: OptimizedImageProps) => {
-  const [isLoading, setIsLoading] = useState(true);
+}) => {
+  const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [imageSrc, setImageSrc] = useState(src);
-  const isMobile = useIsMobile();
-  
-  // Calculate responsive dimensions
-  const { width, height } = responsive 
-    ? getResponsiveImageDimensions(Number(defaultWidth), Number(defaultHeight), aspectRatio)
-    : { width: defaultWidth, height: defaultHeight };
-  
+  const [isInView, setIsInView] = useState(!lazy);
+  const imgRef = useRef<HTMLImageElement>(null);
+
   useEffect(() => {
-    let isMounted = true;
-    
-    if (!src) {
-      setHasError(true);
-      setIsLoading(false);
-      return;
+    if (!lazy) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '50px',
+      }
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
     }
-    
-    // Reset states when source changes
-    setIsLoading(true);
-    setHasError(false);
-    
-    preloadImage(src)
-      .then(() => {
-        if (isMounted) {
-          setImageSrc(src);
-          setIsLoading(false);
-          onLoad?.();
-        }
-      })
-      .catch(() => {
-        if (isMounted) {
-          console.warn(`Failed to load image: ${src}`);
-          setHasError(true);
-          setIsLoading(false);
-          setImageSrc(getFallbackImage(fallbackCategory));
-          onError?.();
-        }
-      });
-      
-    return () => {
-      isMounted = false;
-    };
-  }, [src, fallbackCategory, onLoad, onError]);
+
+    return () => observer.disconnect();
+  }, [lazy]);
+
+  const handleLoad = () => {
+    setIsLoaded(true);
+  };
+
+  const handleError = () => {
+    setHasError(true);
+    setIsLoaded(true);
+  };
 
   return (
-    <div 
-      className={cn("relative", className)} 
-      style={props.style || { 
-        width: responsive ? '100%' : width, 
-        height: 'auto', 
-        maxWidth: isMobile ? '100%' : width 
-      }}
-    >
-      {isLoading && showPlaceholder && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
-          <div className="h-10 w-10 border-4 border-t-airflow-blue rounded-full animate-spin"></div>
-        </div>
+    <div className={cn('relative overflow-hidden', className)}>
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-gray-200 animate-pulse" />
       )}
-      
       <img
-        src={hasError ? getFallbackImage(fallbackCategory) : imageSrc}
+        ref={imgRef}
+        src={isInView ? (hasError ? fallbackSrc : src) : ''}
         alt={alt}
+        onLoad={handleLoad}
+        onError={handleError}
         className={cn(
-          "transition-opacity duration-300 w-full h-auto object-cover",
-          isLoading ? "opacity-0" : "opacity-100",
+          'transition-opacity duration-300',
+          isLoaded ? 'opacity-100' : 'opacity-0',
           className
         )}
-        width={width}
-        height={height}
-        loading={props.loading || "lazy"}
+        loading={lazy ? 'lazy' : 'eager'}
         {...props}
       />
     </div>
   );
 };
-
-export default OptimizedImage;
