@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -52,7 +51,7 @@ export function QuoteRequestForm({
   const {
     toast
   } = useToast();
-  
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -64,7 +63,7 @@ export function QuoteRequestForm({
       message: ''
     }
   });
-  
+
   const isSubmitting = form.formState.isSubmitting;
   const errors = form.formState.errors;
 
@@ -98,7 +97,7 @@ export function QuoteRequestForm({
 
     return true;
   };
-  
+
   const onSubmit = async (data: FormValues) => {
     try {
       // Validação prévia
@@ -152,9 +151,9 @@ export function QuoteRequestForm({
         templateParams,
         EMAIL_CONFIG.USER_ID
       );
-      
+
       console.log('✅ Resposta do EmailJS:', response);
-      
+
       if (response.status === 200) {
         // Track successful form submission
         trackFormSubmission('quote_request', true);
@@ -165,9 +164,9 @@ export function QuoteRequestForm({
           description: "Recebemos sua solicitação. Nossa equipe entrará em contato em breve.",
           variant: "default"
         });
-        
+
         form.reset();
-        
+
         if (onSubmitSuccess) {
           onSubmitSuccess();
         }
@@ -181,14 +180,14 @@ export function QuoteRequestForm({
         status: error?.status,
         timestamp: new Date().toISOString()
       });
-      
+
       // Track failed form submission
       trackFormSubmission('quote_request', false);
-      
+
       // Tratamento de erro mais específico
       let errorMessage = "Ocorreu um erro ao enviar sua mensagem. Tente novamente.";
       let errorTitle = "Erro ao enviar";
-      
+
       if (error?.status === 400) {
         errorMessage = "Dados inválidos. Verifique as informações e tente novamente.";
         errorTitle = "Dados inválidos";
@@ -232,7 +231,7 @@ export function QuoteRequestForm({
           <label htmlFor="name">Nome Completo *</label>
           {errors.name && <span id="name-error" className="error-message" role="alert">{errors.name.message}</span>}
         </div>
-        
+
         <div className="grid-container">
           <div className="user-box">
             <input 
@@ -246,7 +245,7 @@ export function QuoteRequestForm({
             <label htmlFor="email">Email *</label>
             {errors.email && <span id="email-error" className="error-message" role="alert">{errors.email.message}</span>}
           </div>
-          
+
           <div className="user-box">
             <input 
               type="tel" 
@@ -261,7 +260,7 @@ export function QuoteRequestForm({
             {errors.phone && <span id="phone-error" className="error-message" role="alert">{errors.phone.message}</span>}
           </div>
         </div>
-        
+
         <div className="user-box">
           <input 
             type="text" 
@@ -274,7 +273,7 @@ export function QuoteRequestForm({
           <label htmlFor="company">Empresa *</label>
           {errors.company && <span id="company-error" className="error-message" role="alert">{errors.company.message}</span>}
         </div>
-        
+
         <div className="user-box py-[25px]">
           <select 
             id="service" 
@@ -297,7 +296,7 @@ export function QuoteRequestForm({
           <label htmlFor="service">Serviço de Interesse *</label>
           {errors.service && <span id="service-error" className="error-message" role="alert">{errors.service.message}</span>}
         </div>
-        
+
         <div className="user-box">
           <textarea 
             id="message" 
@@ -310,7 +309,7 @@ export function QuoteRequestForm({
           <label htmlFor="message">Mensagem *</label>
           {errors.message && <span id="message-error" className="error-message" role="alert">{errors.message.message}</span>}
         </div>
-        
+
         <button 
           type="submit" 
           disabled={isSubmitting}
