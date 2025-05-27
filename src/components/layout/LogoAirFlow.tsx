@@ -26,7 +26,7 @@ const LogoAirFlow: React.FC<LogoAirFlowProps> = ({
     >
       <img 
         alt="Air Flow Logo" 
-        src="/lovable-uploads/64687e12-46cb-44b9-8574-13e6f0e8cce8.png" 
+        src="/lovable-uploads/4ee75d38-3e4a-4b64-9ca3-8bb833eccac0.png" 
         className={cn(sizeClasses[size], "object-cover", onClick && "cursor-pointer")} 
       />
     </div>
