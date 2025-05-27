@@ -44,10 +44,7 @@ interface QuoteRequestFormProps {
   onSubmitSuccess?: () => void;
 }
 
-// EmailJS configuration
-const EMAILJS_SERVICE_ID = 'service_airflow';
-const EMAILJS_TEMPLATE_ID = 'template_quote_request';
-const EMAILJS_USER_ID = 'wvgkuZY_VUB081QOV';
+import { EMAIL_CONFIG, validateEmailJSConfig } from '@/utils/emailConfig';
 
 export function QuoteRequestForm({
   onSubmitSuccess
@@ -109,10 +106,28 @@ export function QuoteRequestForm({
         return;
       }
 
-      console.log('Iniciando envio de email...', {
-        serviceId: EMAILJS_SERVICE_ID,
-        templateId: EMAILJS_TEMPLATE_ID,
-        userId: EMAILJS_USER_ID
+      // Verificar conexão com internet
+      if (!navigator.onLine) {
+        toast({
+          title: "Sem conexão",
+          description: "Verifique sua conexão com a internet e tente novamente.",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      // Validar configuração
+      const configValidation = validateEmailJSConfig();
+      if (!configValidation.isValid) {
+        console.error('❌ Configuração EmailJS inválida:', configValidation.errors);
+        throw new Error('Configuração de email inválida');
+      }
+
+      console.log('✅ Iniciando envio de email...', {
+        serviceId: EMAIL_CONFIG.SERVICE_ID,
+        templateId: EMAIL_CONFIG.TEMPLATE_ID,
+        userId: EMAIL_CONFIG.USER_ID,
+        timestamp: new Date().toISOString()
       });
 
       // Map the form values to template parameters
@@ -123,57 +138,79 @@ export function QuoteRequestForm({
         phone: data.phone,
         service: data.service,
         message: data.message.trim(),
-        to_email: 'airflow.arcondicionado@gmail.com'
+        to_email: EMAIL_CONFIG.TO_EMAIL,
+        reply_to: data.email.trim(),
+        timestamp: new Date().toLocaleString('pt-BR')
       };
 
-      console.log('Parâmetros do template:', templateParams);
+      console.log('📧 Parâmetros do template:', templateParams);
 
       // Send email using EmailJS
       const response = await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
+        EMAIL_CONFIG.SERVICE_ID,
+        EMAIL_CONFIG.TEMPLATE_ID,
         templateParams,
-        EMAILJS_USER_ID
+        EMAIL_CONFIG.USER_ID
       );
       
-      console.log('Resposta do EmailJS:', response);
+      console.log('✅ Resposta do EmailJS:', response);
       
-      // Track successful form submission
-      trackFormSubmission('quote_request', true);
-      trackEvent('contact', 'form_submission', 'quote_request');
+      if (response.status === 200) {
+        // Track successful form submission
+        trackFormSubmission('quote_request', true);
+        trackEvent('contact', 'form_submission', 'quote_request');
 
-      toast({
-        title: "Mensagem Enviada!",
-        description: "Agradecemos seu contato. Retornaremos em breve.",
-        variant: "default"
-      });
-      
-      form.reset();
-      
-      if (onSubmitSuccess) {
-        onSubmitSuccess();
+        toast({
+          title: "✅ Mensagem Enviada com Sucesso!",
+          description: "Recebemos sua solicitação. Nossa equipe entrará em contato em breve.",
+          variant: "default"
+        });
+        
+        form.reset();
+        
+        if (onSubmitSuccess) {
+          onSubmitSuccess();
+        }
+      } else {
+        throw new Error(`EmailJS retornou status: ${response.status}`);
       }
     } catch (error: any) {
-      console.error("Erro detalhado ao enviar email:", error);
+      console.error("❌ Erro detalhado ao enviar email:", {
+        error: error,
+        message: error?.message,
+        status: error?.status,
+        timestamp: new Date().toISOString()
+      });
       
       // Track failed form submission
       trackFormSubmission('quote_request', false);
       
       // Tratamento de erro mais específico
       let errorMessage = "Ocorreu um erro ao enviar sua mensagem. Tente novamente.";
+      let errorTitle = "Erro ao enviar";
       
       if (error?.status === 400) {
         errorMessage = "Dados inválidos. Verifique as informações e tente novamente.";
-      } else if (error?.status === 401) {
-        errorMessage = "Erro de autenticação. Tente novamente em alguns minutos.";
-      } else if (error?.status === 500) {
+        errorTitle = "Dados inválidos";
+      } else if (error?.status === 401 || error?.status === 403) {
+        errorMessage = "Erro de autenticação do serviço. Tente novamente em alguns minutos.";
+        errorTitle = "Erro de autenticação";
+      } else if (error?.status === 429) {
+        errorMessage = "Muitas tentativas. Aguarde alguns minutos antes de tentar novamente.";
+        errorTitle = "Limite de tentativas";
+      } else if (error?.status === 500 || error?.status >= 500) {
         errorMessage = "Erro interno do servidor. Tente novamente mais tarde.";
-      } else if (error?.message?.includes('network') || error?.message?.includes('fetch')) {
+        errorTitle = "Erro do servidor";
+      } else if (error?.message?.includes('network') || error?.message?.includes('fetch') || !navigator.onLine) {
         errorMessage = "Erro de conexão. Verifique sua internet e tente novamente.";
+        errorTitle = "Erro de conexão";
+      } else if (error?.message?.includes('timeout')) {
+        errorMessage = "Tempo limite excedido. Tente novamente.";
+        errorTitle = "Timeout";
       }
 
       toast({
-        title: "Erro ao enviar",
+        title: errorTitle,
         description: errorMessage,
         variant: "destructive"
       });
