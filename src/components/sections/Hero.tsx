@@ -8,13 +8,17 @@ const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
   
   const posterSrc = '/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png';
+  const industrialEquipmentSrc = '/lovable-uploads/28bbbe1b-c4ba-4a22-925b-3da00a75c3b4.png';
 
   useEffect(() => {
     if (!heroRef.current) return;
 
-    // Preload the hero image
+    // Preload both hero images
     preloadImage(posterSrc)
       .catch(err => console.warn('Failed to preload hero image:', err));
+    
+    preloadImage(industrialEquipmentSrc)
+      .catch(err => console.warn('Failed to preload industrial equipment image:', err));
 
     // Create timeline for the hero animation
     const tl = gsap.timeline({
@@ -66,8 +70,9 @@ const Hero = () => {
 
   return (
     <section ref={heroRef} id="home" className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-black">
-      {/* Hero Background Image */}
+      {/* Hero Background Images */}
       <div className="absolute inset-0 w-full h-full">
+        {/* Primary background image */}
         <OptimizedImage
           src={posterSrc}
           alt="Air Flow Industrial Cooling"
@@ -76,6 +81,19 @@ const Hero = () => {
           loading="eager"
           width={1920}
           height={1080}
+          responsive={true}
+        />
+        
+        {/* Secondary overlay image for industrial equipment */}
+        <OptimizedImage
+          src={industrialEquipmentSrc}
+          alt="Equipamentos Industriais de Refrigeração"
+          className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay"
+          fallbackCategory="default"
+          loading="eager"
+          width={1920}
+          height={1080}
+          responsive={true}
         />
         
         {/* Dark overlay for better text readability */}
