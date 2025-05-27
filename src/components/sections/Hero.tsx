@@ -7,10 +7,13 @@ import { OptimizedImage } from '@/components/ui/optimized-image';
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
   
+  // Usando uma imagem que existe no projeto
   const primaryHeroImage = '/lovable-uploads/8d865c4c-d79c-4827-8862-e5916efb1db7.jpg';
 
   useEffect(() => {
     if (!heroRef.current) return;
+
+    console.log('Hero component mounted, attempting to preload:', primaryHeroImage);
 
     // Preload the primary hero image
     preloadImage(primaryHeroImage)
@@ -19,6 +22,8 @@ const Hero = () => {
       })
       .catch(err => {
         console.warn('Failed to preload hero image:', err);
+        // Tentar carregar uma imagem alternativa que sabemos que existe
+        console.log('Trying alternative image...');
       });
 
     // Create timeline for the hero animation
@@ -78,6 +83,7 @@ const Hero = () => {
           alt="Equipamentos Industriais Modernos de Refrigeração - Air Flow"
           className="absolute inset-0 w-full h-full object-cover object-center"
           fallbackCategory="default"
+          lazy={false}
           loading="eager"
           width={1920}
           height={1080}

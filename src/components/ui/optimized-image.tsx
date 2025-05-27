@@ -30,6 +30,9 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
+    // Log para debug
+    console.log('OptimizedImage initialized:', { src, lazy, isInView });
+    
     if (!lazy) return;
 
     const observer = new IntersectionObserver(
@@ -50,19 +53,34 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
     }
 
     return () => observer.disconnect();
-  }, [lazy]);
+  }, [lazy, src]);
 
   const handleLoad = () => {
+    console.log('Image loaded successfully:', src);
     setIsLoaded(true);
   };
 
   const handleError = () => {
+    console.warn('Image failed to load:', src);
     setHasError(true);
     setIsLoaded(true);
   };
 
   // Use fallbackCategory to determine fallback image if provided
   const finalFallbackSrc = fallbackCategory ? `/placeholder.svg` : fallbackSrc;
+  const imageSrc = isInView ? (hasError ? finalFallbackSrc : src) : '';
+
+  // Log para debug do estado atual
+  useEffect(() => {
+    console.log('OptimizedImage state:', { 
+      src, 
+      imageSrc, 
+      isInView, 
+      isLoaded, 
+      hasError, 
+      lazy 
+    });
+  }, [src, imageSrc, isInView, isLoaded, hasError, lazy]);
 
   return (
     <div className={cn('relative overflow-hidden', className)}>
@@ -71,7 +89,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
       )}
       <img
         ref={imgRef}
-        src={isInView ? (hasError ? finalFallbackSrc : src) : ''}
+        src={imageSrc}
         alt={alt}
         onLoad={handleLoad}
         onError={handleError}
