@@ -3,11 +3,12 @@ import { gsap } from 'gsap';
 import AnimatedButton from '@/components/ui/animated-button';
 import { preloadImage } from '@/utils/imageUtils';
 import { OptimizedImage } from '@/components/ui/optimized-image';
+
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
 
   // Usando a nova imagem fornecida
-  const primaryHeroImage = '/lovable-uploads/55dade52-ab86-405c-a03c-7af8bccbce1c.png';
+  const primaryHeroImage = '/lovable-uploads/e54a8846-38af-4f8c-b332-5ddc23c63258.png';
   useEffect(() => {
     if (!heroRef.current) return;
     console.log('Hero component mounted, attempting to preload:', primaryHeroImage);
@@ -70,7 +71,17 @@ const Hero = () => {
   return <section ref={heroRef} id="home" className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-black">
       {/* Hero Background Image */}
       <div className="absolute inset-0 w-full h-full">
-        <OptimizedImage src={primaryHeroImage} alt="Air Flow - Instalação e Manutenção de Ar Condicionado" className="absolute inset-0 w-full h-full object-contain object-center bg-black" fallbackCategory="default" lazy={false} loading="eager" width={1920} height={1080} responsive={true} />
+        <OptimizedImage 
+          src={primaryHeroImage} 
+          alt="Air Flow - Instalação e Manutenção de Ar Condicionado" 
+          className="absolute inset-0 w-full h-full object-contain object-center bg-black" 
+          fallbackCategory="default" 
+          lazy={false} 
+          loading="eager" 
+          width={1920} 
+          height={1080} 
+          responsive={true} 
+        />
         
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-black/30"></div>
@@ -104,4 +115,5 @@ const Hero = () => {
       </div>
     </section>;
 };
+
 export default Hero;
