@@ -12,7 +12,7 @@ import Contact from '@/components/sections/Contact';
 import OurWork from '@/components/sections/OurWork';
 import TechnologyCloud from '@/components/sections/TechnologyCloud';
 import { setupScrollAnimation } from '@/utils/scrollAnimation';
-import { preloadImage, preloadVideo, getEncodedPath } from '@/utils/imageUtils';
+import { preloadImage } from '@/utils/imageUtils';
 import { useLocation } from 'react-router-dom';
 import SkipLink from '@/components/ui/skip-link';
 import { SectionDivider } from '@/components/ui/section-divider';
@@ -23,16 +23,12 @@ const Index = () => {
   useEffect(() => {
     const cleanup = setupScrollAnimation();
     
-    // Preload hero image and project images for better user experience
+    // Preload critical images for better user experience
     const preloadAssets = () => {
-      // Preload new hero image for primary display
-      preloadImage('/lovable-uploads/d4a03e7e-0fe0-4f17-8567-880a8c9e8b99.png');
-      
-      // Preload hero video
-      const videoPath = '/lovable-uploads/industrial-cooling.mp4';
-      preloadVideo(getEncodedPath(videoPath)).catch(err => {
-        console.warn('Failed to preload video:', err);
-      });
+      // Preload primary hero image
+      preloadImage('/lovable-uploads/d4a03e7e-0fe0-4f17-8567-880a8c9e8b99.png')
+        .then(() => console.log('Primary hero image preloaded'))
+        .catch(err => console.warn('Failed to preload primary hero image:', err));
       
       // Preload project images
       import('@/utils/projectImages').then(({ images }) => {
