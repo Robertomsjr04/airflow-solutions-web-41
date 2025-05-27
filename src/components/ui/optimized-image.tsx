@@ -7,8 +7,10 @@ interface OptimizedImageProps extends React.ImgHTMLAttributes<HTMLImageElement> 
   alt: string;
   className?: string;
   fallbackSrc?: string;
+  fallbackCategory?: string;
   lazy?: boolean;
   quality?: number;
+  responsive?: boolean;
 }
 
 export const OptimizedImage: React.FC<OptimizedImageProps> = ({
@@ -16,8 +18,10 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
   alt,
   className,
   fallbackSrc = '/placeholder.svg',
+  fallbackCategory,
   lazy = true,
   quality = 85,
+  responsive = false,
   ...props
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -57,6 +61,9 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
     setIsLoaded(true);
   };
 
+  // Use fallbackCategory to determine fallback image if provided
+  const finalFallbackSrc = fallbackCategory ? `/placeholder.svg` : fallbackSrc;
+
   return (
     <div className={cn('relative overflow-hidden', className)}>
       {!isLoaded && (
@@ -64,7 +71,7 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
       )}
       <img
         ref={imgRef}
-        src={isInView ? (hasError ? fallbackSrc : src) : ''}
+        src={isInView ? (hasError ? finalFallbackSrc : src) : ''}
         alt={alt}
         onLoad={handleLoad}
         onError={handleError}
