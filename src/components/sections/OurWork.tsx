@@ -87,7 +87,7 @@ const OurWork = () => {
                             src={image.src} 
                             alt={image.alt} 
                             className="object-cover absolute inset-0 w-full h-full" 
-                            loading={index < 3 ? "eager" : "lazy"}
+                            lazy={index >= 3}
                             fallbackCategory="project"
                             width={isMobile ? 320 : 375}
                             height={isMobile ? 427 : 500}
