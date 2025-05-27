@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import AnimatedButton from '@/components/ui/animated-button';
@@ -7,8 +8,8 @@ import { OptimizedImage } from '@/components/ui/optimized-image';
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
   
-  // Usando uma imagem que existe no projeto
-  const primaryHeroImage = '/lovable-uploads/8d865c4c-d79c-4827-8862-e5916efb1db7.jpg';
+  // Usando a nova imagem fornecida
+  const primaryHeroImage = '/lovable-uploads/bfdfed69-01bb-411d-a3df-f9328cd18bb0.png';
 
   useEffect(() => {
     if (!heroRef.current) return;
@@ -80,7 +81,7 @@ const Hero = () => {
       <div className="absolute inset-0 w-full h-full">
         <OptimizedImage
           src={primaryHeroImage}
-          alt="Equipamentos Industriais Modernos de Refrigeração - Air Flow"
+          alt="Air Flow - Instalação e Manutenção de Ar Condicionado"
           className="absolute inset-0 w-full h-full object-cover object-center"
           fallbackCategory="default"
           lazy={false}
