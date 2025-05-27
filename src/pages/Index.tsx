@@ -25,8 +25,8 @@ const Index = () => {
     
     // Preload hero image and project images for better user experience
     const preloadAssets = () => {
-      // Preload hero image for fallback
-      preloadImage('/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png');
+      // Preload new hero image for primary display
+      preloadImage('/lovable-uploads/d4a03e7e-0fe0-4f17-8567-880a8c9e8b99.png');
       
       // Preload hero video
       const videoPath = '/lovable-uploads/industrial-cooling.mp4';

@@ -7,22 +7,22 @@ import { OptimizedImage } from '@/components/ui/optimized-image';
 const Hero = () => {
   const heroRef = useRef<HTMLElement>(null);
   
-  const posterSrc = '/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png';
-  const industrialEquipmentSrc = '/lovable-uploads/28bbbe1b-c4ba-4a22-925b-3da00a75c3b4.png';
   const newHeroImageSrc = '/lovable-uploads/d4a03e7e-0fe0-4f17-8567-880a8c9e8b99.png';
+  const industrialEquipmentSrc = '/lovable-uploads/28bbbe1b-c4ba-4a22-925b-3da00a75c3b4.png';
+  const posterSrc = '/lovable-uploads/728703b4-e76d-4b4b-bc6c-33ddd3f03992.png';
 
   useEffect(() => {
     if (!heroRef.current) return;
 
     // Preload all three hero images
-    preloadImage(posterSrc)
-      .catch(err => console.warn('Failed to preload hero image:', err));
+    preloadImage(newHeroImageSrc)
+      .catch(err => console.warn('Failed to preload new hero image:', err));
     
     preloadImage(industrialEquipmentSrc)
       .catch(err => console.warn('Failed to preload industrial equipment image:', err));
     
-    preloadImage(newHeroImageSrc)
-      .catch(err => console.warn('Failed to preload new hero image:', err));
+    preloadImage(posterSrc)
+      .catch(err => console.warn('Failed to preload original hero image:', err));
 
     // Create timeline for the hero animation
     const tl = gsap.timeline({
@@ -76,10 +76,10 @@ const Hero = () => {
     <section ref={heroRef} id="home" className="relative min-h-screen flex items-center pt-16 overflow-hidden bg-black">
       {/* Hero Background Images */}
       <div className="absolute inset-0 w-full h-full">
-        {/* Primary background image */}
+        {/* Primary background image - New HVAC equipment */}
         <OptimizedImage
-          src={posterSrc}
-          alt="Air Flow Industrial Cooling"
+          src={newHeroImageSrc}
+          alt="Equipamentos Modernos de Refrigeração Industrial - Air Flow"
           className="absolute inset-0 w-full h-full object-cover"
           fallbackCategory="default"
           loading="eager"
@@ -102,7 +102,7 @@ const Hero = () => {
         
         {/* Third background layer for enhanced visual depth */}
         <OptimizedImage
-          src={newHeroImageSrc}
+          src={posterSrc}
           alt="Tecnologia em Refrigeração Industrial"
           className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-soft-light"
           fallbackCategory="default"
