@@ -20,7 +20,7 @@ const formSchema = z.object({
     message: 'Empresa deve ter pelo menos 2 caracteres'
   }),
   phone: z.string().refine(validateBrazilianPhone, {
-    message: 'Telefone inválido. Digite no formato: 81988878888'
+    message: 'Telefone inválido. Digite no formato: (11) 99999-9999'
   }),
   service: z.string({
     required_error: 'Selecione um serviço'
