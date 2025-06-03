@@ -88,12 +88,16 @@ const Hero = () => {
       </div>
       
       <div className="container relative z-10 my-0 py-0">
-        <div className="flex flex-col items-center text-center hero-content">
-          <div className="hero-years inline-block bg-airflow-blue text-white px-4 rounded-full text-sm font-bold mb-16 py-[9px]">
+        <div className="flex flex-col items-center text-center hero-content min-h-screen justify-between pt-20 pb-32">
+          <div className="hero-years inline-block bg-airflow-blue text-white px-4 rounded-full text-sm font-bold py-[9px] mt-8">
             30 Anos de Liderança Técnica no Mercado
           </div>
-          <div className="max-w-4xl mb-20">
-            <p className="hero-description text-xl md:text-2xl text-white mb-16">
+          
+          {/* Spacer para mostrar o texto AIRFLOW do background */}
+          <div className="flex-1 min-h-[200px] md:min-h-[300px]"></div>
+          
+          <div className="max-w-4xl">
+            <p className="hero-description text-xl md:text-2xl text-white mb-12">
               Excelência em engenharia térmica com máxima eficiência energética, conformidade técnica e tecnologia de ponta.
             </p>
             <div className="hero-button mx-0 px-0 rounded-none py-0">
