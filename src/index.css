@@ -475,6 +475,11 @@
   pointer-events: none;
 }
 
+/* Remove AIRFLOW watermark */
+.hero-content::before {
+  display: none !important;
+}
+
 /* Floating effect */
 .floating-element {
   animation: float 6s ease-in-out infinite;
