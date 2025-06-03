@@ -89,14 +89,11 @@ const Hero = () => {
       
       <div className="container relative z-10 my-0 py-0">
         <div className="flex flex-col items-center text-center hero-content">
-          <div className="hero-years inline-block bg-airflow-blue text-white px-4 rounded-full text-sm font-bold mb-8 py-[9px]">
+          <div className="hero-years inline-block bg-airflow-blue text-white px-4 rounded-full text-sm font-bold mb-16 py-[9px]">
             30 Anos de Liderança Técnica no Mercado
           </div>
-          <div className="max-w-4xl">
-            <h1 className="hero-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight">
-                       
-            </h1>
-            <p className="hero-description text-xl md:text-2xl text-white mb-8">
+          <div className="max-w-4xl mb-20">
+            <p className="hero-description text-xl md:text-2xl text-white mb-16">
               Excelência em engenharia térmica com máxima eficiência energética, conformidade técnica e tecnologia de ponta.
             </p>
             <div className="hero-button mx-0 px-0 rounded-none py-0">
