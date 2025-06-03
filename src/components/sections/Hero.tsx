@@ -94,7 +94,7 @@ const Hero = () => {
           </div>
           <div className="max-w-4xl">
             <h1 className="hero-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight">
-              Air Flow - Soluções em Refrigeração Industrial e Comercial
+              Soluções em Refrigeração Industrial e Comercial
             </h1>
             <p className="hero-description text-xl md:text-2xl text-white mb-8">
               Excelência em engenharia térmica com máxima eficiência energética, conformidade técnica e tecnologia de ponta.
